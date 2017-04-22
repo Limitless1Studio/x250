@@ -1,0 +1,3 @@
+sudo "/Applications/Install macOS Sierra.app/Contents/Resources/createinstallmedia" --volume  /Volumes/install_osx --applicationpath "/Applications/Install macOS Sierra.app" –nointeraction
+
+sudo diskutil rename "Install macOS Sierra" install_osx

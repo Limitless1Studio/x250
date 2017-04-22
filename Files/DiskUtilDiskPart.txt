@@ -1,0 +1,3 @@
+diskutil list
+
+diskutil partitionDisk /dev/disk# 2 MBR FAT32 "CLOVER EFI" 200Mi HFS+J "install_osx" R
