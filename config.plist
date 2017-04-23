@@ -150,7 +150,7 @@
 		<key>Secure</key>
 		<false/>
 		<key>Timeout</key>
-		<integer>5</integer>
+		<integer>-1</integer>
 		<key>XMPDetection</key>
 		<string>Yes</string>
 	</dict>
@@ -204,6 +204,8 @@
 				</dict>
 			</array>
 		</dict>
+		<key>Language</key>
+		<string>en:0</string>
 		<key>Mouse</key>
 		<dict>
 			<key>DoubleClick</key>
@@ -226,6 +228,8 @@
 			<key>Tool</key>
 			<true/>
 		</dict>
+		<key>ScreenResolution</key>
+		<string>1366x768</string>
 		<key>Theme</key>
 		<string>BGM</string>
 	</dict>

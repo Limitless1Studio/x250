@@ -15,7 +15,7 @@ kext_src   :=Resources/ahhcd.plist \
 		Resources/codecProfile.plist
 
 patchfile :=$(PWD)/AppleHDA_patch.plist
-CCzip :=./RehabMan-CodecCommander-2015-1122.zip
+CCzip :=./RehabMan-CodecCommander-2016-0721.zip
 CCver :=Release
 
 all: kext
