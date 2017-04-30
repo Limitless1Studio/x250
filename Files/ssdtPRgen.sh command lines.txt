@@ -1,3 +1,0 @@
-curl -o ~/ssdtPRGen.sh https://raw.githubusercontent.com/Piker-Alpha/ssdtPRGen.sh/Beta/ssdtPRGen.sh
-
-chmod +x ~/ssdtPRGen.sh

@@ -1,1 +1,0 @@
-iasl -da -dl *.aml
