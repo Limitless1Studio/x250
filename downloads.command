@@ -103,6 +103,7 @@ curl -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
 curl -L -O https://github.com/Limitless1Studio/x250/raw/master/SSDT-BATC.aml
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/ssdtPRgensh.command
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Finish.command
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Setup.command
 echo ----------------------Done!----------------------
 echo ----------------------Unzipping Files!----------------------
 # unzip is the command to unzip kexts
