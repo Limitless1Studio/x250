@@ -157,7 +157,7 @@ curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT
 
 echo ----------------------Done!----------------------
 echo ----------------------Donwloading ALC3232 Fix!----------------------
-cd ~/dekstop/x250
+cd ~/desktop/x250
 curl -L -O https://github.com/Limitless1Studio/x250ALC3232/archive/master.zip
 echo ----------------------Unzipping ALC3232!----------------------
 unzip master.zip
