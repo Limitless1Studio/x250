@@ -44,7 +44,7 @@ cd ~/desktop/x250/Kexts
 echo ----------------------Done!----------------------
 echo ----------------------Cleaning up Kexts folder!----------------------
 # sudo rm -r must be used to remove kexts which are a directory
-# sudo r -f is used to delete a single file which .zips are
+# sudo rm -f is used to delete a single file which .zips are
 sudo rm -r FakeSMC_ACPISensors.kext
 sudo rm -r FakeSMC_CPUSensors.kext
 sudo rm -r FakeSMC_GPUSensors.kext
