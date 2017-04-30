@@ -22,8 +22,8 @@ chmod 755 ALC3232.command
 cd ~/desktop/x250/Files
 chmod 775 ssdtPRgensh.command
 
-# Show sleep status
-sudo pmset -g custom | grep "hibernatemode \|standby \|autopoweroff "
+# Show sleep status. Uncomment if you want to see it.
+#sudo pmset -g custom | grep "hibernatemode \|standby \|autopoweroff "
 
 # Move iasl, voodoodaemon, remove unneeded voodoo related kexts
 cd ~/desktop/x250/Files
@@ -39,7 +39,7 @@ mkdir x250original
 mkdir x250modified
 mkdir x250finished
 
-# Mount USBs EFI partition
+# Moving Extracted .aml files from USBs EFI
 cd /volumes/Clover\ EFI/efi/clover/ACPI/origin
 sudo cp DSDT.aml ~/desktop/x250original
 sudo cp SS**.aml ~/desktop/x250original
@@ -62,10 +62,27 @@ sudo cp DSDT.dsl ~/desktop/x250modified
 sudo cp SSDT-1.dsl ~/desktop/x250modified
 sudo cp SSDT-3.dsl ~/desktop/x250modified
 sudo cp SSDT-10.dsl ~/desktop/x250modified
+
+# Create PFNL SSDT for Backlight Fix. Also installing making and installing
+# AppleBacklightInjector o /Library/Extensions/
+cd
+mkdir ~/Projects
+cd ~/Projects
+git
+git clone https://github.com/RehabMan/HP-ProBook-4x30s-DSDT-Patch probook.git
+git clone https://github.com/RehabMan/OS-X-Clover-Laptop-Config.git guide.git
+cd ~/Projects/guide.git
+make
+sudo cp -R ~/Projects/probook.git/kexts/AppleBacklightInjector.kext /Library/Extensions
+cp ~/Projects/guide.git/build/SSDT-PNLF.aml ~/desktop/x250finished
+sudo kextcache -i /
+
+# Mount SSD/HHD EFI partition
 diskutil mount /dev/disk0s1
 cd ~/desktop/Files
 sudo cp HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
 diskutil unmount /dev/disk1s1
 diskutil unmount /dev/disk1s2
+Create
 osascript -e 'tell application "Terminal" to quit' &
 exit

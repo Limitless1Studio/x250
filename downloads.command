@@ -18,15 +18,15 @@ echo ----------------------Donwloading Kexts!----------------------
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
 # end in .zip
-curl -o Tluck-VoodooPS2Controller.zip https://www.tonymacx86.com/attachments/tluck-voodoops2controller-zip.242311/
 curl -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0414.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0321.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/RehabMan-Battery-2017-0428.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/RehabMan-BrcmPatchRAM-2016-0705.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-0112.zip
-# I moved this download to the dowloads directory to eliminate confusion on which
+# I moved these downloads to the dowloads directory to eliminate confusion on which
 # Kexts folder we are referring to
 cd ~/downloads
+curl -L -o OS-X-Voodoo-PS2-Controller-master.zip https://github.com/tluck/OS-X-Voodoo-PS2-Controller/archive/master.zip
 curl -o Kexts.zip https://www.tonymacx86.com/attachments/kexts-zip.218178/
 cd ~/desktop/x250/Kexts
 echo ----------------------Done!----------------------
@@ -37,9 +37,11 @@ unzip RehabMan-IntelMausiEthernet-v2-2017-0321.zip
 unzip RehabMan-Battery-2017-0428.zip
 unzip RehabMan-BrcmPatchRAM-2016-0705.zip
 unzip RehabMan-USBInjectAll-2017-0112.zip
-unzip Tluck-VoodooPS2Controller.zip
 cd ~/downloads
 unzip Kexts.zip
+unzip OS-X-Voodoo-PS2-Controller-master.zip
+cd ~/downloads/OS-X-Voodoo-PS2-Controller-master
+sudo make
 cd ~/desktop/x250/Kexts
 echo ----------------------Done!----------------------
 echo ----------------------Cleaning up Kexts folder!----------------------
@@ -50,26 +52,29 @@ sudo rm -r FakeSMC_CPUSensors.kext
 sudo rm -r FakeSMC_GPUSensors.kext
 sudo rm -r FakeSMC_LPCSensors.kext
 sudo rm -r Debug
-sudo rm -r __MACOSX
 sudo rm -r HWMonitor.app
 rm -f RehabMan-Battery-2017-0428.zip
 rm -f RehabMan-FakeSMC-2017-0414.zip
 rm -f RehabMan-IntelMausiEthernet-v2-2017-0321.zip
 rm -f RehabMan-BrcmPatchRAM-2016-0705.zip
 rm -f RehabMan-USBInjectAll-2017-0112.zip
-rm -f Tluck-VoodooPS2Controller.zip
 mv ~/desktop/x250/Kexts/Release/ACPIBatteryManager.kext ~/desktop/x250/Kexts/
 mv ~/desktop/x250/Kexts/Release/IntelMausiEthernet.kext ~/desktop/x250/Kexts/
 mv ~/desktop/x250/Kexts/Release/USBInjectAll.kext ~/desktop/x250/Kexts/
 mv ~/desktop/x250/Kexts/Release/BrcmPatchRAM2.kext ~/desktop/x250/Kexts/
 mv ~/desktop/x250/Kexts/Release/BrcmFirmwareRepo.kext ~/desktop/x250/Kexts/
 mv ~/downloads/Kexts/USB_Injector_X250.kext ~/desktop/x250/Kexts/
-mv ~/desktop/x250/Kexts/org.rehabman.voodoo.driver.Daemon.plist ~/desktop/x250/Files
-mv ~/desktop/x250/Kexts/VoodooPS2Daemon ~/desktop/x250/Files
 sudo rm -r Release
+chmod 755 ~/downloads/OS-X-Voodoo-PS2-Controller-master
+cd ~/downloads/OS-X-Voodoo-PS2-Controller-master/build/products/Release
+sudo mv ~/downloads/OS-X-Voodoo-PS2-Controller-master/build/products/Release/VoodooPS2Controller.kext ~/desktop/x250/Kexts/
+sudo mv ~/downloads/OS-X-Voodoo-PS2-Controller-master/build/products/Release/VoodooPS2Daemon ~/desktop/x250/Files
+mv ~/downloads/OS-X-Voodoo-PS2-Controller-master/VoodooPS2Daemon/org.rehabman.voodoo.driver.Daemon.plist ~/desktop/x250/Files
 cd ~/downloads
 sudo rm -r Kexts
 sudo rm -r __MACOSX
+sudo rm -r OS-X-Voodoo-PS2-Controller-master
+sudo rm -f OS-X-Voodoo-PS2-Controller-master.zip
 sudo rm -f Kexts.zip
 echo ----------------------Done!----------------------
 echo ----------------------Donwloading Programs!----------------------
@@ -102,8 +107,8 @@ curl -L -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/
 curl -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
 curl -L -O https://github.com/Limitless1Studio/x250/raw/master/SSDT-BATC.aml
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/ssdtPRgensh.command
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Finish.command
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Setup.command
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Finish.command
 echo ----------------------Done!----------------------
 echo ----------------------Unzipping Files!----------------------
 # unzip is the command to unzip kexts
@@ -139,7 +144,6 @@ echo ----------------------Donwloading Patches!----------------------
 # curl -o must be used to rename the file correctly because the link does not
 # end in .zip
 cd ~/Desktop/x250/Patches
-curl -L -O https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/graphics/graphics_PNLF.txt
 curl -L -O https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/graphics/graphics_Rename-B0D3.txt
 curl -L -O https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/graphics/graphics_Rename-PCI0_VID.txt
 curl -L -O https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_IMEI.txt
@@ -166,5 +170,5 @@ echo ----------------------Cleaning up iMessage folder!----------------------
 mv ~/desktop/x250/x250ALC3232-master/ALC3232 ~/desktop/x250
 sudo rm -r x250ALC3232-master
 sudo rm -f master.zip
-osascript -e 'tell application "Terminal" to quit' &
-exit
+#osascript -e 'tell application "Terminal" to quit' &
+#exit
