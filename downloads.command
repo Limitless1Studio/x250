@@ -44,7 +44,7 @@ cd ~/desktop/x250/Kexts
 echo ----------------------Done!----------------------
 echo ----------------------Cleaning up Kexts folder!----------------------
 # sudo rm -r must be used to remove kexts which are a directory
-# sudo r -f is used to delete a single file which .zips are
+# sudo rm -f is used to delete a single file which .zips are
 sudo rm -r FakeSMC_ACPISensors.kext
 sudo rm -r FakeSMC_CPUSensors.kext
 sudo rm -r FakeSMC_GPUSensors.kext
@@ -101,6 +101,8 @@ cd ~/Desktop/x250/Files
 curl -L -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/HFSPlus.efi
 curl -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
 curl -L -O https://github.com/Limitless1Studio/x250/raw/master/SSDT-BATC.aml
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/ssdtPRgensh.command
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Finish.command
 echo ----------------------Done!----------------------
 echo ----------------------Unzipping Files!----------------------
 # unzip is the command to unzip kexts
@@ -108,7 +110,7 @@ unzip iasl.zip
 echo ----------------------Done!----------------------
 echo ----------------------Cleaning up Files folder!----------------------
 # sudo rm -r must be used to remove kexts which are a directory
-# sudo r -f is used to delete a single file which .zips are
+# sudo rm -f is used to delete a single file which .zips are
 rm -f iasl.zip
 echo ----------------------Done!----------------------
 echo ----------------------Downloading iMessage Tools!----------------------
@@ -154,3 +156,14 @@ curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT
 curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/5_audio_HDEF-layout1.txt
 
 echo ----------------------Done!----------------------
+echo ----------------------Donwloading ALC3232 Fix!----------------------
+cd ~/dekstop/x250
+curl -L -O https://github.com/Limitless1Studio/x250ALC3232/archive/master.zip
+echo ----------------------Unzipping ALC3232!----------------------
+unzip master.zip
+echo ----------------------Cleaning up iMessage folder!----------------------
+mv ~/desktop/x250/x250ALC3232-master/ALC3232 ~/desktop/x250
+sudo rm -r x250ALC3232-master
+sudo rm -f master.zip
+osascript -e 'tell application "Terminal" to quit' &
+exit
