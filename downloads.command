@@ -108,7 +108,7 @@ unzip iasl.zip
 echo ----------------------Done!----------------------
 echo ----------------------Cleaning up Files folder!----------------------
 # sudo rm -r must be used to remove kexts which are a directory
-# sudo r -f is used to delete a single file which .zips are
+# sudo rm -f is used to delete a single file which .zips are
 rm -f iasl.zip
 echo ----------------------Done!----------------------
 echo ----------------------Downloading iMessage Tools!----------------------
@@ -153,4 +153,24 @@ curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT
 curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/4_battery_Lenovo-T450.txt
 curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/5_audio_HDEF-layout1.txt
 
+echo ----------------------Done!----------------------
+echo ----------------------Donwloading ALC3232 fix!----------------------
+# curl -L -O must be used for BitBucket zips
+# curl -o must be used to rename the file correctly because the link does not
+# end in .zip
+cd ~/desktop/x250
+curl -L -O https://github.com/Limitless1Studio/x250ALC3232/archive/master.zip
+echo ----------------------Done!----------------------
+
+echo ----------------------Unzipping Acrchive!----------------------
+# unzip is the command to unzip kexts
+unzip master.zip
+echo ----------------------Done!----------------------
+
+echo ----------------------Cleaning up ALC folder!----------------------
+# sudo rm -r must be used to remove kexts which are a directory
+# sudo rm -f is used to delete a single file which .zips are
+mv ~/desktop/x250/x250ALC3232-master/ALC3232 ~/desktop/x250
+sudo rm -f master.zip
+sudo rm -r x250ALC3232-master
 echo ----------------------Done!----------------------
