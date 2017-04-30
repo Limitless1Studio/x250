@@ -52,7 +52,7 @@ mv ~/desktop/x250original/SSDT-9.aml ~/desktop/x250finished
 mv ~/desktop/x250original/SSDT-11.aml ~/desktop/x250finished
 mv ~/desktop/x250original/SSDT-12.aml ~/desktop/x250finished
 cd ~/desktop/x250/Files
-sudo cp SSDT-BATC.aml ~/desktop/x250finished
+sudo cp SSDT-BATC.dsl ~/desktop/x250modified
 
 # Create Power management SSDT.dsl
 ~/desktop/x250/files/ssdtPRgensh.command
@@ -78,11 +78,10 @@ cp ~/Projects/guide.git/build/SSDT-PNLF.aml ~/desktop/x250finished
 sudo kextcache -i /
 
 # Mount SSD/HHD EFI partition
-diskutil mount /dev/disk0s1
-cd ~/desktop/Files
-sudo cp HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
 diskutil unmount /dev/disk1s1
 diskutil unmount /dev/disk1s2
-Create
+diskutil mount /dev/disk0s1
+cd ~/desktop/x250/Files
+sudo cp HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
 osascript -e 'tell application "Terminal" to quit' &
 exit

@@ -105,10 +105,10 @@ echo ----------------------Donwloading Files!----------------------
 cd ~/Desktop/x250/Files
 curl -L -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/HFSPlus.efi
 curl -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
-curl -L -O https://github.com/Limitless1Studio/x250/raw/master/SSDT-BATC.aml
+curl -L -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/master/SSDT-BATC.dsl
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/ssdtPRgensh.command
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Setup.command
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Finish.command
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2PrePatching.command
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/3PostPatching.command
 echo ----------------------Done!----------------------
 echo ----------------------Unzipping Files!----------------------
 # unzip is the command to unzip kexts
@@ -170,5 +170,5 @@ echo ----------------------Cleaning up iMessage folder!----------------------
 mv ~/desktop/x250/x250ALC3232-master/ALC3232 ~/desktop/x250
 sudo rm -r x250ALC3232-master
 sudo rm -f master.zip
-#osascript -e 'tell application "Terminal" to quit' &
-#exit
+osascript -e 'tell application "Terminal" to quit' &
+exit
