@@ -13,7 +13,6 @@ mkdir Programs
 mkdir iMessage
 mkdir Patches
 cd ~/Desktop/x250/Kexts
-echo ----------------------Done!----------------------
 echo ----------------------Donwloading Kexts!----------------------
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
@@ -29,7 +28,6 @@ cd ~/downloads
 curl -L -o OS-X-Voodoo-PS2-Controller-master.zip https://github.com/tluck/OS-X-Voodoo-PS2-Controller/archive/master.zip
 curl -o Kexts.zip https://www.tonymacx86.com/attachments/kexts-zip.218178/
 cd ~/desktop/x250/Kexts
-echo ----------------------Done!----------------------
 echo ----------------------Unzipping Kexts!----------------------
 # unzip is the command to unzip kexts
 unzip RehabMan-FakeSMC-2017-0414.zip
@@ -43,7 +41,6 @@ unzip OS-X-Voodoo-PS2-Controller-master.zip
 cd ~/downloads/OS-X-Voodoo-PS2-Controller-master
 sudo make
 cd ~/desktop/x250/Kexts
-echo ----------------------Done!----------------------
 echo ----------------------Cleaning up Kexts folder!----------------------
 # sudo rm -r must be used to remove kexts which are a directory
 # sudo rm -f is used to delete a single file which .zips are
@@ -76,20 +73,17 @@ sudo rm -r __MACOSX
 sudo rm -r OS-X-Voodoo-PS2-Controller-master
 sudo rm -f OS-X-Voodoo-PS2-Controller-master.zip
 sudo rm -f Kexts.zip
-echo ----------------------Done!----------------------
 echo ----------------------Donwloading Programs!----------------------
 cd ~/Desktop/x250/Programs
 curl -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
 curl -L -o CCV.zip http://mackie100projects.altervista.org/download-mac.php?version=vibrant
 curl -L -O http://wizards.osxlatitude.com/kext/kw.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-MaciASL-2017-0117.zip
-echo ----------------------Done!----------------------
 echo ----------------------Unzipping Programs!----------------------
 unzip Cloverv24kr4061.zip
 unzip CCV.zip
 unzip kw.zip
 unzip RehabMan-MaciASL-2017-0117.zip
-echo ----------------------Done!----------------------
 echo ----------------------Cleaning up Programs folder!----------------------
 rm -f Clover_v2.4k_r4061.pkg.md5
 rm -f Cloverv24kr4061.zip
@@ -97,7 +91,6 @@ rm -f CCV.zip
 rm -f kw.zip
 rm -f RehabMan-MaciASL-2017-0117.zip
 sudo rm -r __MACOSX
-echo ----------------------Done!----------------------
 echo ----------------------Donwloading Files!----------------------
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
@@ -109,28 +102,26 @@ curl -L -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/m
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/ssdtPRgensh.command
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2PrePatching.command
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/3PostPatching.command
-echo ----------------------Done!----------------------
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/1_for_install_config.plist
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2_first_reboot_config.plist
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/3_Final_config.plist
 echo ----------------------Unzipping Files!----------------------
 # unzip is the command to unzip kexts
 unzip iasl.zip
-echo ----------------------Done!----------------------
 echo ----------------------Cleaning up Files folder!----------------------
 # sudo rm -r must be used to remove kexts which are a directory
 # sudo rm -f is used to delete a single file which .zips are
 rm -f iasl.zip
-echo ----------------------Done!----------------------
 echo ----------------------Downloading iMessage Tools!----------------------
 cd ~/Desktop/x250/iMessage
 curl -L -o DPCIManager_ML.zip https://downloads.sourceforge.net/project/dpcimanager/1.5/DPCIManager_ML.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fdpcimanager%2F&ts=1493495370&use_mirror=pilotfiber
 curl -L -O https://gist.github.com/theracermaster/b6a9db46b14061d4c995/archive/6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
 curl -L -o imessagedebugv2-zip http://www.tonymacx86.com/attachments/imessagedebugv2-zip.114403/
 sleep 5
-echo ----------------------Done!----------------------
 echo ----------------------Unzipping iMessage Files!----------------------
 unzip DPCIManager_ML.zip
 unzip imessagedebugv2-zip
 unzip 6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
-echo ----------------------Done!----------------------
 echo ----------------------Cleaning up iMessage folder!----------------------
 mv ~/Desktop/x250/iMessage/b6a9db46b14061d4c995-6f11dc5e8182bba0449e8f3bbe00152428f904ea/simpleMLB.sh ~/Desktop/x250/iMessage
 rm -f DPCIManager_ML.zip
@@ -138,7 +129,6 @@ rm -f dspci
 rm -f imessagedebugv2-zip
 rm -f 6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
 sudo rm -r b6a9db46b14061d4c995-6f11dc5e8182bba0449e8f3bbe00152428f904ea
-echo ----------------------Done!----------------------
 echo ----------------------Donwloading Patches!----------------------
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
@@ -160,7 +150,6 @@ curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT
 curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/4_battery_Lenovo-T450.txt
 curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/5_audio_HDEF-layout1.txt
 
-echo ----------------------Done!----------------------
 echo ----------------------Donwloading ALC3232 Fix!----------------------
 cd ~/desktop/x250
 curl -L -O https://github.com/Limitless1Studio/x250ALC3232/archive/master.zip

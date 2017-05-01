@@ -84,5 +84,8 @@ diskutil unmount /dev/disk1s2
 diskutil mount /dev/disk0s1
 cd ~/desktop/x250/Files
 sudo cp HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
+sudo cp 2_first_reboot_config.plist /volumes/EFI/EFI/CLOVER
+mv ~/volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/1_for_install_config.plist
+mv /volumes/EFI/EFI/CLOVER/2_first_reboot_config.plist /volumes/EFI/EFI/CLOVER/config.plist
 osascript -e 'tell application "Terminal" to quit' &
 exit
