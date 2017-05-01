@@ -1,5 +1,6 @@
 #!/bin/sh
-
+echo !!! You must have the USB inserted for this to work !!!
+sleep 3
 # Disable apps from anywhere
 sudo spctl --master-disable
 
@@ -21,6 +22,8 @@ cd ~/desktop/x250/ALC3232
 chmod 755 ALC3232.command
 cd ~/desktop/x250/Files
 chmod 775 ssdtPRgensh.command
+chmod 755 3PostPatching.command
+chmod 755 4Final.command
 
 # Show sleep status. Uncomment if you want to see it.
 #sudo pmset -g custom | grep "hibernatemode \|standby \|autopoweroff "
@@ -64,20 +67,6 @@ sudo cp SSDT-3.dsl ~/desktop/x250modified
 sudo cp SSDT-10.dsl ~/desktop/x250modified
 mv ~/desktop/x250modified/ssdt.dsl ~/desktop/x250modified/SSDT.dsl
 
-# Create PFNL SSDT for Backlight Fix. Also installing making and installing
-# AppleBacklightInjector o /Library/Extensions/
-cd
-mkdir ~/Projects
-cd ~/Projects
-git
-git clone https://github.com/RehabMan/HP-ProBook-4x30s-DSDT-Patch probook.git
-git clone https://github.com/RehabMan/OS-X-Clover-Laptop-Config.git guide.git
-cd ~/Projects/guide.git
-make
-sudo cp -R ~/Projects/probook.git/kexts/AppleBacklightInjector.kext /Library/Extensions
-cp ~/Projects/guide.git/build/SSDT-PNLF.aml ~/desktop/x250finished
-sudo kextcache -i /
-
 # Mount SSD/HHD EFI partition
 diskutil unmount /dev/disk1s1
 diskutil unmount /dev/disk1s2
@@ -87,5 +76,8 @@ sudo cp HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
 sudo cp 2_first_reboot_config.plist /volumes/EFI/EFI/CLOVER
 mv /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/1_for_install_config.plist
 mv /volumes/EFI/EFI/CLOVER/2_first_reboot_config.plist /volumes/EFI/EFI/CLOVER/config.plist
+echo --- All clear to remove the USB drive. You shouldnt need it again! ---
+echo --- Patch DSDT and SSDTs. Save all .dsl x250modified --> x250finished as .aml. ---
+sleep 5
 osascript -e 'tell application "Terminal" to quit' &
 exit

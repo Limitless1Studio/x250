@@ -1,5 +1,7 @@
 #!/bin/sh
 # Move .AML files to patched folder
+echo !!! All DSDT/SSDT files should be patched and in x250finished !!!
+sleep 5
 cd ~/desktop/x250finished
 sudo cp *.aml /volumes/efi/efi/clover/acpi/patched
 cd ~/desktop/x250/kexts

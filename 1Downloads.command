@@ -1,7 +1,7 @@
 #!/bin/sh
 # This script will automatically download the needed kexts and create a
 # directory in the process
-
+echo !!! Must have Xcode installed for this work !!!
 echo ----------------------Making x250 Folder!----------------------
 # redirect will not work without the . before /
 cd ./desktop

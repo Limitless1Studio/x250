@@ -118,7 +118,6 @@
 			<string>SSDT-11.aml</string>
 			<string>SSDT-12.aml</string>
 			<string>SSDT-BATC.aml</string>
-			<string>SSDT-PNLF.aml</string>
 			<string>DSDT.aml</string>
 		</array>
 		<key>SortedOrder-Comment</key>
@@ -307,18 +306,6 @@
 				<string>AirPortBrcm4360</string>
 				<key>Replace</key>
 				<data>axAAAJCQ</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>change F%uT%04x to F%uTxxxx in AppleBacklightInjector.kext (credit RehabMan)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleBacklight</string>
-				<key>Find</key>
-				<data>RiV1VCUwNHgA</data>
-				<key>Replace</key>
-				<data>RiV1VHh4eHgA</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
