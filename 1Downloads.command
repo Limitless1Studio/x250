@@ -105,6 +105,7 @@ curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/3PostP
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/1_for_install_config.plist
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2_first_reboot_config.plist
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/3_Final_config.plist
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/4Final.command
 echo ----------------------Unzipping Files!----------------------
 # unzip is the command to unzip kexts
 unzip iasl.zip
