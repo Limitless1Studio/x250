@@ -3,11 +3,11 @@
 echo !!! If you dont have Xcode installed, this will not work !!!
 sleep 2
 # Fix Audio
-cd ~/desktop/x250/ALC3232
 ~/desktop/x250/ALC3232/ALC3232.command
 
 # Load final config.plist file to EFI partition
 diskutil mount /dev/disk0s1
+cd ~/desktop/x250/Files
 sudo cp 3_Final_config.plist /volumes/EFI/EFI/CLOVER
 mv /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/2_first_reboot_config.plist
 mv /volumes/EFI/EFI/CLOVER/3_Final_config.plist /volumes/EFI/EFI/CLOVER/config.plist
