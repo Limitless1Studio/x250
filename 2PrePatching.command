@@ -62,6 +62,7 @@ sudo cp DSDT.dsl ~/desktop/x250modified
 sudo cp SSDT-1.dsl ~/desktop/x250modified
 sudo cp SSDT-3.dsl ~/desktop/x250modified
 sudo cp SSDT-10.dsl ~/desktop/x250modified
+mv ~/desktop/x250modified/ssdt.dsl ~/desktop/x250modified/SSDT.dsl
 
 # Create PFNL SSDT for Backlight Fix. Also installing making and installing
 # AppleBacklightInjector o /Library/Extensions/
