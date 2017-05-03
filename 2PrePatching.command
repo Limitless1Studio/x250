@@ -66,7 +66,6 @@ sudo cp SSDT-1.dsl ~/desktop/x250modified
 sudo cp SSDT-3.dsl ~/desktop/x250modified
 sudo cp SSDT-10.dsl ~/desktop/x250modified
 mv ~/desktop/x250modified/ssdt.dsl ~/desktop/x250modified/SSDT.dsl
-
 # Mount SSD/HHD EFI partition
 diskutil unmount /dev/disk1s1
 diskutil unmount /dev/disk1s2

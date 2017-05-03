@@ -10,6 +10,7 @@ diskutil mount /dev/disk0s1
 cd ~/desktop/x250/Files
 sudo cp 3_Final_config.plist /volumes/EFI/EFI/CLOVER
 mv /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/2_first_reboot_config.plist
+sed -n "XX, XXXp" path/first/file > path/second/file
 mv /volumes/EFI/EFI/CLOVER/3_Final_config.plist /volumes/EFI/EFI/CLOVER/config.plist
 
 # Create PFNL SSDT for Backlight Fix. Also making and installing
