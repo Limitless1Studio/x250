@@ -9,12 +9,18 @@ sleep 2
 diskutil mount /dev/disk0s1
 cd ~/desktop/x250/Files
 sudo cp 3_Final_config.plist /volumes/EFI/EFI/CLOVER
+cd /volumes/efi/EFI/CLOVER/
+sed -n 363,363p config.plist>BoardSerialNumber
+sed -n 385,385p config.plist>SerialNumber
+sed -n 387,387p config.plist>SmUUID
+sed -i.bu 434rBoardSerialNumber 3_Final_config.plist
+sed -i.bu 455rSerialNumber 3_Final_config.plist
+sed -i.bu 457rSmUUID 3_Final_config.plist
 mv /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/2_first_reboot_config.plist
-sed -n "XX, XXXp" path/first/file > path/second/file
 mv /volumes/EFI/EFI/CLOVER/3_Final_config.plist /volumes/EFI/EFI/CLOVER/config.plist
 
 # Create PFNL SSDT for Backlight Fix. Also making and installing
-# AppleBacklightInjector o /Library/Extensions/
+# AppleBacklightInjector to /Library/Extensions/
 cd
 mkdir ~/Projects
 cd ~/Projects

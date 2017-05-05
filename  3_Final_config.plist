@@ -51,11 +51,6 @@
 			<false/>
 			<key>DropOEM_DSM</key>
 			<false/>
-			<key>Fixes</key>
-			<dict>
-				<key>NewWay_80000000</key>
-				<true/>
-			</dict>
 			<key>Patches</key>
 			<array>
 				<dict>
@@ -64,9 +59,13 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>RUhDMQ==</data>
+					<data>
+					RUhDMQ==
+					</data>
 					<key>Replace</key>
-					<data>RUgwMQ==</data>
+					<data>
+					RUgwMQ==
+					</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -74,9 +73,13 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>RUhDMg==</data>
+					<data>
+					RUhDMg==
+					</data>
 					<key>Replace</key>
-					<data>RUgwMg==</data>
+					<data>
+					RUgwMg==
+					</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -84,9 +87,13 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>WEhDSQ==</data>
+					<data>
+					WEhDSQ==
+					</data>
 					<key>Replace</key>
-					<data>WEhDXw==</data>
+					<data>
+					WEhDXw==
+					</data>
 				</dict>
 			</array>
 			<key>ReuseFFFF</key>
@@ -97,7 +104,12 @@
 			<key>DropOem</key>
 			<true/>
 			<key>Generate</key>
-			<false/>
+			<dict>
+				<key>CStates</key>
+				<false/>
+				<key>PStates</key>
+				<false/>
+			</dict>
 			<key>PluginType</key>
 			<integer>1</integer>
 		</dict>
@@ -110,9 +122,6 @@
 			<string>SSDT-3.aml</string>
 			<string>SSDT-4.aml</string>
 			<string>SSDT-5.aml</string>
-			<string>SSDT-6.aml</string>
-			<string>SSDT-7.aml</string>
-			<string>SSDT-8.aml</string>
 			<string>SSDT-9.aml</string>
 			<string>SSDT-10.aml</string>
 			<string>SSDT-11.aml</string>
@@ -130,8 +139,6 @@
 		<string>dart=0</string>
 		<key>Debug</key>
 		<false/>
-		<key>Fast</key>
-		<true/>
 		<key>Legacy</key>
 		<string>LegacyBiosDefault</string>
 		<key>Log</key>
@@ -140,6 +147,8 @@
 		<true/>
 		<key>Secure</key>
 		<false/>
+		<key>Timeout</key>
+		<integer>0</integer>
 		<key>XMPDetection</key>
 		<string>Yes</string>
 	</dict>
@@ -264,13 +273,17 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>iUXIOcd2Tw==</data>
+				<data>
+				iUXIOcd2Tw==
+				</data>
 				<key>MatchOS</key>
 				<string>10.12.x</string>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelBDWGraphicsFramebuffer</string>
 				<key>Replace</key>
-				<data>iUXIOcfrTw==</data>
+				<data>
+				iUXIOcfrTw==
+				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -278,11 +291,15 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>AEFQUExFIFNTRAA=</data>
+				<data>
+				AEFQUExFIFNTRAA=
+				</data>
 				<key>Name</key>
 				<string>com.apple.iokit.IOAHCIBlockStorage</string>
 				<key>Replace</key>
-				<data>AAAAAAAAAAAAAAA=</data>
+				<data>
+				AAAAAAAAAAAAAAA=
+				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -290,13 +307,17 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>hQjsEA==</data>
+				<data>
+				hQjsEA==
+				</data>
 				<key>MatchOS</key>
 				<string>10.12</string>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
-				<data>AAAAAA==</data>
+				<data>
+				AAAAAA==
+				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -304,13 +325,17 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>gxnUEQ==</data>
+				<data>
+				gxnUEQ==
+				</data>
 				<key>MatchOS</key>
 				<string>10.12</string>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
-				<data>AAAAAA==</data>
+				<data>
+				AAAAAA==
+				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -318,13 +343,17 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>hBnUEQ==</data>
+				<data>
+				hBnUEQ==
+				</data>
 				<key>MatchOS</key>
 				<string>10.12</string>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
-				<data>kgLsEA==</data>
+				<data>
+				kgLsEA==
+				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -332,13 +361,17 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>AQAAdSU=</data>
+				<data>
+				AQAAdSU=
+				</data>
 				<key>MatchOS</key>
 				<string>10.12</string>
 				<key>Name</key>
 				<string>IOGraphicsFamily</string>
 				<key>Replace</key>
-				<data>AQAA6yU=</data>
+				<data>
+				AQAA6yU=
+				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -346,23 +379,31 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>axAAAHUN</data>
+				<data>
+				axAAAHUN
+				</data>
 				<key>Name</key>
 				<string>AirPortBrcm4360</string>
 				<key>Replace</key>
-				<data>axAAAJCQ</data>
+				<data>
+				axAAAJCQ
+				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>change F%uT%04x to F%uTxxxx in AppleBacklightInjector.kext (credit RehabMan)</string>
 				<key>Disabled</key>
 				<false/>
+				<key>Find</key>
+				<data>
+				RiV1VCUwNHgA
+				</data>
 				<key>Name</key>
 				<string>com.apple.driver.AppleBacklight</string>
-				<key>Find</key>
-				<data>RiV1VCUwNHgA</data>
 				<key>Replace</key>
-				<data>RiV1VHh4eHgA</data>
+				<data>
+				RiV1VHh4eHgA
+				</data>
 			</dict>
 		</array>
 	</dict>
@@ -390,7 +431,6 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02526501GUF0V5JA</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>ChassisAssetTag</key>
@@ -412,9 +452,7 @@
 		<key>ProductName-Comment</key>
 		<string>Using Haswell MacBookAir6,2 until Clover has support for Broadwell identifiers</string>
 		<key>SerialNumber</key>
-		<string>C02PW4QFH1DP</string>
 		<key>SmUUID</key>
-		<string>358D4750-D1A2-4542-A7C5-50DBF33C852C</string>
 		<key>Trust</key>
 		<false/>
 		<key>Version</key>

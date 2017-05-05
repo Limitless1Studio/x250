@@ -51,11 +51,6 @@
 			<false/>
 			<key>DropOEM_DSM</key>
 			<false/>
-			<key>Fixes</key>
-			<dict>
-				<key>NewWay_80000000</key>
-				<true/>
-			</dict>
 			<key>Patches</key>
 			<array>
 				<dict>
@@ -64,9 +59,13 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>RUhDMQ==</data>
+					<data>
+					RUhDMQ==
+					</data>
 					<key>Replace</key>
-					<data>RUgwMQ==</data>
+					<data>
+					RUgwMQ==
+					</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -74,9 +73,13 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>RUhDMg==</data>
+					<data>
+					RUhDMg==
+					</data>
 					<key>Replace</key>
-					<data>RUgwMg==</data>
+					<data>
+					RUgwMg==
+					</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -84,9 +87,13 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>WEhDSQ==</data>
+					<data>
+					WEhDSQ==
+					</data>
 					<key>Replace</key>
-					<data>WEhDXw==</data>
+					<data>
+					WEhDXw==
+					</data>
 				</dict>
 			</array>
 			<key>ReuseFFFF</key>
@@ -97,7 +104,12 @@
 			<key>DropOem</key>
 			<true/>
 			<key>Generate</key>
-			<false/>
+			<dict>
+				<key>CStates</key>
+				<false/>
+				<key>PStates</key>
+				<false/>
+			</dict>
 			<key>PluginType</key>
 			<integer>1</integer>
 		</dict>
@@ -126,8 +138,6 @@
 		<string>dart=0</string>
 		<key>Debug</key>
 		<false/>
-		<key>Fast</key>
-		<true/>
 		<key>Legacy</key>
 		<string>LegacyBiosDefault</string>
 		<key>Log</key>
@@ -136,6 +146,8 @@
 		<true/>
 		<key>Secure</key>
 		<false/>
+		<key>Timeout</key>
+		<integer>0</integer>
 		<key>XMPDetection</key>
 		<string>Yes</string>
 	</dict>
@@ -167,6 +179,8 @@
 	</array>
 	<key>GUI</key>
 	<dict>
+		<key>#ScreenResolution</key>
+		<string>1920x1080</string>
 		<key>Custom</key>
 		<dict>
 			<key>Entries</key>
@@ -258,13 +272,17 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>iUXIOcd2Tw==</data>
+				<data>
+				iUXIOcd2Tw==
+				</data>
 				<key>MatchOS</key>
 				<string>10.12.x</string>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelBDWGraphicsFramebuffer</string>
 				<key>Replace</key>
-				<data>iUXIOcfrTw==</data>
+				<data>
+				iUXIOcfrTw==
+				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -272,11 +290,15 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>AEFQUExFIFNTRAA=</data>
+				<data>
+				AEFQUExFIFNTRAA=
+				</data>
 				<key>Name</key>
 				<string>com.apple.iokit.IOAHCIBlockStorage</string>
 				<key>Replace</key>
-				<data>AAAAAAAAAAAAAAA=</data>
+				<data>
+				AAAAAAAAAAAAAAA=
+				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -284,13 +306,17 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>AQAAdSU=</data>
+				<data>
+				AQAAdSU=
+				</data>
 				<key>MatchOS</key>
 				<string>10.12</string>
 				<key>Name</key>
 				<string>IOGraphicsFamily</string>
 				<key>Replace</key>
-				<data>AQAA6yU=</data>
+				<data>
+				AQAA6yU=
+				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -298,13 +324,16 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>axAAAHUN</data>
+				<data>
+				axAAAHUN
+				</data>
 				<key>Name</key>
 				<string>AirPortBrcm4360</string>
 				<key>Replace</key>
-				<data>axAAAJCQ</data>
+				<data>
+				axAAAJCQ
+				</data>
 			</dict>
-
 		</array>
 	</dict>
 	<key>RtVariables</key>
