@@ -17,21 +17,20 @@ else
     echo Sign in with your apple ID. If you do not have a developer account you will need to make one to download and install the latest Xcode.
     sleep 5
     clear
-    echo Opening apple downloads page. Do not use the Mac App Store as iCloud has not been fixed yet.
-    sleep 5
+    echo Opening apple downloads page. Do not use the Mac App Store as iCloud has not been fixed yet. After downloading and installing continue.
+    sleep 20
     open https://developer.apple.com/download/more/
-    exit
 fi
 # Asking user if they have opened and accepted terms
 read -r -p "Has Xcode been opened and the terms accepted? [y/N] " response
-echo    # Move to a new line
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     clear
     continue
 else
+    echo Opening Xcode, continue after accepting the the terms.
+    sleep 5
     open -a Xcode
-    exit
 fi
 # Asking user if they have already installed the command line Tools
 read -r -p "Have you installed the Xcode comand line Tools? [y/N] " response
@@ -47,9 +46,16 @@ else
     clear
     echo
     xcode-select --install
-    exit
+    clear
 fi
 clear
+read -r -p "Press enter to continue with downloads. "
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+
+else
+
+fi
 echo ----------------------Making x250 Folder!----------------------
 # redirect will not work without the . before /
 cd ./desktop
@@ -223,12 +229,40 @@ echo ----------------------Cleaning up iMessage folder!----------------------
 mv ~/desktop/x250/x250ALC3232-master/ALC3232 ~/desktop/x250
 sudo rm -r x250ALC3232-master
 sudo rm -f master.zip
+clear
+# Move applications to applications folder
+echo This command should be ran on the x250, if it is not, you will want to select to this prompt regardless.
+read -r -p "Do you want to move applications to the applications folder? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    mv ~/Desktop/x250/Programs/Clover\ Configurator.app ~/Applications
+    mv ~/Desktop/x250/Programs/Clover_v2.4k_r4061.pkg  ~/Applications
+    mv ~/Desktop/x250/Programs/Kext\ Wizard.app ~/Applications
+    mv ~/Desktop/x250/Programs/MaciASL.app ~/Applications
+else
+    clear
+    continue
+fi
+
+# Install git
+echo Git is crucial to 2PrePatching commands success.
+echo # Blank line
+read -r -p "Have you already installed Git command line tools? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    clear
+    continue
+else
+    clear
+    git
+    clear
 # Asking user if they want to review
 read -r -p "Have you already installed Clover Bootloader to the HHD/SSD? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     clear
     continue
+    echo # Blank line 
 else
     clear
     echo Run the installer selecting the following conditions:
@@ -237,9 +271,9 @@ else
     echo Select BGM under Themes
     echo Select OsxAptioFixDRV-64 under drivers64UEFI
     sleep 20
-    clear
+    echo # Blank line
 fi
-read -r -p "Press enter when you're read to close this window. " response
+read -r -p "Press enter when you're ready to close this window. "
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     osascript -e 'tell application "Terminal" to quit' &
