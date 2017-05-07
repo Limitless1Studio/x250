@@ -225,6 +225,21 @@ mv ~/desktop/x250/x250ALC3232-master/ALC3232 ~/desktop/x250
 sudo rm -r x250ALC3232-master
 sudo rm -f master.zip
 # Asking user if they want to review
+read -r -p "Have you already installed Clover Bootloader to the HHD/SSD? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    clear
+    continue
+else
+    clear
+    echo Run the installer selecting the following conditions:
+    echo Install for UEFI booting only.
+    echo Install Clover in the ESP
+    echo Select BGM under Themes
+    echo Select OsxAptioFixDRV-64 under drivers64UEFI
+    sleep 20
+    clear
+fi
 read -r -p "Do you want to review the results? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
