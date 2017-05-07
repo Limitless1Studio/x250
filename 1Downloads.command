@@ -8,7 +8,6 @@ sleep 10
 clear
 # Ask if user has Xcode installed
 read -r -p "Do you have Xcode installed? [y/N] " response
-echo    # Move to a new line
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     clear
@@ -24,7 +23,7 @@ else
     exit
 fi
 # Asking user if they have opened and accepted terms
-read -r -p "Have Xcode been opened and the terms accepted? [y/N] " response
+read -r -p "Has Xcode been opened and the terms accepted? [y/N] " response
 echo    # Move to a new line
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
@@ -35,7 +34,7 @@ else
     exit
 fi
 # Asking user if they have already installed the command line Tools
-read -r -p "Have you installed the comand line Tools? [y/N] " response
+read -r -p "Have you installed the Xcode comand line Tools? [y/N] " response
 echo    # Move to a new line
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
@@ -240,9 +239,10 @@ else
     sleep 20
     clear
 fi
-read -r -p "Do you want to review the results? [y/N] " response
+read -r -p "Press enter when you're read to close this window. " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    osascript -e 'tell application "Terminal" to quit' &
     exit
 else
     osascript -e 'tell application "Terminal" to quit' &

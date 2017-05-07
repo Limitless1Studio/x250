@@ -15,7 +15,7 @@ then
     clear
 else
     clear
-    continue
+    exit
 fi
 # Cleaning up the mess we made on your desktop. Files will be archived
 # in your home folder. Finder > Go > Home > Archive.
@@ -65,11 +65,13 @@ then
     echo Kexts removed from EFI/Other
     sleep 3
     clear
-    echo Opening Kext Wizard. Install by browsing to ~/dekstop/x250/kexts
+    echo Opening Kext Wizard. Install by browsing to ~/dekstop/x250/kexts under the installtion tab.
     sleep 3
+    echo After you have installed the kexts, be sure to switch to the Maintenance tab and select System/Library/Extensions and Execute.
     echo Must repair permissions when finished.
     sleep 4
     open -a "Kext Wizard"
+    sleep 5
 else
     clear
     continue

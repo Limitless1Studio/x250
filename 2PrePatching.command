@@ -135,7 +135,7 @@ else
     continue
 fi
 # Show File path in Finder
-read -r -p "Would you like to show the folder bath in the Title of Finder windows? [y/N] " response
+read -r -p "Would you like to show the folder path in the Title of Finder windows? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     clear
@@ -146,7 +146,7 @@ else
     continue
 fi
 # Give permissions to all needed commands
-read -r -p "Would you like to show the folder bath in the Title of Finder windows? [y/N] " response
+read -r -p "Would you like to give proper permissions to the rest of the scripts needed? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo Assigning permissions to all other neccessay scripts.
