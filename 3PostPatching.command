@@ -58,7 +58,7 @@ fi
 read -r -p "Would you like to remove kexts from EFI and install to /S/L/E/ using Kext Wizard? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    cd /volumes/ESP/EFI/CLOVER/Kexts/Other
+    cd /volumes/EFI/EFI/CLOVER/Kexts/Other
     sudo rm -r VoodooPS2Controller.kext
     sudo rm -r IntelMausiEthernet.kext
     sudo rm -r FakeSMC.kext
@@ -86,7 +86,7 @@ then
     echo You may need to rebuild the cache and reboot a couple more times in order to implement Backlight control correctly.
     echo You can do this either by running this script and selecting yes on this optoin or manually running the following command in terminal.
     echo # Blank line
-    echo sudo touch /System/Library/Extensions && sudo kextcache -u /
+    echo "sudo touch /System/Library/Extensions && sudo kextcache -u /"
     sleep 10
     clear
     echo Sending restart command in 5 seconds.
