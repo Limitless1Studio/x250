@@ -21,7 +21,7 @@
 			<string>SSDT-11.aml</string>
 			<string>SSDT-12.aml</string>
 			<string>SSDT-BATC.aml</string>
-			<string>SSDT-PNFL.aml</string>
+			<string>SSDT-PNLF.aml</string>
 		</array>
 		<key>DSDT</key>
 		<dict>
