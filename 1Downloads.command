@@ -52,10 +52,9 @@ clear
 read -r -p "Press enter to continue with downloads. "
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-
-else
-
+    clear
 fi
+continue
 echo ----------------------Making x250 Folder!----------------------
 # redirect will not work without the . before /
 cd ./desktop
@@ -262,7 +261,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     clear
     continue
-    echo # Blank line 
+    echo # Blank line
 else
     clear
     echo Run the installer selecting the following conditions:
@@ -276,9 +275,6 @@ fi
 read -r -p "Press enter when you're ready to close this window. "
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    osascript -e 'tell application "Terminal" to quit' &
-    exit
-else
     osascript -e 'tell application "Terminal" to quit' &
     exit
 fi

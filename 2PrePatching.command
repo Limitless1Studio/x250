@@ -19,7 +19,7 @@ else
     diskutil mount /dev/disk0s1
     cd ~/desktop/x250/Files
     #sudo cp HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
-    sudo cp HFSPlus.efi /volumes/ESP/EFI/CLOVER/drivers64UEFI
+    sudo cp -a HFSPlus.efi /volumes/ESP/EFI/CLOVER/drivers64UEFI
     echo HSFPlus.efi is now in place.
     sleep 5
 fi
@@ -40,6 +40,7 @@ else
     #sudo cp -R IntelMausiEthernet.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
     sudo cp -R FakeSMC.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
     #sudo cp -R FakeSMC.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
+    echo # Blank line
     echo Kexts have been moved.
     Sleep 5
 fi
@@ -186,9 +187,9 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo # Blank line
     cd ~/desktop/x250/Files
-    sudo cp iasl /usr/bin/
-    sudo cp VoodooPS2Daemon /usr/bin/
-    sudo cp org.rehabman.voodoo.driver.Daemon.plist /Library/LaunchDaemons
+    sudo cp -a iasl /usr/bin/
+    sudo cp -a VoodooPS2Daemon /usr/bin/
+    sudo cp -a org.rehabman.voodoo.driver.Daemon.plist /Library/LaunchDaemons
     sudo rm -rf /System/Library/Extensions/AppleACPIPS2Nub.kext
     sudo rm -rf /System/Library/Extensions/ApplePS2Controller.kext
     echo Files have been moved and unnecssary files removed.
@@ -220,8 +221,8 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo # Blank line
     cd /volumes/EFI/EFI/CLOVER/ACPI/origin
-    sudo cp DSDT.aml ~/desktop/x250original
-    sudo cp SS**.aml ~/desktop/x250original
+    sudo cp -a DSDT.aml ~/desktop/x250original
+    sudo cp -a SS**.aml ~/desktop/x250original
     sudo rm -rf ~/desktop/x250original/SSDT-*x.aml
     mv ~/desktop/x250original/SSDT-0.aml ~/desktop/x250finished
     mv ~/desktop/x250original/SSDT-2.aml ~/desktop/x250finished
@@ -231,7 +232,7 @@ then
     mv ~/desktop/x250original/SSDT-11.aml ~/desktop/x250finished
     mv ~/desktop/x250original/SSDT-12.aml ~/desktop/x250finished
     cd ~/desktop/x250/Files
-    sudo cp SSDT-BATC.dsl ~/desktop/x250modified
+    sudo cp -a SSDT-BATC.dsl ~/desktop/x250modified
     echo Files have been moved.
     sleep 3
     clear
@@ -267,7 +268,7 @@ then
     cd ~/Projects/guide.git
     make
     sudo cp -R ~/Projects/probook.git/kexts/AppleBacklightInjector.kext /Library/Extensions
-    cp ~/Projects/guide.git/build/SSDT-PNLF.aml ~/Desktop/x250finished
+    cp -a ~/Projects/guide.git/build/SSDT-PNLF.aml ~/Desktop/x250finished
     clear
     echo PNFL.aml created and in x250finished.
     echo # Blank line
@@ -296,10 +297,10 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     cd ~/desktop/x250original
     iasl -da -dl *.aml
-    sudo cp DSDT.dsl ~/desktop/x250modified
-    sudo cp SSDT-1.dsl ~/desktop/x250modified
-    sudo cp SSDT-3.dsl ~/desktop/x250modified
-    sudo cp SSDT-10.dsl ~/desktop/x250modified
+    sudo cp -a DSDT.dsl ~/desktop/x250modified
+    sudo cp -a SSDT-1.dsl ~/desktop/x250modified
+    sudo cp -a SSDT-3.dsl ~/desktop/x250modified
+    sudo cp -a SSDT-10.dsl ~/desktop/x250modified
     clear
     echo .dsl files are now converted and in x250 ready for patching. Save as .aml to x250finished after patching is complete.
     sleep 5

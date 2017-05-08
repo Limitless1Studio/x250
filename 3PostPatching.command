@@ -9,7 +9,7 @@ read -r -p "Have you placed patched and converted all DSDT/SSDTs and placed in x
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     cd ~/desktop/x250finished
-    sudo cp *.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+    sudo cp -a *.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
     echo All files in x250finished have been moved to EFI
     sleep 5
     clear
@@ -22,6 +22,7 @@ fi
 read -r -p "Would you like to archive the folders created on your desktop? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    clear
     cd
     mkdir Archive
     mv ~/desktop/x250finished ~/Archive
