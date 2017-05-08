@@ -242,19 +242,6 @@ else
     clear
     continue
 fi
-
-# Install git
-echo Git is crucial to 2PrePatching commands success.
-echo # Blank line
-read -r -p "Have you already installed Git command line tools? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
-    clear
-    continue
-else
-    clear
-    git
-    clear
 # Asking user if they want to review
 read -r -p "Have you already installed Clover Bootloader to the HHD/SSD? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
