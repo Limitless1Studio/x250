@@ -4,5 +4,5 @@ curl -o ~/ssdtPRGen.sh https://raw.githubusercontent.com/Limitless1Studio/ssdtPR
 cd
 chmod a+x ssdtPRGen.sh
 ~/ssdtPRGen.sh
-mv ~/Library/ssdtPRGen/ssdt.dsl ~/desktop/x250modified
+mv ~/Library/ssdtPRGen/ssdt.dsl ~/x250orginal
 osascript -e 'quit app "TextEdit"'

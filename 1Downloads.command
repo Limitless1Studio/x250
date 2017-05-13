@@ -3,7 +3,8 @@
 # directory in the process
 # Explain that Xcode must be installed
 clear
-echo Xcode must be installed to continue. Answer the following questions accordingly to ensure successful downloads and folder creation.
+echo "\t (!) Xcode must be installed to continue. Answer the following questions"
+echo "\t     accordingly to ensure successful downloads and folder creation."
 sleep 10
 clear
 # Ask if user has Xcode installed
@@ -14,12 +15,15 @@ then
     continue
 else
     clear
-    echo Sign in with your apple ID. If you do not have a developer account you will need to make one to download and install the latest Xcode.
+    echo "\t (!) Sign in with your apple ID. If you do not have a developer account"
+    echo "\t     you will need to create one to download and install the latest Xcode."
     sleep 5
     clear
-    echo Opening apple downloads page. Do not use the Mac App Store as iCloud has not been fixed yet. After downloading and installing continue.
-    sleep 20
+    echo "\t     Opening apple downloads page. Do not use the Mac App Store as iCloud "
+    echo "\t     has not been fixed yet. After downloading and installing continue."
+    sleep 5
     open https://developer.apple.com/download/more/
+    clear
 fi
 # Asking user if they have opened and accepted terms
 read -r -p "Has Xcode been opened and the terms accepted? [y/N] " response
@@ -28,9 +32,13 @@ then
     clear
     continue
 else
-    echo Opening Xcode, continue after accepting the the terms.
-    sleep 5
+    echo "\t (!) You must open Xcode and accept the terms and conditions."
+    sleep 3
+    echo # Blank line
+    echo "\t     Opening Xcode, continue after accepting the terms."
+    sleep 3
     open -a Xcode
+    clear
 fi
 # Asking user if they have already installed the command line Tools
 read -r -p "Have you installed the Xcode comand line Tools? [y/N] " response
@@ -41,15 +49,18 @@ then
     continue
 else
     clear
-    echo Select install on the following prompt to install command line tools.
-    sleep 4
-    clear
-    echo
+    echo "\t (!) You must install Xcode command line tools."
+    sleep 3
+    echo # Blank line
+    echo "\t     Opening Installer for command line toos, continue after installation"
+    echo "\t     is complete."
+    sleep 3
+    echo # Blank line
     xcode-select --install
     clear
 fi
-clear
-read -r -p "Press enter to continue with downloads. "
+
+read -r -p "Press enter to begin downloads. "
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     clear
@@ -239,7 +250,7 @@ else
     clear
     continue
 fi
-# Asking user if they want to review
+# Verify that Clover has been installed
 read -r -p "Have you already installed Clover Bootloader to the HHD/SSD? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
