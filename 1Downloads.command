@@ -162,9 +162,6 @@ curl -L -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/m
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/ssdtPRgensh.command
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2PrePatching.command
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/3PostPatching.command
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/1_for_install_config.plist
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2_first_reboot_config.plist
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/3_Final_config.plist
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/4Final.command
 clear
 echo ----------------------Unzipping Files!----------------------
