@@ -257,8 +257,6 @@ else
     echo # Blank line
 fi
 read -r -p "Press enter when you're ready to close this window. "
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
     osascript -e 'tell application "Terminal" to quit' &
-    exit
+    exit 0
 fi

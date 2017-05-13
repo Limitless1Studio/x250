@@ -1,13 +1,16 @@
 #!/bin/sh
 clear
-echo Before Patching there are two mission critical reboots that need to happen. You will receive a number of prompts at the begging of this script to make sure the patching and implementation of fixes goes correctly.
+echo "\t (!) Before Patching there are two mission critical reboots that need to happen."
+echo "t\ You will receive a number of prompts at the begging of this script to make"
+echo "\t sure the patching and implementation of fixes goes correctly."
 sleep 5
 clear
-echo Mounting the EFI partion.
+echo "Mounting the EFI partion."
 diskutil mount /dev/disk0s1
 clear
 # Ensure HFSplus is in SSDs EFI partion before reboot.
-echo Enter no to move the file. Enter yes if this task has already been completed.
+echo "\t No = Files will be moved to the EFI partition"
+echo "\t Yes = The action will be skipped"
 echo # Blank line
 read -r -p "Have you placed HFSplus.efi in the HHD/SSD's EFI partition? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
@@ -20,11 +23,12 @@ else
     cd ~/desktop/x250/Files
     #sudo cp HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
     sudo cp -a HFSPlus.efi /volumes/ESP/EFI/CLOVER/drivers64UEFI
-    echo HSFPlus.efi is now in place.
+    echo "HSFPlus.efi is now in place."
     sleep 5
 fi
 # Ensure that vital kexts are in place before rebooting.
-echo Enter no to move the Kexts. Enter yes if this task has already been completed.
+echo "\t No = Kexts will be moved to the EFI partition"
+echo "\t Yes = The action will be skipped"
 echo # Blank line
 read -r -p "Have you placed FakeSMC, IntelMausiEthernet, and VoodooPS2Controller kexts on the HHD/SSDs EFI partition? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
@@ -41,17 +45,19 @@ else
     sudo cp -R FakeSMC.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
     #sudo cp -R FakeSMC.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
     echo # Blank line
-    echo Kexts have been moved.
+    echo "Kexts have been moved."
     Sleep 5
 fi
 # Ask User if they would like to compelte first reboot.
-echo "This reboot is for extracting ACPI files. When you reach the clover Bootloader press F4 followed by Fn+F4 and then boot back into macOS to run this script again.\n\nIf you have already done this, enter no and continue."
+echo "\t (!) This reboot is for extracting ACPI files. When you reach the clover Bootloader"
+echo "\t press F4 followed by Fn+F4 and then boot back into macOS to run this script again."
+echo "\t If you have already done this, enter no and continue."
 echo # Blank line
 read -r -p "Would you like to complete the first reboot now? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     clear
-    echo Sending restart command in 5 seconds.
+    echo "Sending restart command in 5 seconds."
     sleep 5
     osascript -e 'tell application "System Events" to restart'
     exit
@@ -84,7 +90,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     clear
     sudo touch /System/Library/Extensions && sudo kextcache -u /
-    echo Sending restart command in 5 seconds.
+    echo "Sending restart command in 5 seconds."
     sleep 5
     osascript -e 'tell application "System Events" to restart'
     exit
@@ -92,13 +98,16 @@ else
     clear
     continue
 fi
+
+customize_os()
+{
 # Ask user if they would like app from anywhere fixed
 read -r -p "Would you like to enable apps from anywhere? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo # Blank line
     sudo spctl --master-disable
-    echo Apps From Anywhere is enabled.
+    echo "Apps From Anywhere is enabled."
     sleep 2
     clear
 else
@@ -116,7 +125,7 @@ then
     sudo rm /private/var/vm/sleepimage
     sudo touch /private/var/vm/sleepimage
     sudo chflags uchg /private/var/vm/sleepimage
-    echo Hibernate is disabled. This maybe necessary to do again after OS updates.
+    echo "Hibernate is disabled. This maybe necessary to do again after OS updates."
     sleep 3
     clear
 else
@@ -141,7 +150,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo # Blank line
     defaults write com.apple.Dock autohide-delay -float 0 && killall Dock
-    echo Autohide delays have been removed from dock.
+    echo "Autohide delays have been removed from dock."
     sleep 5
     clear
 else
@@ -154,19 +163,20 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo # Blank line
     defaults write com.apple.finder _FXShowPosixPathInTitle -bool true; killall Finder
-    echo Full file path will now show in Finder Title.
+    echo "Full file path will now show in Finder Title."
     sleep 5
     clear
 else
     clear
     continue
 fi
+}
 # Give permissions to all needed commands
 read -r -p "Would you like to give proper permissions to the rest of the scripts needed? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo # Blank line
-    echo Assigning permissions to all other neccessay scripts.
+    echo "Assigning permissions to all other neccessay scripts."
     cd ~/desktop/x250/ALC3232
     chmod 755 ALC3232.command
     cd ~/desktop/x250/Files
@@ -174,7 +184,7 @@ then
     chmod 755 3PostPatching.command
     chmod 755 4Final.command
     echo # Blank line
-    echo Done!
+    echo "Done!"
     sleep 3
     clear
 else
@@ -192,7 +202,7 @@ then
     sudo cp -a org.rehabman.voodoo.driver.Daemon.plist /Library/LaunchDaemons
     sudo rm -rf /System/Library/Extensions/AppleACPIPS2Nub.kext
     sudo rm -rf /System/Library/Extensions/ApplePS2Controller.kext
-    echo Files have been moved and unnecssary files removed.
+    echo "Files have been moved and unnecssary files removed."
     sleep 3
     clear
 else
@@ -208,7 +218,7 @@ then
     mkdir x250original
     mkdir x250modified
     mkdir x250finished
-    echo Folders are created and on the desktop.
+    echo "Folders are created and on the desktop."
     sleep 3
     clear
 else
@@ -233,7 +243,7 @@ then
     mv ~/desktop/x250original/SSDT-12.aml ~/desktop/x250finished
     cd ~/desktop/x250/Files
     sudo cp -a SSDT-BATC.dsl ~/desktop/x250modified
-    echo Files have been moved.
+    echo "Files have been moved."
     sleep 3
     clear
 else
@@ -248,7 +258,7 @@ then
     ~/desktop/x250/files/ssdtPRgensh.command
     mv ~/desktop/x250modified/ssdt.dsl ~/desktop/x250modified/SSDT.dsl
     echo # Blank line
-    echo Power Management SSDT created placed in x250modifed. Must save as .aml and place in x250 finished.
+    echo "Power Management SSDT created placed in x250modifed. Must save as .aml and place in x250 finished."
     sleep 3
     clear
 else
@@ -270,9 +280,9 @@ then
     sudo cp -R ~/Projects/probook.git/kexts/AppleBacklightInjector.kext /Library/Extensions
     cp -a ~/Projects/guide.git/build/SSDT-PNLF.aml ~/Desktop/x250finished
     clear
-    echo PNFL.aml created and in x250finished.
+    echo "PNFL.aml created and in x250finished."
     echo # Blank line
-    echo AppleBacklightInjector is now in /L/E/
+    echo "AppleBacklightInjector is now in /L/E/"
     sleep 5
     clear
 else
@@ -302,7 +312,7 @@ then
     sudo cp -a SSDT-3.dsl ~/desktop/x250modified
     sudo cp -a SSDT-10.dsl ~/desktop/x250modified
     clear
-    echo .dsl files are now converted and in x250 ready for patching. Save as .aml to x250finished after patching is complete.
+    echo ".dsl files are now converted and in x250 ready for patching. Save as .aml to x250finished after patching is complete."
     sleep 5
     echo # Blank line
 else

@@ -1,7 +1,7 @@
 #!/bin/sh
 # Move .AML files to patched folder
 clear
-echo !!! All DSDT/SSDT files should be patched and in x250finished !!!
+echo "!!! All DSDT/SSDT files should be patched and in x250finished !!!"
 sleep 5
 clear
 # Move .AMLs into EFI.
@@ -10,7 +10,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     cd ~/desktop/x250finished
     sudo cp -a *.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    echo All files in x250finished have been moved to EFI
+    echo "All files in x250finished have been moved to EFI"
     sleep 5
     clear
 else
@@ -31,7 +31,7 @@ then
     mv ~/desktop/x250 ~/Archive
     mv ~/ssdtPRGen.sh ~/Archive
     mv ~/Projects ~/Archive
-    echo Files are now archived in your home folder. Finder > Go > Home > Archive.
+    echo "Files are now archived in your home folder. Finder > Go > Home > Archive."
     sleep 5
     clear
 else
@@ -46,11 +46,11 @@ then
     continue
 else
     clear
-    echo In Xcode expand KernelAndKextPatches > KextsToPatch > Items 0 - 7 and change Disabled Boolean to No for all KextsToPatch entries.
+    echo "In Xcode expand KernelAndKextPatches > KextsToPatch > Items 0 - 7 and change Disabled Boolean to No for all KextsToPatch entries."
     echo #
-    echo You must manually save the config.plist file after you make the changes above and quit Xcode manually.
+    echo "You must manually save the config.plist file after you make the changes above and quit Xcode manually."
     sleep 10
-    echo Opening config.plist
+    echo "Opening config.plist"
     open /volumes/EFI/EFI/CLOVER/config.plist
     sleep 45
     clear
@@ -63,13 +63,13 @@ then
     sudo rm -r VoodooPS2Controller.kext
     sudo rm -r IntelMausiEthernet.kext
     sudo rm -r FakeSMC.kext
-    echo Kexts removed from EFI/Other
+    echo "Kexts removed from EFI/Other"
     sleep 3
     clear
-    echo Opening Kext Wizard. Install by browsing to ~/dekstop/x250/kexts under the installtion tab.
+    echo "Opening Kext Wizard. Install by browsing to ~/dekstop/x250/kexts under the installtion tab."
     sleep 3
-    echo After you have installed the kexts, be sure to switch to the Maintenance tab and select System/Library/Extensions and Execute.
-    echo Must repair permissions when finished.
+    echo "After you have installed the kexts, be sure to switch to the Maintenance tab and select System/Library/Extensions and Execute."
+    echo "Must repair permissions when finished."
     sleep 4
     open -a "Kext Wizard"
     sleep 5
@@ -84,13 +84,13 @@ then
     clear
     sudo touch /System/Library/Extensions && sudo kextcache -u /
     clear
-    echo You may need to rebuild the cache and reboot a couple more times in order to implement Backlight control correctly.
-    echo You can do this either by running this script and selecting yes on this optoin or manually running the following command in terminal.
+    echo "You may need to rebuild the cache and reboot a couple more times in order to implement Backlight control correctly."
+    echo "You can do this either by running this script and selecting yes on this optoin or manually running the following command in terminal."
     echo # Blank line
     echo "sudo touch /System/Library/Extensions && sudo kextcache -u /"
     sleep 10
     clear
-    echo Sending restart command in 5 seconds.
+    echo "Sending restart command in 5 seconds."
     sleep 5
     osascript -e 'tell application "System Events" to restart'
     exit
