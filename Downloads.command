@@ -196,7 +196,7 @@ curl -L -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/
 curl -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-patchmatic-2016-0312.zip
 curl -L -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/master/SSDT-BATC.dsl
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/ssdtPRgensh.command
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/ssdtPRGen.sh-Command/Beta/ssdtPRgensh.command
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2PrePatching.command
 
 echo "\n================================================================================\n"
