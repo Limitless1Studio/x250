@@ -108,10 +108,13 @@ then
     sudo rm -vr VoodooPS2Controller.kext
     sudo rm -vr IntelMausiEthernet.kext
     sudo rm -vr FakeSMC.kext
-    cd ~/Desktop/x250/Kexts/
-    sudo cp -va ACPIBatteryManager.kext /System/Library/Extensions
+    cd ~/Desktop/x250/Kexts
+    sudo cp -vR ACPIBatteryManager.kext /System/Library/Extensions
     sudo chmod -vR 755 ACPIBatteryManager.kext
     sudo chown -vR root:wheel ACPIBatteryManager.kext
+
+    sudo touch /System/Library/Extensions && sudo kextcache -u /
+
     echo "Kexts removed from EFI/Other"
     sleep 3
     echo "\n================================================================================\n"
