@@ -165,7 +165,7 @@ echo "     ...    [misc] USB PRW Fix"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/usb_prw.txt ~/x250finished/DSDT.dsl
 
 echo "     ...    [misc] Fn Key Fix"
-/usr/bin/atchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/Fn_Keys.txt ~/x250finished/DSDT.dsl
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/Fn_Keys.txt ~/x250finished/DSDT.dsl
 
 echo "     ...    [misc] Battery Management"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/BatteryManagement.txt ~/x250finished/DSDT.dsl
