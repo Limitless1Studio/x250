@@ -3,24 +3,27 @@
 # directory in the process
 # Explain that Xcode must be installed
 clear
-echo "\t (!) Xcode must be installed to continue. Answer the following questions"
-echo "\t     accordingly to ensure successful downloads and folder creation."
-sleep 10
-clear
+echo "\n================================================================================\n"
+echo " (!) Xcode must be installed to continue. Answer the following questions"
+echo "     accordingly to ensure successful downloads and folder creation."
+echo "\n================================================================================\n"
+
 # Ask if user has Xcode installed
 read -r -p "Do you have Xcode installed? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    clear
+  echo "\n================================================================================\n"
     continue
 else
-    clear
-    echo "\t (!) Sign in with your apple ID. If you do not have a developer account"
-    echo "\t     you will need to create one to download and install the latest Xcode."
+  echo "\n================================================================================\n"
+    echo " (!) Sign in with your apple ID. If you do not have a developer account, you"
+    echo "     will need to create one to download and install the latest Xcode."
+    echo "\n================================================================================\n"
     sleep 5
     clear
-    echo "\t     Opening apple downloads page. Do not use the Mac App Store as iCloud "
-    echo "\t     has not been fixed yet. After downloading and installing continue."
+    echo " (!) Opening apple downloads page. Do not use the Mac App Store as iCloud"
+    echo "     has not been fixed yet. After downloading and installing, continue."
+    echo "\n================================================================================\n"
     sleep 5
     open https://developer.apple.com/download/more/
     clear
@@ -29,44 +32,49 @@ fi
 read -r -p "Has Xcode been opened and the terms accepted? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    clear
+    echo "\n================================================================================\n"
     continue
 else
-    echo "\t (!) You must open Xcode and accept the terms and conditions."
+    echo "\n================================================================================\n"
+    echo " (!) You must open Xcode and accept the terms and conditions."
+    echo "\n================================================================================\n"
     sleep 3
     echo # Blank line
-    echo "\t     Opening Xcode, continue after accepting the terms."
+    echo " (i) Opening Xcode, continue after accepting the terms."
     sleep 3
     open -a Xcode
-    clear
+    echo "\n================================================================================\n"
 fi
 # Asking user if they have already installed the command line Tools
 read -r -p "Have you installed the Xcode comand line Tools? [y/N] " response
 echo    # Move to a new line
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    clear
+    echo "\n================================================================================\n"
     continue
 else
-    clear
-    echo "\t (!) You must install Xcode command line tools."
+    echo "\n================================================================================\n"
+    echo " (!) You must install Xcode command line tools."
     sleep 3
     echo # Blank line
-    echo "\t     Opening Installer for command line toos, continue after installation"
-    echo "\t     is complete."
+    echo "\n================================================================================\n"
+
+    echo " (i) Opening Installer for command line toos, continue after installation is"
+    echo "     complete."
     sleep 3
     echo # Blank line
     xcode-select --install
-    clear
+    echo "\n================================================================================\n"
 fi
 
 read -r -p "Press enter to begin downloads. "
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    clear
+    echo "\n================================================================================\n"
 fi
 continue
 echo "----------------------Making x250 Folder!----------------------"
+echo "\n================================================================================\n"
 # redirect will not work without the . before /
 cd ./desktop
 mkdir x250
@@ -77,8 +85,10 @@ mkdir Programs
 mkdir iMessage
 mkdir Patches
 cd ~/Desktop/x250/Kexts
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Donwloading Kexts!----------------------"
+echo "\n================================================================================\n"
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
 # end in .zip
@@ -93,8 +103,11 @@ cd ~/downloads
 curl -L -o OS-X-Voodoo-PS2-Controller-master.zip https://github.com/tluck/OS-X-Voodoo-PS2-Controller/archive/master.zip
 curl -o Kexts.zip https://www.tonymacx86.com/attachments/kexts-zip.218178/
 cd ~/desktop/x250/Kexts
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Unzipping Kexts!----------------------"
+echo "\n================================================================================\n"
+
 # unzip is the command to unzip kexts
 unzip RehabMan-FakeSMC-2017-0414.zip
 unzip RehabMan-IntelMausiEthernet-v2-2017-0321.zip
@@ -107,8 +120,11 @@ unzip OS-X-Voodoo-PS2-Controller-master.zip
 cd ~/downloads/OS-X-Voodoo-PS2-Controller-master
 sudo make
 cd ~/desktop/x250/Kexts
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Cleaning up Kexts folder!----------------------"
+echo "\n================================================================================\n"
+
 # sudo rm -r must be used to remove kexts which are a directory
 # sudo rm -f is used to delete a single file which .zips are
 sudo rm -r FakeSMC_ACPISensors.kext
@@ -140,26 +156,38 @@ sudo rm -r __MACOSX
 sudo rm -r OS-X-Voodoo-PS2-Controller-master
 sudo rm -f OS-X-Voodoo-PS2-Controller-master.zip
 sudo rm -f Kexts.zip
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Donwloading Programs!----------------------"
+echo "\n================================================================================\n"
+
 cd ~/Desktop/x250/Programs
 curl -L -o CCV.zip http://mackie100projects.altervista.org/download-mac.php?version=vibrant
 curl -L -O http://wizards.osxlatitude.com/kext/kw.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-MaciASL-2017-0117.zip
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Unzipping Programs!----------------------"
+echo "\n================================================================================\n"
+
 unzip Cloverv24kr4061.zip
 unzip kw.zip
 unzip RehabMan-MaciASL-2017-0117.zip
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Cleaning up Programs folder!----------------------"
+echo "\n================================================================================\n"
+
 rm -f Clover_v2.4k_r4061.pkg.md5
 rm -f Cloverv24kr4061.zip
 rm -f kw.zip
 rm -f RehabMan-MaciASL-2017-0117.zip
 sudo rm -r __MACOSX
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Donwloading Files!----------------------"
+echo "\n================================================================================\n"
+
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
 # end in .zip
@@ -170,39 +198,56 @@ curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/Reha
 curl -L -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/master/SSDT-BATC.dsl
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/ssdtPRgensh.command
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2PrePatching.command
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Unzipping Files!----------------------"
+echo "\n================================================================================\n"
+
 # unzip is the command to unzip kexts
 unzip iasl.zip
 unzip RehabMan-patchmatic-2016-0312.zip
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Cleaning up Files folder!----------------------"
+echo "\n================================================================================\n"
+
 # sudo rm -r must be used to remove kexts which are a directory
 # sudo rm -f is used to delete a single file which .zips are
 rm -f iasl.zip
 rm -f RehabMan-patchmatic-2016-0312.zip
-clear
+echo "\n================================================================================\n"
 echo "----------------------Downloading iMessage Tools!----------------------"
+echo "\n================================================================================\n"
+
 cd ~/Desktop/x250/iMessage
 curl -L -o DPCIManager_ML.zip https://downloads.sourceforge.net/project/dpcimanager/1.5/DPCIManager_ML.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fdpcimanager%2F&ts=1493495370&use_mirror=pilotfiber
 curl -L -O https://gist.github.com/theracermaster/b6a9db46b14061d4c995/archive/6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
 curl -L -o imessagedebugv2-zip http://www.tonymacx86.com/attachments/imessagedebugv2-zip.114403/
+
+echo "\n================================================================================\n"
 sleep 5
-clear
 echo "----------------------Unzipping iMessage Files!----------------------"
+echo "\n================================================================================\n"
+
 unzip DPCIManager_ML.zip
 unzip imessagedebugv2-zip
 unzip 6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Cleaning up iMessage folder!----------------------"
+echo "\n================================================================================\n"
+
 mv ~/Desktop/x250/iMessage/b6a9db46b14061d4c995-6f11dc5e8182bba0449e8f3bbe00152428f904ea/simpleMLB.sh ~/Desktop/x250/iMessage
 rm -f DPCIManager_ML.zip
 rm -f dspci
 rm -f imessagedebugv2-zip
 rm -f 6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
 sudo rm -r b6a9db46b14061d4c995-6f11dc5e8182bba0449e8f3bbe00152428f904ea
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Donwloading Patches!----------------------"
+echo "\n================================================================================\n"
+
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
 # end in .zip
@@ -222,31 +267,47 @@ curl -o ~/Desktop/x250/Patches/usb_prw.txt https://raw.githubusercontent.com/shm
 curl -o ~/Desktop/x250/Patches/Fn_Keys.txt https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/3_Fn_Keys.txt
 curl -o ~/Desktop/x250/Patches/BatteryManagement.txt https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/4_battery_Lenovo-T450.txt
 curl -o ~/Desktop/x250/Patches/HDEF-layout1.txt https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/5_audio_HDEF-layout1.txt
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Donwloading ALC3232 Fix!----------------------"
+echo "\n================================================================================\n"
+
 cd ~/desktop/x250
 curl -L -O https://github.com/Limitless1Studio/x250ALC3232/archive/master.zip
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Unzipping ALC3232!----------------------"
+echo "\n================================================================================\n"
+
 unzip master.zip
-clear
+
+echo "\n================================================================================\n"
 echo "----------------------Cleaning up iMessage folder!----------------------"
+echo "\n================================================================================\n"
+
 mv ~/desktop/x250/x250ALC3232-master/ALC3232 ~/desktop/x250
 sudo rm -r x250ALC3232-master
 sudo rm -f master.zip
-clear
+echo "\n================================================================================\n"
 # Move applications to applications folder
-echo "This command should be ran on the x250, if it is not, you will want to select to"
-echo "this prompt regardless."
+echo " (!) This command should be ran on the x250. If it is not, you will want to "
+echo "     select no to this prompt."
+echo "\n================================================================================\n"
+
 read -r -p "Do you want to move applications to the applications folder? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    echo "\n================================================================================\n"
+    echo " (i) Moving Apps to Applications folder."
     mv ~/Desktop/x250/Programs/Clover\ Configurator.app ~/Applications
     mv ~/Desktop/x250/Programs/Clover_v2.4k_r4061.pkg  ~/Applications
     mv ~/Desktop/x250/Programs/Kext\ Wizard.app ~/Applications
     mv ~/Desktop/x250/Programs/MaciASL.app ~/Applications
+    echo "\n (i) Apps are now in Applications."
+    echo "\n================================================================================\n"
+
 else
-    clear
+    echo "\n================================================================================\n"
     continue
 fi
 

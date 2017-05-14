@@ -631,7 +631,8 @@ else
   echo " (i) Downloads.command Has finished."
   echo "\n================================================================================\n"
   sleep 3
-
+  main
+fi
 
 read -r -p "---> Have you already performed both reboots? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
