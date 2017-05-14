@@ -14,14 +14,14 @@ final_tasks()
       echo "\n================================================================================\n"
       cd ~/x250finished
       sudo cp -va *.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-0.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-2.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-3.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-4.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-5.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-9.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-11.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-12.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-0.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-2.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-3.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-4.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-5.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-9.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-11.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-12.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
       echo "All files in x250finished have been moved to EFI"
       echo "\n================================================================================\n"
       sleep 5
@@ -62,36 +62,88 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo # Blank line
     cd ~/desktop/x250/Files
-    sudo cp -a VoodooPS2Daemon /usr/bin/
-    sudo cp -a org.rehabman.voodoo.driver.Daemon.plist /Library/LaunchDaemons
-    sudo rm -rf /System/Library/Extensions/AppleACPIPS2Nub.kext
-    sudo rm -rf /System/Library/Extensions/ApplePS2Controller.kext
+    sudo cp -va VoodooPS2Daemon /usr/bin/
+    sudo cp -va org.rehabman.voodoo.driver.Daemon.plist /Library/LaunchDaemons
+    sudo rm -vrf /System/Library/Extensions/AppleACPIPS2Nub.kext
+    sudo rm -vrf /System/Library/Extensions/ApplePS2Controller.kext
     echo " (i) Files have been moved and unnecssary files removed."
     echo "\n================================================================================\n"
     sleep 3
 else
+    echo "\n================================================================================\n"
     continue
 fi
 
 read -r -p "---> Have you placed the working Final config.plist on the HHD/SSD's EFI/ESP partition? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    echo "\n================================================================================\n"
     continue
 else
     echo "\n================================================================================\n"
     echo " (i) Mounting the EFI partion."
     diskutil mount /dev/disk0s1
-    mv /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/graphicsconfig.plist
+    mv -v /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/graphicsconfig.plist
     cd ~/desktop/x250/Files
-    sudo cp -R finalconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
+    sudo cp -vR finalconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
     echo "\n================================================================================\n"
     echo "---> Changed <--- "
     echo "\t\xE2\x9C\x94 ig-platform-id changed to 0x16260006."
-    echo "\t\xE2\x9C\x94 KextsToPatch -> Items Enabled."
+    echo "\t\xE2\x9C\x94 KextsToPatch -> Items Enabled.\n"
     echo " (i) Final config.plist renamed and in /volumes/EFI/EFI/CLOVER."
     echo "     Graphics config.plist is backed up in /volumes/EFI/EFI/CLOVER"
     echo "\n================================================================================\n"
 fi
+
+echo " (!) In order for everything to work you must install all kexts in Desktop/x250/"
+echo "     Kexts. You will want to remove the kexts that were placed in the HHD/SSDs"
+echo "     EFI/ESP partion. "
+
+# Install Kexts to /system/library/extensions using Kext Wizard.
+read -r -p "---> Would you like to remove kexts from EFI and install to /S/L/E/ using Kext Wizard? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo "\n================================================================================\n"
+    cd /volumes/EFI/EFI/CLOVER/Kexts/Other
+    sudo rm -vr VoodooPS2Controller.kext
+    sudo rm -vr IntelMausiEthernet.kext
+    sudo rm -vr FakeSMC.kext
+    cd ~/Desktop/x250/Kexts/
+    sudo cp -va ACPIBatteryManager.kext /System/Library/Extensions
+    sudo chmod -vR 755 ACPIBatteryManager.kext
+    sudo chown -vR root:wheel ACPIBatteryManager.kext
+    echo "Kexts removed from EFI/Other"
+    sleep 3
+    echo "\n================================================================================\n"
+    echo "Opening Kext Wizard. Install by browsing to ~/dekstop/x250/kexts under the installtion tab."
+    sleep 3
+    echo "After you have installed the kexts, be sure to switch to the Maintenance tab and select System/Library/Extensions and Execute."
+    echo "Must repair permissions when finished."
+    sleep 4
+    open -a "Kext Wizard"
+    sleep 5
+else
+    clear
+    continue
+fi
+
+
+# Cleaning up the mess we made on your desktop. Files will be archived
+# in your home folder. Finder > Go > Home > Archive.
+read -r -p "Would you like to archive the folders created on your desktop? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo "\n================================================================================\n"
+    cd
+    mkdir Archive
+    mv -v ~/desktop/x250finished ~/Archive
+    mv -v ~/desktop/x250modified ~/Archive
+    mv -v ~/desktop/x250original ~/Archive
+    mv -v ~/desktop/x250 ~/Archive
+    mv -v ~/ssdtPRGen.sh ~/Archive
+    mv -v ~/Projects ~/Archive
+    echo " (i) Files are now archived in your home folder. Finder > Go > Home > Archive."
+    sleep 5
 
 
 # Exit script
@@ -238,9 +290,9 @@ echo "==========================================================================
 echo "\n    >>>>   Decompiling Started   <<<<    \n"
 cd ~/x250original
 /usr/bin/iasl -da -dl *.aml
-mv ~/x250original/DSDT.dsl ~/x250finished/DSDT.dsl
-mv ~/x250original/SSDT-1.dsl ~/x250finished/SSDT-1.dsl
-mv ~/x250original/SSDT-10.dsl ~/x250finished/SSDT-10.dsl
+mv -v ~/x250original/DSDT.dsl ~/x250finished/DSDT.dsl
+mv -v ~/x250original/SSDT-1.dsl ~/x250finished/SSDT-1.dsl
+mv -v ~/x250original/SSDT-10.dsl ~/x250finished/SSDT-10.dsl
 patch_dsdt
 }
 
@@ -272,7 +324,8 @@ then
     cd ~/desktop/x250/ALC3232
     chmod 755 ALC3232.command
     cd ~/desktop/x250/Files
-    chmod 775 ssdtPRgensh.command
+    chmod 755 ssdtPRgensh.command
+    chmod 755 Downloads.command
     echo # Blank line
     echo " (i) Permissions assigned."
     echo "\n================================================================================\n"
@@ -293,8 +346,8 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo "\n================================================================================\n"
     echo " (i) Copying iasl and patchmatic."
-    cp -a ~/Desktop/x250/Files/patchmatic /usr/bin
-    cp -a ~/Desktop/x250/Files/iasl /usr/bin
+    cp -va ~/Desktop/x250/Files/patchmatic /usr/bin
+    cp -va ~/Desktop/x250/Files/iasl /usr/bin
     echo "\n (i) iasl and patchmatic are now in /usr/bin/."
     echo "\n================================================================================\n"
 else
@@ -326,11 +379,11 @@ then
     echo "\n================================================================================\n"
     echo "\n (i) Moving Files."
     cd /volumes/EFI/EFI/CLOVER/ACPI/origin
-    sudo cp -a DSDT.aml ~/x250original
-    sudo cp -a SSDT-1.aml ~/x250original
-    sudo cp -a SSDT-10.aml ~/x250original
+    sudo cp -va DSDT.aml ~/x250original
+    sudo cp -va SSDT-1.aml ~/x250original
+    sudo cp -va SSDT-10.aml ~/x250original
     cd ~/desktop/x250/Files
-    sudo cp -a SSDT-BATC.dsl ~/x250finished
+    sudo cp -va SSDT-BATC.dsl ~/x250finished
     echo "\n (i) Files have been moved."
     echo "\n================================================================================\n"
     sleep 3
@@ -372,8 +425,8 @@ then
     git clone https://github.com/RehabMan/OS-X-Clover-Laptop-Config.git guide.git
     cd ~/Projects/guide.git
     make
-    sudo cp -R ~/Projects/probook.git/kexts/AppleBacklightInjector.kext /Library/Extensions
-    cp -a ~/Projects/guide.git/build/SSDT-PNLF.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+    sudo cp -vR ~/Projects/probook.git/kexts/AppleBacklightInjector.kext /Library/Extensions
+    cp -va ~/Projects/guide.git/build/SSDT-PNLF.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
     echo "\n================================================================================\n"
     echo "\n (i) PNFL.aml created and in /volumes/EFI/EFI/CLOVER/ACPI/patched."
     echo "\n (i) AppleBacklightInjector is now in /L/E/"
@@ -523,11 +576,11 @@ else
     diskutil mount /dev/disk0s1
     mv /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/installconfig.plist
     cd ~/desktop/x250/Files
-    sudo cp -R graphicsconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
+    sudo cp -vR graphicsconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
     echo "\n================================================================================\n"
     echo "---> Changed <--- "
     echo "\t\xE2\x9C\x94 ig-platform-id changed to 0x16260006."
-    echo "\t\xE2\x9C\x94 KextsToPatch -> Items 0 - 3 Enabled."
+    echo "\t\xE2\x9C\x94 KextsToPatch -> Items 0 - 3 Enabled.\n"
     echo " (i) Graphics config.plist renamed and in /volumes/EFI/EFI/CLOVER."
     echo "     Install config.plist is backed up in /volumes/EFI/EFI/CLOVER"
 fi
@@ -624,11 +677,11 @@ else
         echo " (i) Mounting the EFI partion."
         diskutil mount /dev/disk0s1
         cd ~/desktop/x250/Files
-        sudo cp -R installconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
+        sudo cp -vR installconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
         echo " (i) Install config.plist renamed and moved to /volumes/EFI/EFI/CLOVER"
     else
         cd ~/desktop/x250/Files
-        sudo cp -R installconfig.plist /volumes/ESP/EFI/CLOVER/config.plist
+        sudo cp -vR installconfig.plist /volumes/ESP/EFI/CLOVER/config.plist
         echo " (i) Install config.plist renamed and moved to /volumes/ESP/EFI/CLOVER"
     fi
 fi
@@ -653,11 +706,11 @@ else
         echo " (i) Mounting the EFI partion."
         diskutil mount /dev/disk0s1
         cd ~/desktop/x250/Files
-        sudo cp -R HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
+        sudo cp -vR HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
         echo "\n (i) HSFPlus.efi is now in /volumes/EFI/EFI/CLOVER/drivers64UEFI."
     else
         cd ~/desktop/x250/Files
-        sudo cp -R HFSPlus.efi /volumes/ESP/EFI/CLOVER/drivers64UEFI
+        sudo cp -vR HFSPlus.efi /volumes/ESP/EFI/CLOVER/drivers64UEFI
         echo "\n (i) HSFPlus.efi is now in /volumes/ESP/EFI/CLOVER/drivers64UEFI."
 
     fi
@@ -681,16 +734,16 @@ else
         echo " (i) Mounting the EFI partion."
         diskutil mount /dev/disk0s1
         cd ~/desktop/x250/kexts
-        sudo cp -R VoodooPS2Controller.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
-        sudo cp -R IntelMausiEthernet.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
-        sudo cp -R FakeSMC.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
+        sudo cp -vR VoodooPS2Controller.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
+        sudo cp -vR IntelMausiEthernet.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
+        sudo cp -vR FakeSMC.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
         echo "\n (i) Kexts are now in /volumes/EFI/EFI/CLOVER/Kexts/Other."
 
     else
         cd ~/desktop/x250/kexts
-        sudo cp -R VoodooPS2Controller.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
-        sudo cp -R IntelMausiEthernet.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
-        sudo cp -R FakeSMC.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
+        sudo cp -vR VoodooPS2Controller.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
+        sudo cp -vR IntelMausiEthernet.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
+        sudo cp -vR FakeSMC.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
         echo "\n (i) Kexts are now in /volumes/ESP/EFI/CLOVER/Kexts/Other."
     fi
 fi
