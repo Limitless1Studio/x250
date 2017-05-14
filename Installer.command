@@ -2,36 +2,208 @@
 final_tasks()
 {
 # Fix Audio
-read -r -p "Would you like to fix Audio? [y/N] " response
+echo " (!) This runs the ALC3232.command. It will make and install the necessary kexts"
+echo "     to fix Audio. It may be necessary to repair permissions using Kext Wizard"
+echo "     after running this."
+echo "\n================================================================================\n"
+
+read -r -p "---> Would you like to fix Audio? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    clear
+    echo "\n================================================================================\n"
+    echo " (i) Starting ALC3232.command."
+    echo "\n================================================================================\n"
     ~/desktop/x250/ALC3232/ALC3232.command
-    sleep 5
-    clear
+    sleep 2
+    echo "\n================================================================================\n"
+    echo " (i) ALC3232.command finished."
+    echo "\n================================================================================\n"
+    sleep 3
 else
-    clear
-    continue
+    echo "\n (i) Skipped."
+    echo "\n================================================================================\n"
 fi
 
 # Move iasl, voodoodaemon, remove unneeded voodoo related kexts
-read -r -p "---> Would you like to move iasl and VoodooPS2Daemon to /usr/bin and remove unecessary VoodooPS2Controller Files? [y/N] " response
+echo " (!) These files should be removed to ensure the most stable trackpad and typing"
+echo "     experience possible."
+echo "\n================================================================================\n"
+read -r -p "---> Would you like to move iasl and VoodooPS2Daemon to /usr/bin and remove unecessary VoodooPS2Controller Files? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo # Blank line
     cd ~/desktop/x250/Files
-    sudo cp -a iasl /usr/bin/
     sudo cp -a VoodooPS2Daemon /usr/bin/
     sudo cp -a org.rehabman.voodoo.driver.Daemon.plist /Library/LaunchDaemons
     sudo rm -rf /System/Library/Extensions/AppleACPIPS2Nub.kext
     sudo rm -rf /System/Library/Extensions/ApplePS2Controller.kext
-    echo "Files have been moved and unnecssary files removed."
+    echo " (i) Files have been moved and unnecssary files removed."
+    echo "\n================================================================================\n"
     sleep 3
-    clear
+    read -r -p "Press enter when you're ready to close this window. " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+    then
+        osascript -e 'tell application "Terminal" to quit' &
+        exit
+    else
+        osascript -e 'tell application "Terminal" to quit' &
+        exit
+    fi
 else
-    clear
-    continue
+    echo "\n================================================================================\n"
+    read -r -p "Press enter when you're ready to close this window. " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+    then
+        osascript -e 'tell application "Terminal" to quit' &
+        exit
+    else
+        osascript -e 'tell application "Terminal" to quit' &
+        exit
+    fi
 fi
+}
+
+compile_dsdt()
+{
+echo "\n================================================================================"
+echo "[(D/S)SDT]: Compiling DSDT/SSDTs"
+echo "================================================================================\n"
+echo "\n    >>>>   Compiling Started   <<<<    \n"
+echo "     ...    Compiling DSDT...."
+/usr/bin/iasl ~/x250finished/DSDT.dsl
+
+# Using pre-made SSDT by using ssdtPRgen.sh
+echo "     ...    Compiling SSDT..."
+/usr/bin/iasl ~/x250finished/SSDT.dsl
+
+echo "     ...    Compiling SSDT-BATC..."
+/usr/bin/iasl ~/x250finished/SSDT-BATC.dsl
+
+echo "     ...    Compiling SSDT-1..."
+/usr/bin/iasl ~/x250finished/SSDT-1.dsl
+
+echo "     ...    Compiling SSDT-10..."
+/usr/bin/iasl ~/x250finished/SSDT-10.dsl
+
+echo "\n[--Done--]: All done...\n"
+final_tasks
+}
+
+patch_ssdt()
+{
+
+########################
+# SSDT-1 (iGPU) Patches
+########################
+
+echo "\n================================================================================"
+echo "[--SSDT--]: Patching SSDT-1"
+echo "================================================================================\n"
+echo "\n    >>>>   SSDT-1 (iGPU) Patch Started   <<<<    \n"
+
+echo "     ...    [gfx] Rename VID to IGPU"
+/usr/bin/patchmatic ~/x250finished/SSDT-1.dsl ~/Desktop/x250/patches/graphics_Rename-PCI0_VID.txt ~/x250finished/SSDT-1.dsl
+
+########################
+# SSDT-10 (dGPU) Patches
+########################
+
+echo "\n================================================================================"
+echo "[--SSDT--]: Patching SSDT-10"
+echo "================================================================================\n"
+echo "\n    >>>>   SSDT-1 (dGPU) Patch Started   <<<<    \n"
+
+echo "     ...    [gfx] Rename VID to IGPU"
+/usr/bin/patchmatic ~/x250finished/SSDT-10.dsl ~/Desktop/x250/patches/graphics_Rename-PCI0_VID.txt ~/x250finished/SSDT-10.dsl
+
+echo "\n    >>>>   Continuing to Compile DSDT\SSDT's...   <<<<    \n"
+
+compile_dsdt
+}
+
+patch_dsdt()
+{
+echo "\n================================================================================"
+echo "[--DSDT--]: Patching DSDT"
+echo "================================================================================\n"
+echo "\n    >>>>   DSDT Patch Started   <<<<    \n"
+
+echo "     ...    [syn] Fix _WAK Arg0 v2"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_WAK2.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [sys] HPET Fix"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_HPET.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [sys] IRQ Fix"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_IRQ.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [sys] RTC Fix"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_RTC.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [sys] Add IMEI"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_IMEI.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [sys] OS Check Fix"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_OSYS_win8.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [sys] SMBus Fix"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_SMBUS.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [sys] Fix Mutex with non-zero SyncLevel"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_Mutex.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [gfx] Rename VID to IGPU"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/graphics_Rename-PCI0_VID.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [gfx] Add Rename B0D3 to HDAU"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/graphics_Rename-B0D3.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [misc] Led Blink Fix"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/led_blink.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [misc] USB PRW Fix"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/usb_prw.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [misc] Fn Key Fix"
+/usr/bin/atchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/Fn_Keys.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [misc] Battery Management"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/BatteryManagement.txt ~/x250finished/DSDT.dsl
+
+echo "     ...    [audio] HDEF 1 Fix"
+/usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/HDEF-layout1.txt ~/x250finished/DSDT.dsl
+patch_ssdt
+}
+
+decompile_dsdt()
+{
+echo "\n================================================================================"
+echo "[(D/S)SDT]: Decompiling DSDT..."
+echo "================================================================================\n"
+echo "\n    >>>>   Decompiling Started   <<<<    \n"
+cd ~/x250original
+/usr/bin/iasl -da -dl *.aml
+mv ~/x250original/DSDT.dsl ~/x250finished/DSDT.dsl
+mv ~/x250original/SSDT-1.dsl ~/x250finished/SSDT-1.dsl
+mv ~/x250original/SSDT-10.dsl ~/x250finished/SSDT-10.dsl
+patch_dsdt
+}
+
+autopatcher()
+{
+read -r -p "---> Would you like to patch the DSDT and SSDTs? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo "\n================================================================================"
+    echo "Lenevo ThinkPad x250 DSDT/SSDT autopatch script by Limitless1Studio."
+    echo "================================================================================\n"
+    decompile_dsdt
+else
+    echo "\n (i) Skipped."
+    echo "\n================================================================================\n"
+    final_tasks
+fi
+
 }
 
 prepare_patching()
@@ -40,21 +212,39 @@ prepare_patching()
 read -r -p "---> Would you like to give proper permissions to the rest of the scripts needed? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    echo # Blank line
-    echo "\n (i) Assigning permissions to all other neccessay scripts.\n"
+    echo "\n================================================================================\n"
+    echo " (i) Assigning permissions to all other neccessay scripts.\n"
     cd ~/desktop/x250/ALC3232
     chmod 755 ALC3232.command
     cd ~/desktop/x250/Files
     chmod 775 ssdtPRgensh.command
-    chmod 755 Patching.command
     echo # Blank line
     echo " (i) Permissions assigned."
-    sleep 3
     echo "\n================================================================================\n"
+    sleep 3
+
 else
     echo "\n (i) Skipped."
     echo "\n================================================================================\n"
     continue
+fi
+# Move IASL and Patchmatic to /usr/bin/
+echo " (!) Patchmatic and IASL are used to automate the patching process. Without them"
+echo "     in /usr/bin/ the patching script will fail."
+echo "\n================================================================================\n"
+
+read -r -p "--> Would you like to move Patchmatic and IASL to /usr/bin/? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo "\n================================================================================\n"
+    echo " (i) Copying iasl and patchmatic."
+    cp -a ~/Desktop/x250/Files/patchmatic /usr/bin
+    cp -a ~/Desktop/x250/Files/iasl /usr/bin
+    echo "\n (i) iasl and patchmatic are now in /usr/bin/."
+    echo "\n================================================================================\n"
+else
+    echo "\n (i) Skipped."
+    echo "\n================================================================================\n"
 fi
 
 # Create patching directory
@@ -64,6 +254,7 @@ then
     echo # Blank line
     cd
     mkdir x250original
+    mkdir x250finished
     echo "\n (i) Folder created in  home directory."
     echo "\n================================================================================\n"
     sleep 3
@@ -79,23 +270,25 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo "\n================================================================================\n"
     echo "\n (i) Moving Files."
-    cd /volumes/EFI/EFI/CLOVER/ACPI/patched
-    sudo cp -a DSDT.aml ~/desktop/x250original
-    sudo cp -a SS**.aml ~/desktop/x250original
-    sudo rm -rf ~/desktop/x250original/SSDT-*x.aml
-    mv ~/desktop/x250original/SSDT-0.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv ~/desktop/x250original/SSDT-2.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv ~/desktop/x250original/SSDT-4.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv ~/desktop/x250original/SSDT-5.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv ~/desktop/x250original/SSDT-9.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv ~/desktop/x250original/SSDT-11.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv ~/desktop/x250original/SSDT-12.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+    cd /volumes/EFI/EFI/CLOVER/ACPI/origin
+    sudo cp -a DSDT.aml ~/x250original
+    sudo cp -a SSDT-1.aml ~/x250original
+    sudo cp -a SSDT-10.aml ~/x250original
+    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-0.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-2.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-3.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-4.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-5.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-9.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-11.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-12.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
     cd ~/desktop/x250/Files
-    sudo cp -a SSDT-BATC.dsl ~/desktop/x250original
+    sudo cp -a SSDT-BATC.dsl ~/x250finished
     echo "\n (i) Files have been moved."
     echo "\n================================================================================\n"
     sleep 3
 else
+    echo "\n (i) Skipped."
     echo "\n================================================================================\n"
     continue
 fi
@@ -104,15 +297,18 @@ fi
 read -r -p "---> Would you like to create the Power Management SSDT? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    echo # Blank line
+    echo "\n================================================================================\n"
+    echo " (i) Starting ssdtPRgensh.command."
+    echo "\n================================================================================\n"
     ~/desktop/x250/files/ssdtPRgensh.command
-    mv ~/desktop/x250original/ssdt.dsl ~/desktop/x250original/SSDT.dsl
-    echo # Blank line
-    echo "\n (i)Power Management SSDT created placed in x250orginal."
+    echo "\n================================================================================\n"
+    echo " (i) ssdtPRgensh.command Finished."
+    echo " (i) Power Management SSDT created placed in x250orginal."
     echo "\n================================================================================\n"
     sleep 3
 else
-    clear
+    echo "\n (i) Skipped."
+    echo "\n================================================================================\n"
     continue
 fi
 # Create PFNL SSDT for Backlight Fix. Also making and installing
@@ -135,16 +331,17 @@ then
     echo "\n (i) AppleBacklightInjector is now in /L/E/"
     echo "\n================================================================================\n"
 else
+    echo "\n (i) Skipped."
     echo "\n================================================================================\n"
     continue
 fi
-
+autopatcher
 }
 
 customize_os()
 {
 echo "\n================================================================================\n"
-echo " (i) This section of the script contains an option to disable Hibernation which"
+echo " (!) This section of the script contains an option to disable Hibernation which"
 echo "     should be disabled to prevent file corruption. It also contains options to"
 echo "     disable apps from anywhere, turn dock delays off, and show the path you are"
 echo "     currently in within the top bar of finder."
@@ -153,14 +350,16 @@ echo "\n========================================================================
 read -r -p "---> Would you like to cutomize features on the OS? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    echo "\n (i) Skipped."
     continue
 else
+    echo "\n================================================================================\n"
     prepare_patching
 fi
 
 # Ask user if they would like app from anywhere fixed
 echo "\n================================================================================\n"
-echo "Starting cutomize OS"
+echo " (i) Starting cutomize OS"
 echo "\n================================================================================\n"
 echo "\t  No = Will skip the task. It will not undo this if already implemented."
 echo "\t Yes = Will enable apps from anywhere to open without error.\n"
@@ -170,7 +369,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo # Blank line
     sudo spctl --master-disable
-    echo " (i) Apps From Anywhere is enabled."
+    echo "\n (i) Apps From Anywhere is enabled."
     echo "\n================================================================================\n"
     sleep 2
 else
@@ -208,8 +407,8 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo # Blank line
     sudo pmset -g custom | grep "hibernatemode \|standby \|autopoweroff "
-    sleep 5
     echo "\n================================================================================\n"
+    sleep 5
 else
     echo "\n================================================================================\n"
     continue
@@ -285,8 +484,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     continue
 else
-    echo "\n================================================================================\n"
-    diskutil mount /dev/disk0s1
     cd ~/desktop/x250/Files
     sudo cp -a HFSPlus.efi /volumes/ESP/EFI/CLOVER/drivers64UEFI
     echo "\n (i) HSFPlus.efi is now in /volumes/ESP/EFI/CLOVER/drivers64UEFI."
@@ -389,15 +586,57 @@ main()
 {
 # Making space
 clear
-echo "\n================================================================================\n"
-echo " (!) Before Patching there are two mission critical reboots that need to happen."
+echo "\n================================================================================"
+echo "Lenevo ThinkPad x250 installer script by Limitless1Studio."
+echo "================================================================================\n"
+echo "About this script:\n"
+echo " (1) Before Patching there are two mission critical reboots that need to happen."
 echo "     You will receive a number of prompts at the beginning of this script to "
 echo "     ensure the patching and implementation of fixes goes correctly."
+echo " (2) At various points in this script you will be asked to enter your password."
+echo " (3) The (!) symbol indicates that there is vital information contained in the "
+echo "     text that follows it. Keep an eye out for this text and be sure to read it."
+echo " (4) This script relies on the Downloads.command script. If you have not ran the"
+echo "     Downloads.command don't worry, it is included in this one. Select no on the"
+echo "     following prompt and the downloads script will run."
+echo " (5) If you ever make the wrong selection, or for some reason need to run this"
+echo "     script again you can."
+echo " (6) When prompted with a question, the script will except Y,N, or Yes,No. It is"
+echo "     not case sensitive."
 echo "\n================================================================================\n"
-sleep 5
+read -r -p "---> Have you read the \"About this Script\" section? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo "\n================================================================================\n"
+    echo " (i) Installer script is starting."
+    echo "\n================================================================================\n"
+    continue
+else
+    main
+fi
+read -r -p "---> Have you already ran the Downloads.command? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo "\n================================================================================\n"
+    continue
+else
+  echo "\n================================================================================\n"
+  echo " (i) Starting Downloads.command."
+  echo "\n================================================================================\n"
+  curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Downloads.command
+  sleep 2
+  echo "\n================================================================================\n"
+  echo " (i) Downloads.command Has finished."
+  echo "\n================================================================================\n"
+  sleep 3
+
+
 read -r -p "---> Have you already performed both reboots? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    echo "\n================================================================================\n"
+    echo " (i) Mounting EFI partition.\n"
+    diskutil mount /dev/disk0s1
     customize_os
 else
     reboots
@@ -405,13 +644,3 @@ fi
 }
 
 main
-
-read -r -p "Press enter when you're ready to close this window. " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
-    osascript -e 'tell application "Terminal" to quit' &
-    exit
-else
-    osascript -e 'tell application "Terminal" to quit' &
-    exit
-fi

@@ -66,7 +66,7 @@ then
     clear
 fi
 continue
-echo ----------------------Making x250 Folder!----------------------
+echo "----------------------Making x250 Folder!----------------------"
 # redirect will not work without the . before /
 cd ./desktop
 mkdir x250
@@ -78,7 +78,7 @@ mkdir iMessage
 mkdir Patches
 cd ~/Desktop/x250/Kexts
 clear
-echo ----------------------Donwloading Kexts!----------------------
+echo "----------------------Donwloading Kexts!----------------------"
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
 # end in .zip
@@ -94,7 +94,7 @@ curl -L -o OS-X-Voodoo-PS2-Controller-master.zip https://github.com/tluck/OS-X-V
 curl -o Kexts.zip https://www.tonymacx86.com/attachments/kexts-zip.218178/
 cd ~/desktop/x250/Kexts
 clear
-echo ----------------------Unzipping Kexts!----------------------
+echo "----------------------Unzipping Kexts!----------------------"
 # unzip is the command to unzip kexts
 unzip RehabMan-FakeSMC-2017-0414.zip
 unzip RehabMan-IntelMausiEthernet-v2-2017-0321.zip
@@ -108,7 +108,7 @@ cd ~/downloads/OS-X-Voodoo-PS2-Controller-master
 sudo make
 cd ~/desktop/x250/Kexts
 clear
-echo ----------------------Cleaning up Kexts folder!----------------------
+echo "----------------------Cleaning up Kexts folder!----------------------"
 # sudo rm -r must be used to remove kexts which are a directory
 # sudo rm -f is used to delete a single file which .zips are
 sudo rm -r FakeSMC_ACPISensors.kext
@@ -141,62 +141,60 @@ sudo rm -r OS-X-Voodoo-PS2-Controller-master
 sudo rm -f OS-X-Voodoo-PS2-Controller-master.zip
 sudo rm -f Kexts.zip
 clear
-echo ----------------------Donwloading Programs!----------------------
+echo "----------------------Donwloading Programs!----------------------"
 cd ~/Desktop/x250/Programs
-curl -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
 curl -L -o CCV.zip http://mackie100projects.altervista.org/download-mac.php?version=vibrant
 curl -L -O http://wizards.osxlatitude.com/kext/kw.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-MaciASL-2017-0117.zip
 clear
-echo ----------------------Unzipping Programs!----------------------
+echo "----------------------Unzipping Programs!----------------------"
 unzip Cloverv24kr4061.zip
-unzip CCV.zip
 unzip kw.zip
 unzip RehabMan-MaciASL-2017-0117.zip
 clear
-echo ----------------------Cleaning up Programs folder!----------------------
+echo "----------------------Cleaning up Programs folder!----------------------"
 rm -f Clover_v2.4k_r4061.pkg.md5
 rm -f Cloverv24kr4061.zip
-rm -f CCV.zip
 rm -f kw.zip
 rm -f RehabMan-MaciASL-2017-0117.zip
 sudo rm -r __MACOSX
 clear
-echo ----------------------Donwloading Files!----------------------
+echo "----------------------Donwloading Files!----------------------"
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
 # end in .zip
 cd ~/Desktop/x250/Files
 curl -L -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/HFSPlus.efi
 curl -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
+curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-patchmatic-2016-0312.zip
 curl -L -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/master/SSDT-BATC.dsl
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/ssdtPRgensh.command
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2PrePatching.command
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/3PostPatching.command
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/4Final.command
 clear
-echo ----------------------Unzipping Files!----------------------
+echo "----------------------Unzipping Files!----------------------"
 # unzip is the command to unzip kexts
 unzip iasl.zip
+unzip RehabMan-patchmatic-2016-0312.zip
 clear
-echo ----------------------Cleaning up Files folder!----------------------
+echo "----------------------Cleaning up Files folder!----------------------"
 # sudo rm -r must be used to remove kexts which are a directory
 # sudo rm -f is used to delete a single file which .zips are
 rm -f iasl.zip
+rm -f RehabMan-patchmatic-2016-0312.zip
 clear
-echo ----------------------Downloading iMessage Tools!----------------------
+echo "----------------------Downloading iMessage Tools!----------------------"
 cd ~/Desktop/x250/iMessage
 curl -L -o DPCIManager_ML.zip https://downloads.sourceforge.net/project/dpcimanager/1.5/DPCIManager_ML.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fdpcimanager%2F&ts=1493495370&use_mirror=pilotfiber
 curl -L -O https://gist.github.com/theracermaster/b6a9db46b14061d4c995/archive/6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
 curl -L -o imessagedebugv2-zip http://www.tonymacx86.com/attachments/imessagedebugv2-zip.114403/
 sleep 5
 clear
-echo ----------------------Unzipping iMessage Files!----------------------
+echo "----------------------Unzipping iMessage Files!----------------------"
 unzip DPCIManager_ML.zip
 unzip imessagedebugv2-zip
 unzip 6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
 clear
-echo ----------------------Cleaning up iMessage folder!----------------------
+echo "----------------------Cleaning up iMessage folder!----------------------"
 mv ~/Desktop/x250/iMessage/b6a9db46b14061d4c995-6f11dc5e8182bba0449e8f3bbe00152428f904ea/simpleMLB.sh ~/Desktop/x250/iMessage
 rm -f DPCIManager_ML.zip
 rm -f dspci
@@ -204,41 +202,42 @@ rm -f imessagedebugv2-zip
 rm -f 6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
 sudo rm -r b6a9db46b14061d4c995-6f11dc5e8182bba0449e8f3bbe00152428f904ea
 clear
-echo ----------------------Donwloading Patches!----------------------
+echo "----------------------Donwloading Patches!----------------------"
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
 # end in .zip
 cd ~/Desktop/x250/Patches
-curl -L -o 1graphics_Rename-B0D3.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/graphics/graphics_Rename-B0D3.txt
-curl -L -o 1graphics_Rename-PCI0_VID.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/graphics/graphics_Rename-PCI0_VID.txt
-curl -L -o 1system_IMEI.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_IMEI.txt
-curl -L -o 1system_WAK2.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_WAK2.txt
-curl -L -o 1system_Mutex.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_Mutex.txt
-curl -L -o 1system_HPET.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_HPET.txt
-curl -L -o 1system_IRQ.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_IRQ.txt
-curl -L -o 1system_OSYS_win8.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_OSYS_win8.txt
-curl -L -o 1system_RTC.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_RTC.txt
-curl -L -o 1system_SMBUS.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_SMBUS.txt
-curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/2_led_blink.txt
-curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/2_usb_prw.txt
-curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/3_Fn_Keys.txt
-curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/4_battery_Lenovo-T450.txt
-curl -L -O https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/5_audio_HDEF-layout1.txt
+curl -o ~/Desktop/x250/Patches/system_WAK2.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_WAK2.txt
+curl -o ~/Desktop/x250/Patches/system_HPET.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_HPET.txt
+curl -o ~/Desktop/x250/Patches/system_IRQ.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_IRQ.txt
+curl -o ~/Desktop/x250/Patches/system_RTC.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_RTC.txt
+curl -o ~/Desktop/x250/Patches/system_IMEI.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_IMEI.txt
+curl -o ~/Desktop/x250/Patches/system_OSYS_win8.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_OSYS_win8.txt
+curl -o ~/Desktop/x250/Patches/system_SMBUS.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_SMBUS.txt
+curl -o ~/Desktop/x250/Patches/system_Mutex.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/system/system_Mutex.txt
+curl -o ~/Desktop/x250/Patches/graphics_Rename-PCI0_VID.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/graphics/graphics_Rename-PCI0_VID.txt
+curl -o ~/Desktop/x250/Patches/graphics_Rename-B0D3.txt https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/graphics/graphics_Rename-B0D3.txt
+curl -o ~/Desktop/x250/Patches/led_blink.txt https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/2_led_blink.txt
+curl -o ~/Desktop/x250/Patches/usb_prw.txt https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/2_usb_prw.txt
+curl -o ~/Desktop/x250/Patches/Fn_Keys.txt https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/3_Fn_Keys.txt
+curl -o ~/Desktop/x250/Patches/BatteryManagement.txt https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/4_battery_Lenovo-T450.txt
+curl -o ~/Desktop/x250/Patches/HDEF-layout1.txt https://raw.githubusercontent.com/shmilee/T450-Hackintosh/master/DSDT/patch-files/5_audio_HDEF-layout1.txt
 clear
-echo ----------------------Donwloading ALC3232 Fix!----------------------
+echo "----------------------Donwloading ALC3232 Fix!----------------------"
 cd ~/desktop/x250
 curl -L -O https://github.com/Limitless1Studio/x250ALC3232/archive/master.zip
 clear
-echo ----------------------Unzipping ALC3232!----------------------
+echo "----------------------Unzipping ALC3232!----------------------"
 unzip master.zip
 clear
-echo ----------------------Cleaning up iMessage folder!----------------------
+echo "----------------------Cleaning up iMessage folder!----------------------"
 mv ~/desktop/x250/x250ALC3232-master/ALC3232 ~/desktop/x250
 sudo rm -r x250ALC3232-master
 sudo rm -f master.zip
 clear
 # Move applications to applications folder
-echo This command should be ran on the x250, if it is not, you will want to select to this prompt regardless.
+echo "This command should be ran on the x250, if it is not, you will want to select to"
+echo "this prompt regardless."
 read -r -p "Do you want to move applications to the applications folder? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
@@ -259,11 +258,11 @@ then
     echo # Blank line
 else
     clear
-    echo Run the installer selecting the following conditions:
-    echo Install for UEFI booting only.
-    echo Install Clover in the ESP
-    echo Select BGM under Themes
-    echo Select OsxAptioFixDRV-64 under drivers64UEFI
+    echo "Run the installer selecting the following conditions:"
+    echo "Install for UEFI booting only."
+    echo "Install Clover in the ESP"
+    echo "Select BGM under Themes"
+    echo "Select OsxAptioFixDRV-64 under drivers64UEFI"
     sleep 20
     echo # Blank line
 fi
