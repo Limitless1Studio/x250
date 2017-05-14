@@ -164,6 +164,7 @@ echo "\n========================================================================
 cd ~/Desktop/x250/Programs
 curl -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
 curl -L -O http://wizards.osxlatitude.com/kext/kw.zip
+sleep 3
 
 echo "\n================================================================================\n"
 echo "----------------------Unzipping Programs!----------------------"
@@ -179,7 +180,6 @@ echo "\n========================================================================
 rm -f Clover_v2.4k_r4061.pkg.md5
 rm -f Cloverv24kr4061.zip
 rm -f kw.zip
-rm -f RehabMan-MaciASL-2017-0117.zip
 sudo rm -r __MACOSX
 
 echo "\n================================================================================\n"
