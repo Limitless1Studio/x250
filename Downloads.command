@@ -195,7 +195,10 @@ curl -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-patchmatic-2016-0312.zip
 curl -L -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/master/SSDT-BATC.dsl
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/ssdtPRGen.sh-Command/Beta/ssdtPRgensh.command
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2PrePatching.command
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Installer.command
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/installconfig.plist
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/graphicsconfig.plist
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/finalconfig.plist
 
 echo "\n================================================================================\n"
 echo "----------------------Unzipping Files!----------------------"
