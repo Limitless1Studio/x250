@@ -8,17 +8,25 @@ final_tasks()
   echo "     will not be fully functional."
   echo "\n================================================================================\n"
 
-  read -r -p "Have you placed patched and converted all DSDT/SSDTs and placed in x250finished? [y/N] " response
+  read -r -p "---> Would you like to place all patched and necessary .aml files in /Volumes/EFI/EFI/CLOVER/ACPI/Patched? <--- " response
   if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
   then
+      echo "\n================================================================================\n"
       cd ~/x250finished
-      sudo cp -a *.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      sudo cp -va *.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-0.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-2.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-3.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-4.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-5.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-9.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-11.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-12.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
       echo "All files in x250finished have been moved to EFI"
+      echo "\n================================================================================\n"
       sleep 5
-      clear
   else
-      clear
-      exit
+      echo "\n================================================================================\n"
 fi
 
 # Fix Audio
@@ -64,6 +72,27 @@ then
 else
     continue
 fi
+
+read -r -p "---> Have you placed the working Final config.plist on the HHD/SSD's EFI/ESP partition? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    continue
+else
+    echo "\n================================================================================\n"
+    echo " (i) Mounting the EFI partion."
+    diskutil mount /dev/disk0s1
+    mv /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/graphicsconfig.plist
+    cd ~/desktop/x250/Files
+    sudo cp -R finalconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
+    echo "\n================================================================================\n"
+    echo "---> Changed <--- "
+    echo "\t\xE2\x9C\x94 ig-platform-id changed to 0x16260006."
+    echo "\t\xE2\x9C\x94 KextsToPatch -> Items Enabled."
+    echo " (i) Final config.plist renamed and in /volumes/EFI/EFI/CLOVER."
+    echo "     Graphics config.plist is backed up in /volumes/EFI/EFI/CLOVER"
+    echo "\n================================================================================\n"
+fi
+
 
 # Exit script
 read -r -p "Press enter when you're ready to close this window. " response
@@ -300,14 +329,6 @@ then
     sudo cp -a DSDT.aml ~/x250original
     sudo cp -a SSDT-1.aml ~/x250original
     sudo cp -a SSDT-10.aml ~/x250original
-    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-0.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-2.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-3.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-4.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-5.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-9.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-11.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-    mv /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-12.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
     cd ~/desktop/x250/Files
     sudo cp -a SSDT-BATC.dsl ~/x250finished
     echo "\n (i) Files have been moved."
@@ -486,26 +507,31 @@ reboot2()
 echo "\n================================================================================\n"
 echo " (!) In order to implement excellerated graphics you must change the ig-platform"
 echo "     -id in the config.plist. Do Not use Clover Configurator to do this as it "
-echo "     will corrupt a vital patch that is stored in the config.plist."
+echo "     will corrupt a vital patch that is stored in the config.plist. The command"
+echo"      will do this for you."
 echo "\n================================================================================\n"
-echo "\t  No = config.plist will automatically open in Xcode. Instruction below."
+echo "\t  No = The config.plist will automatically be replaced."
 echo "\t Yes = The action will be skipped.\n"
-read -r -p "---> Have you changed ig-platform-id and enabled the kextstopatch for graphics? <--- " response
+
+read -r -p "---> Have you placed the working graphicsconfig.plist on the HHD/SSD's EFI/ESP partition? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     continue
 else
     echo "\n================================================================================\n"
-    echo "---> In Xcode <--- "
-    echo "\t\xE2\x9C\x94 Expand Graphics and change ig-platform-id to 0x16260006."
-    echo "\t\xE2\x9C\x94 Expand KernelAndKextPatches -> KextsToPatch -> Items 0 - 3"
-    echo "\t\xE2\x9C\x94 Change Disabled Boolean to No for Items 0 - 3."
-    echo "\t\xE2\x9C\x94 File > Save the config.plist file."
-    echo "\t\xE2\x9C\x94 Quit Xcode manually.\n"
-    echo " (i) Opening config.plist. Continue when tasks above are completed."
-    sleep 5
-    open /volumes/EFI/EFI/CLOVER/config.plist
+    echo " (i) Mounting the EFI partion."
+    diskutil mount /dev/disk0s1
+    mv /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/installconfig.plist
+    cd ~/desktop/x250/Files
+    sudo cp -R graphicsconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
+    echo "\n================================================================================\n"
+    echo "---> Changed <--- "
+    echo "\t\xE2\x9C\x94 ig-platform-id changed to 0x16260006."
+    echo "\t\xE2\x9C\x94 KextsToPatch -> Items 0 - 3 Enabled."
+    echo " (i) Graphics config.plist renamed and in /volumes/EFI/EFI/CLOVER."
+    echo "     Install config.plist is backed up in /volumes/EFI/EFI/CLOVER"
 fi
+
 
 # Check check if ig-plaform-id and kexttopatch patches are enabled
 echo "\n================================================================================\n"
@@ -566,7 +592,7 @@ echo "     If you have not installed Clover Bootloader to the EFI partition, ope
 echo "     \"Clover_v2.4k_r4061.pkg\" from /x250/Programs and run the installer as"
 echo "     described after selecting no. Continue with this script when finished."
 echo "\n================================================================================"
-echo # Blank line
+
 read -r -p "---> Have you already installed Clover Bootloader to the HHD/SSD? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
@@ -580,6 +606,34 @@ else
     echo "\t\xE2\x9C\x94 Select OsxAptioFixDRV-64 under drivers64UEFI\n"
     echo " (!) Do Not continue until Clover Bootloader is installed on the EFI/ESP."
 fi
+
+echo "\n================================================================================\n"
+echo "\t  No = Install config.plist will be moved to the EFI/ESP partition"
+echo "\t Yes = The action will be skipped\n"
+
+read -r -p "---> Have you placed the working config.plist on the HHD/SSD's EFI/ESP partition? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    continue
+else
+    echo "\n================================================================================\n"
+    read -r -p "---> Have you already rebooted with Clover Bootloader installed? <--- " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+    then
+        echo "\n================================================================================\n"
+        echo " (i) Mounting the EFI partion."
+        diskutil mount /dev/disk0s1
+        cd ~/desktop/x250/Files
+        sudo cp -R installconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
+        echo " (i) Install config.plist renamed and moved to /volumes/EFI/EFI/CLOVER"
+    else
+        cd ~/desktop/x250/Files
+        sudo cp -R installconfig.plist /volumes/ESP/EFI/CLOVER/config.plist
+        echo " (i) Install config.plist renamed and moved to /volumes/ESP/EFI/CLOVER"
+    fi
+fi
+
+
 
 # Ensure HFSplus is in SSDs EFI partion before reboot.
 echo "\n================================================================================\n"
@@ -599,7 +653,7 @@ else
         echo " (i) Mounting the EFI partion."
         diskutil mount /dev/disk0s1
         cd ~/desktop/x250/Files
-        sudo cp -a HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
+        sudo cp -R HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
         echo "\n (i) HSFPlus.efi is now in /volumes/EFI/EFI/CLOVER/drivers64UEFI."
     else
         cd ~/desktop/x250/Files
