@@ -162,9 +162,8 @@ echo "----------------------Donwloading Programs!----------------------"
 echo "\n================================================================================\n"
 
 cd ~/Desktop/x250/Programs
-curl -L -o CCV.zip http://mackie100projects.altervista.org/download-mac.php?version=vibrant
+curl -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
 curl -L -O http://wizards.osxlatitude.com/kext/kw.zip
-curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-MaciASL-2017-0117.zip
 
 echo "\n================================================================================\n"
 echo "----------------------Unzipping Programs!----------------------"
@@ -172,7 +171,6 @@ echo "\n========================================================================
 
 unzip Cloverv24kr4061.zip
 unzip kw.zip
-unzip RehabMan-MaciASL-2017-0117.zip
 
 echo "\n================================================================================\n"
 echo "----------------------Cleaning up Programs folder!----------------------"
@@ -282,33 +280,12 @@ echo "\n========================================================================
 unzip master.zip
 
 echo "\n================================================================================\n"
-echo "----------------------Cleaning up iMessage folder!----------------------"
+echo "----------------------Cleaning up ALC3232 folder!----------------------"
 echo "\n================================================================================\n"
 
 mv ~/desktop/x250/x250ALC3232-master/ALC3232 ~/desktop/x250
 sudo rm -r x250ALC3232-master
 sudo rm -f master.zip
 echo "\n================================================================================\n"
-# Move applications to applications folder
-echo " (!) This command should be ran on the x250. If it is not, you will want to "
-echo "     select no to this prompt."
-echo "\n================================================================================\n"
-
-read -r -p "Do you want to move applications to the applications folder? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
-    echo "\n================================================================================\n"
-    echo " (i) Moving Apps to Applications folder."
-    mv ~/Desktop/x250/Programs/Clover\ Configurator.app ~/Applications
-    mv ~/Desktop/x250/Programs/Clover_v2.4k_r4061.pkg  ~/Applications
-    mv ~/Desktop/x250/Programs/Kext\ Wizard.app ~/Applications
-    mv ~/Desktop/x250/Programs/MaciASL.app ~/Applications
-    echo "\n (i) Apps are now in Applications."
-    echo "\n================================================================================\n"
-
-else
-    echo "\n================================================================================\n"
-    continue
-fi
 
 exit
