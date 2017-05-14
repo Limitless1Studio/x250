@@ -249,24 +249,5 @@ else
     clear
     continue
 fi
-# Verify that Clover has been installed
-read -r -p "Have you already installed Clover Bootloader to the HHD/SSD? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
-    clear
-    continue
-    echo # Blank line
-else
-    clear
-    echo "Run the installer selecting the following conditions:"
-    echo "Install for UEFI booting only."
-    echo "Install Clover in the ESP"
-    echo "Select BGM under Themes"
-    echo "Select OsxAptioFixDRV-64 under drivers64UEFI"
-    sleep 20
-    echo # Blank line
-fi
-read -r -p "Press enter when you're ready to close this window. "
-    osascript -e 'tell application "Terminal" to quit' &
-    exit 0
-fi
+
+exit
