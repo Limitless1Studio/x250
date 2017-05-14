@@ -78,12 +78,9 @@ else
     continue
 fi
 # Final reboot
-read -r -p "Would you like to reboot for the final time and rebuild the kext cache? [y/N] " response
+read -r -p "---> Would you like to reboot for the final time? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    clear
-    sudo touch /System/Library/Extensions && sudo kextcache -u /
-    clear
     echo "You may need to rebuild the cache and reboot a couple more times in order to implement Backlight control correctly."
     echo "You can do this either by running this script and selecting yes on this optoin or manually running the following command in terminal."
     echo # Blank line

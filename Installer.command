@@ -52,28 +52,6 @@ else
     echo "\n================================================================================\n"
 fi
 
-# Move iasl, voodoodaemon, remove unneeded voodoo related kexts
-echo " (!) These files should be removed to ensure the most stable trackpad and typing"
-echo "     experience possible."
-echo "\n================================================================================\n"
-
-read -r -p "---> Would you like to move iasl and VoodooPS2Daemon to /usr/bin and remove unecessary VoodooPS2Controller Files? <--- " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
-    echo # Blank line
-    cd ~/desktop/x250/Files
-    sudo cp -va VoodooPS2Daemon /usr/bin/
-    sudo cp -va org.rehabman.voodoo.driver.Daemon.plist /Library/LaunchDaemons
-    sudo rm -vrf /System/Library/Extensions/AppleACPIPS2Nub.kext
-    sudo rm -vrf /System/Library/Extensions/ApplePS2Controller.kext
-    echo " (i) Files have been moved and unnecssary files removed."
-    echo "\n================================================================================\n"
-    sleep 3
-else
-    echo "\n================================================================================\n"
-    continue
-fi
-
 read -r -p "---> Have you placed the working Final config.plist on the HHD/SSD's EFI/ESP partition? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
@@ -98,6 +76,29 @@ fi
 echo " (!) In order for everything to work you must install all kexts in Desktop/x250/"
 echo "     Kexts. You will want to remove the kexts that were placed in the HHD/SSDs"
 echo "     EFI/ESP partion. "
+echo "\n================================================================================\n"
+
+# Move iasl, voodoodaemon, remove unneeded voodoo related kexts
+echo " (!) These files should be removed to ensure the most stable trackpad and typing"
+echo "     experience possible."
+echo "\n================================================================================\n"
+
+read -r -p "---> Would you like to move VoodooPS2Daemon to /usr/bin and remove unecessary VoodooPS2Controller Files? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo # Blank line
+    cd ~/desktop/x250/Files
+    sudo cp -va VoodooPS2Daemon /usr/bin/
+    sudo cp -va org.rehabman.voodoo.driver.Daemon.plist /Library/LaunchDaemons
+    sudo rm -vrf /System/Library/Extensions/AppleACPIPS2Nub.kext
+    sudo rm -vrf /System/Library/Extensions/ApplePS2Controller.kext
+    echo " (i) Files have been moved and unnecssary files removed."
+    echo "\n================================================================================\n"
+    sleep 3
+else
+    echo "\n================================================================================\n"
+    continue
+fi
 
 # Install Kexts to /system/library/extensions using Kext Wizard.
 read -r -p "---> Would you like to remove kexts from EFI and install to /S/L/E/ using Kext Wizard? <--- " response
@@ -108,15 +109,72 @@ then
     sudo rm -vr VoodooPS2Controller.kext
     sudo rm -vr IntelMausiEthernet.kext
     sudo rm -vr FakeSMC.kext
+    echo "Kexts removed from EFI/Other"
+    sleep 3
+
     cd ~/Desktop/x250/Kexts
+
+    echo "\n================================================================================\n"
+    echo " (i) Moving ACPIBatteryManager.kext and repairing permissions."
+
     sudo cp -vR ACPIBatteryManager.kext /System/Library/Extensions
     sudo chmod -vR 755 ACPIBatteryManager.kext
     sudo chown -vR root:wheel ACPIBatteryManager.kext
 
+    echo "\n================================================================================\n"
+    echo " (i) Moving BrcmFirmwareRepo.kext and repairing permissions."
+
+    sudo cp -vR BrcmFirmwareRepo.kext /System/Library/Extensions
+    sudo chmod -vR 755 BrcmFirmwareRepo.kext
+    sudo chown -vR root:wheel BrcmFirmwareRepo.kext
+
+    echo "\n================================================================================\n"
+    echo " (i) Moving BrcmPatchRAM2.kext and repairing permissions."
+
+    sudo cp -vR BrcmPatchRAM2.kext /System/Library/Extensions
+    sudo chmod -vR 755 BrcmPatchRAM2.kext
+    sudo chown -vR root:wheel BrcmPatchRAM2.kext
+
+    echo "\n================================================================================\n"
+    echo " (i) Moving FakeSMC.kext and repairing permissions."
+
+    sudo cp -vR FakeSMC.kext /System/Library/Extensions
+    sudo chmod -vR 755 FakeSMC.kext
+    sudo chown -vR root:wheel FakeSMC.kext
+
+    echo "\n================================================================================\n"
+    echo " (i) Moving IntelMausiEthernet.kext and repairing permissions."
+
+    sudo cp -vR IntelMausiEthernet.kext /System/Library/Extensions
+    sudo chmod -vR 755 IntelMausiEthernet.kext
+    sudo chown -vR root:wheel IntelMausiEthernet.kext
+
+    echo "\n================================================================================\n"
+    echo " (i) Moving USB_Injector_X250.kext and repairing permissions."
+
+    sudo cp -vR USB_Injector_X250.kext /System/Library/Extensions
+    sudo chmod -vR 755 USB_Injector_X250.kext
+    sudo chown -vR root:wheel USB_Injector_X250.kext
+
+    echo "\n================================================================================\n"
+    echo " (i) Moving USBInjectAll.kext and repairing permissions."
+
+    sudo cp -vR USBInjectAll.kext /System/Library/Extensions
+    sudo chmod -vR 755 USBInjectAll.kext
+    sudo chown -vR root:wheel USBInjectAll.kext
+
+    echo "\n================================================================================\n"
+    echo " (i) Moving VoodooPS2Controller.kext and repairing permissions."
+
+    sudo cp -vR VoodooPS2Controller.kext /System/Library/Extensions
+    sudo chmod -vR 755 VoodooPS2Controller.kext
+    sudo chown -vR root:wheel VoodooPS2Controller.kext
+
+    echo "\n================================================================================\n"
+    echo " (i) Rebuilding Kext cache and repairing permissions."
+
     sudo touch /System/Library/Extensions && sudo kextcache -u /
 
-    echo "Kexts removed from EFI/Other"
-    sleep 3
     echo "\n================================================================================\n"
     echo "Opening Kext Wizard. Install by browsing to ~/dekstop/x250/kexts under the installtion tab."
     sleep 3
@@ -126,7 +184,7 @@ then
     open -a "Kext Wizard"
     sleep 5
 else
-    clear
+    echo "\n================================================================================\n"
     continue
 fi
 
@@ -139,14 +197,39 @@ then
     echo "\n================================================================================\n"
     cd
     mkdir Archive
-    mv -v ~/desktop/x250finished ~/Archive
-    mv -v ~/desktop/x250modified ~/Archive
-    mv -v ~/desktop/x250original ~/Archive
+    mv -v ~/x250finished ~/Archive
+    mv -v ~/x250original ~/Archive
     mv -v ~/desktop/x250 ~/Archive
     mv -v ~/ssdtPRGen.sh ~/Archive
     mv -v ~/Projects ~/Archive
-    echo " (i) Files are now archived in your home folder. Finder > Go > Home > Archive."
+    echo "/n (i) Files are now archived in your home folder. Finder > Go > Home > Archive."
+    echo "\n================================================================================\n"
     sleep 5
+else
+    echo "\n================================================================================\n"
+    continue
+fi
+
+echo " (!) You may need to rebuild the cache and reboot a couple more times in order"
+echo "     to implement Backlight control correctly. You can do this either by running"
+echo "     this script again and selecting yes to this final reboot option, or simply"
+echo "     open terminal and type \"sudo kextcache -u /\" and press enter. You will"
+echo "     need to then restart once more."
+echo "\n================================================================================\n"
+
+# Final reboot
+read -r -p "---> Would you like to reboot for the final time? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo "\n================================================================================\n"
+    echo "Sending restart command in 5 seconds."
+    sleep 5
+    osascript -e 'tell application "System Events" to restart'
+    exit
+else
+    echo "\n================================================================================\n"
+    continue
+fi
 
 
 # Exit script
