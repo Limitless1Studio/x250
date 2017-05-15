@@ -914,7 +914,7 @@ else
   echo "\n================================================================================\n"
   curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Downloads.command
   chmod 755 Downloads.command
-  ~/Downloads.command
+  ~/Desktop/Downloads.command
   sleep 2
   echo "\n================================================================================\n"
   echo " (i) Downloads.command Has finished."
