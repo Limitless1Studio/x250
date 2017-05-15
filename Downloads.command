@@ -118,7 +118,7 @@ cd ~/downloads
 unzip Kexts.zip
 unzip OS-X-Voodoo-PS2-Controller-master.zip
 cd ~/downloads/OS-X-Voodoo-PS2-Controller-master
-sudo make
+sudo make -s
 cd ~/desktop/x250/Kexts
 
 echo "\n================================================================================\n"
@@ -164,6 +164,7 @@ echo "\n========================================================================
 cd ~/Desktop/x250/Programs
 curl -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
 curl -L -O http://wizards.osxlatitude.com/kext/kw.zip
+sleep 5
 
 echo "\n================================================================================\n"
 echo "----------------------Unzipping Programs!----------------------"
@@ -195,7 +196,6 @@ curl -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-patchmatic-2016-0312.zip
 curl -L -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/master/SSDT-BATC.dsl
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/ssdtPRGen.sh-Command/Beta/ssdtPRgensh.command
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2PrePatching.command
 
 echo "\n================================================================================\n"
 echo "----------------------Unzipping Files!----------------------"
