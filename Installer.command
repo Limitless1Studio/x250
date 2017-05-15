@@ -116,6 +116,7 @@ then
 
     echo "\n================================================================================\n"
     echo " (i) Moving ACPIBatteryManager.kext and repairing permissions."
+    echo "\n================================================================================\n"
 
     sudo cp -vR ACPIBatteryManager.kext /System/Library/Extensions
     sudo chmod -vR 755 ACPIBatteryManager.kext
@@ -123,6 +124,7 @@ then
 
     echo "\n================================================================================\n"
     echo " (i) Moving BrcmFirmwareRepo.kext and repairing permissions."
+    echo "\n================================================================================\n"
 
     sudo cp -vR BrcmFirmwareRepo.kext /System/Library/Extensions
     sudo chmod -vR 755 BrcmFirmwareRepo.kext
@@ -130,6 +132,7 @@ then
 
     echo "\n================================================================================\n"
     echo " (i) Moving BrcmPatchRAM2.kext and repairing permissions."
+    echo "\n================================================================================\n"
 
     sudo cp -vR BrcmPatchRAM2.kext /System/Library/Extensions
     sudo chmod -vR 755 BrcmPatchRAM2.kext
@@ -137,6 +140,7 @@ then
 
     echo "\n================================================================================\n"
     echo " (i) Moving FakeSMC.kext and repairing permissions."
+    echo "\n================================================================================\n"
 
     sudo cp -vR FakeSMC.kext /System/Library/Extensions
     sudo chmod -vR 755 FakeSMC.kext
@@ -144,6 +148,7 @@ then
 
     echo "\n================================================================================\n"
     echo " (i) Moving IntelMausiEthernet.kext and repairing permissions."
+    echo "\n================================================================================\n"
 
     sudo cp -vR IntelMausiEthernet.kext /System/Library/Extensions
     sudo chmod -vR 755 IntelMausiEthernet.kext
@@ -151,6 +156,7 @@ then
 
     echo "\n================================================================================\n"
     echo " (i) Moving USB_Injector_X250.kext and repairing permissions."
+    echo "\n================================================================================\n"
 
     sudo cp -vR USB_Injector_X250.kext /System/Library/Extensions
     sudo chmod -vR 755 USB_Injector_X250.kext
@@ -158,6 +164,7 @@ then
 
     echo "\n================================================================================\n"
     echo " (i) Moving USBInjectAll.kext and repairing permissions."
+    echo "\n================================================================================\n"
 
     sudo cp -vR USBInjectAll.kext /System/Library/Extensions
     sudo chmod -vR 755 USBInjectAll.kext
@@ -165,6 +172,7 @@ then
 
     echo "\n================================================================================\n"
     echo " (i) Moving VoodooPS2Controller.kext and repairing permissions."
+    echo "\n================================================================================\n"
 
     sudo cp -vR VoodooPS2Controller.kext /System/Library/Extensions
     sudo chmod -vR 755 VoodooPS2Controller.kext
@@ -172,15 +180,21 @@ then
 
     echo "\n================================================================================\n"
     echo " (i) Rebuilding Kext cache and repairing permissions."
+    echo "\n================================================================================\n"
 
     sudo touch /System/Library/Extensions && sudo kextcache -u /
 
     echo "\n================================================================================\n"
     echo "Opening Kext Wizard. Install by browsing to ~/dekstop/x250/kexts under the installtion tab."
     sleep 3
-    echo "After you have installed the kexts, be sure to switch to the Maintenance tab and select System/Library/Extensions and Execute."
-    echo "Must repair permissions when finished."
-    sleep 4
+    echo " (!) After kext are installed Kext Wizard will open. On the Maintenance tab"
+    echo "     select System/Library/Extensions and Execute.\n"
+    echo " (!) Audio and Backlight will not work. You must rebuild the Kext manually"
+    echo "     in terminal and Restart. Repeat this process until sound and backlight"
+    echo "     work.\n"
+    echo "               (!) (!) (!) Rebuild Kext Cache = (!) (!) (!)"
+    echo "        sudo touch /System/Library/Extensions && sudo kextcache -u /"
+    sleep 5
     open -a "Kext Wizard"
     sleep 5
 else
@@ -202,6 +216,8 @@ then
     mv -v ~/desktop/x250 ~/Archive
     mv -v ~/ssdtPRGen.sh ~/Archive
     mv -v ~/Projects ~/Archive
+    mv -v ~/Installer.command ~/Archive
+    mv -v ~/Downloads.command ~/Archive
     echo "/n (i) Files are now archived in your home folder. Finder > Go > Home > Archive."
     echo "\n================================================================================\n"
     sleep 5
@@ -210,11 +226,9 @@ else
     continue
 fi
 
-echo " (!) You may need to rebuild the cache and reboot a couple more times in order"
-echo "     to implement Backlight control correctly. You can do this either by running"
-echo "     this script again and selecting yes to this final reboot option, or simply"
-echo "     open terminal and type \"sudo kextcache -u /\" and press enter. You will"
-echo "     need to then restart once more."
+echo " (!) You will need to rebuild the cache and reboot a couple more times in order"
+echo "     to implement Backlight control correctly. Instrucions are just before final"
+echo "     Restart."
 echo "\n================================================================================\n"
 
 # Final reboot
@@ -432,8 +446,8 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo "\n================================================================================\n"
     echo " (i) Copying iasl and patchmatic."
-    cp -va ~/Desktop/x250/Files/patchmatic /usr/bin
-    cp -va ~/Desktop/x250/Files/iasl /usr/bin
+    sudo cp -vR ~/Desktop/x250/Files/patchmatic /usr/bin
+    sudo cp -vR ~/Desktop/x250/Files/iasl /usr/bin
     echo "\n (i) iasl and patchmatic are now in /usr/bin/."
     echo "\n================================================================================\n"
 else
@@ -660,7 +674,7 @@ else
     echo "\n================================================================================\n"
     echo " (i) Mounting the EFI partion."
     diskutil mount /dev/disk0s1
-    mv /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/installconfig.plist
+    mv -v /volumes/EFI/EFI/CLOVER/config.plist /volumes/EFI/EFI/CLOVER/installconfig.plist
     cd ~/desktop/x250/Files
     sudo cp -vR graphicsconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
     echo "\n================================================================================\n"
@@ -885,7 +899,7 @@ echo "     If you do not do this, the script will fail."
 echo " (4) The (!) symbol indicates that there is vital information contained in the "
 echo "     text that follows it. Keep an eye out for this text and be sure to read it."
 echo " (5) If you ever make the wrong selection, or for some reason need to run this"
-echo "     script again you can."
+echo "     script again you can. Enter ./Installer.command in terminal."
 echo " (6) When prompted with a question, the script will except Y,N, or Yes,No. It is"
 echo "     not case sensitive."
 echo "\n================================================================================\n"
@@ -914,7 +928,8 @@ else
   echo "\n================================================================================\n"
   curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Downloads.command
   chmod 755 Downloads.command
-  ~/Desktop/Downloads.command
+  sleep 5
+  ~/Downloads.command
   sleep 2
   echo "\n================================================================================\n"
   echo " (i) Downloads.command Has finished."

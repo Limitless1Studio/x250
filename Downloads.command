@@ -23,10 +23,10 @@ else
     clear
     echo " (!) Opening apple downloads page. Do not use the Mac App Store as iCloud"
     echo "     has not been fixed yet. After downloading and installing, continue."
+    echo "           ** Must Unzip, and move to the applications folder ***"
     echo "\n================================================================================\n"
     sleep 5
     open https://developer.apple.com/download/more/
-    clear
 fi
 # Asking user if they have opened and accepted terms
 read -r -p "Has Xcode been opened and the terms accepted? [y/N] " response
@@ -164,7 +164,6 @@ echo "\n========================================================================
 cd ~/Desktop/x250/Programs
 curl -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
 curl -L -O http://wizards.osxlatitude.com/kext/kw.zip
-sleep 3
 
 echo "\n================================================================================\n"
 echo "----------------------Unzipping Programs!----------------------"
@@ -180,6 +179,7 @@ echo "\n========================================================================
 rm -f Clover_v2.4k_r4061.pkg.md5
 rm -f Cloverv24kr4061.zip
 rm -f kw.zip
+rm -f RehabMan-MaciASL-2017-0117.zip
 sudo rm -r __MACOSX
 
 echo "\n================================================================================\n"
@@ -195,10 +195,7 @@ curl -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-patchmatic-2016-0312.zip
 curl -L -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/master/SSDT-BATC.dsl
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/ssdtPRGen.sh-Command/Beta/ssdtPRgensh.command
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/Installer.command
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/installconfig.plist
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/graphicsconfig.plist
-curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/finalconfig.plist
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/2PrePatching.command
 
 echo "\n================================================================================\n"
 echo "----------------------Unzipping Files!----------------------"
