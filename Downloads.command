@@ -23,7 +23,7 @@ else
     clear
     echo " (!) Opening apple downloads page. Do not use the Mac App Store as iCloud"
     echo "     has not been fixed yet. After downloading and installing, continue."
-    echo "           ** Must Unzip, and move to the applications folder ***"
+    echo "           *** Must Unzip, and move to the applications folder ***"
     echo "\n================================================================================\n"
     sleep 5
     open https://developer.apple.com/download/more/
@@ -196,6 +196,9 @@ curl -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
 curl -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-patchmatic-2016-0312.zip
 curl -L -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/master/SSDT-BATC.dsl
 curl -L -O https://raw.githubusercontent.com/Limitless1Studio/ssdtPRGen.sh-Command/Beta/ssdtPRgensh.command
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/finalconfig.plist
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/graphicsconfig.plist
+curl -L -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/installconfig.plist
 
 echo "\n================================================================================\n"
 echo "----------------------Unzipping Files!----------------------"
@@ -221,9 +224,9 @@ cd ~/Desktop/x250/iMessage
 curl -L -o DPCIManager_ML.zip https://downloads.sourceforge.net/project/dpcimanager/1.5/DPCIManager_ML.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fdpcimanager%2F&ts=1493495370&use_mirror=pilotfiber
 curl -L -O https://gist.github.com/theracermaster/b6a9db46b14061d4c995/archive/6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
 curl -L -o imessagedebugv2-zip http://www.tonymacx86.com/attachments/imessagedebugv2-zip.114403/
+sleep 5
 
 echo "\n================================================================================\n"
-sleep 5
 echo "----------------------Unzipping iMessage Files!----------------------"
 echo "\n================================================================================\n"
 
@@ -235,7 +238,7 @@ echo "\n========================================================================
 echo "----------------------Cleaning up iMessage folder!----------------------"
 echo "\n================================================================================\n"
 
-mv ~/Desktop/x250/iMessage/b6a9db46b14061d4c995-6f11dc5e8182bba0449e8f3bbe00152428f904ea/simpleMLB.sh ~/Desktop/x250/iMessage
+mv -v ~/Desktop/x250/iMessage/b6a9db46b14061d4c995-6f11dc5e8182bba0449e8f3bbe00152428f904ea/simpleMLB.sh ~/Desktop/x250/iMessage
 rm -f DPCIManager_ML.zip
 rm -f dspci
 rm -f imessagedebugv2-zip
