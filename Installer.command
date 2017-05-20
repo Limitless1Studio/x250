@@ -205,7 +205,7 @@ fi
 
 # Cleaning up the mess we made on your desktop. Files will be archived
 # in your home folder. Finder > Go > Home > Archive.
-read -r -p "Would you like to archive the folders created on your desktop? [y/N] " response
+read -r -p "---> Would you like to archive the folders created on your desktop? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     echo "\n================================================================================\n"
@@ -256,18 +256,6 @@ else
     osascript -e 'tell application "Terminal" to quit' &
     exit
 fi
-
-echo "\n================================================================================\n"
-read -r -p "Press enter when you're ready to close this window. " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
-    osascript -e 'tell application "Terminal" to quit' &
-    exit
-else
-    osascript -e 'tell application "Terminal" to quit' &
-    exit
-fi
-
 }
 
 compile_dsdt()
@@ -276,23 +264,32 @@ echo "\n========================================================================
 echo "[(D/S)SDT]: Compiling DSDT/SSDTs"
 echo "================================================================================\n"
 echo "\n    >>>>   Compiling Started   <<<<    \n"
+echo "================================================================================\n"
+
 echo "     ...    Compiling DSDT...."
 /usr/bin/iasl ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 # Using pre-made SSDT by using ssdtPRgen.sh
 echo "     ...    Compiling SSDT..."
 /usr/bin/iasl ~/x250finished/SSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    Compiling SSDT-BATC..."
 /usr/bin/iasl ~/x250finished/SSDT-BATC.dsl
+echo "================================================================================\n"
 
 echo "     ...    Compiling SSDT-1..."
 /usr/bin/iasl ~/x250finished/SSDT-1.dsl
+echo "================================================================================\n"
 
 echo "     ...    Compiling SSDT-10..."
 /usr/bin/iasl ~/x250finished/SSDT-10.dsl
+echo "================================================================================\n"
 
 echo "\n[--Done--]: All done...\n"
+echo "================================================================================\n"
+
 final_tasks
 }
 
@@ -307,9 +304,11 @@ echo "\n========================================================================
 echo "[--SSDT--]: Patching SSDT-1"
 echo "================================================================================\n"
 echo "\n    >>>>   SSDT-1 (iGPU) Patch Started   <<<<    \n"
+echo "================================================================================\n"
 
 echo "     ...    [gfx] Rename VID to IGPU"
 /usr/bin/patchmatic ~/x250finished/SSDT-1.dsl ~/Desktop/x250/patches/graphics_Rename-PCI0_VID.txt ~/x250finished/SSDT-1.dsl
+echo "================================================================================\n"
 
 ########################
 # SSDT-10 (dGPU) Patches
@@ -318,12 +317,15 @@ echo "     ...    [gfx] Rename VID to IGPU"
 echo "\n================================================================================"
 echo "[--SSDT--]: Patching SSDT-10"
 echo "================================================================================\n"
-echo "\n    >>>>   SSDT-1 (dGPU) Patch Started   <<<<    \n"
+echo "\n    >>>>   SSDT-10 (dGPU) Patch Started   <<<<    \n"
+echo "================================================================================\n"
 
 echo "     ...    [gfx] Rename VID to IGPU"
 /usr/bin/patchmatic ~/x250finished/SSDT-10.dsl ~/Desktop/x250/patches/graphics_Rename-PCI0_VID.txt ~/x250finished/SSDT-10.dsl
+echo "================================================================================\n"
 
 echo "\n    >>>>   Continuing to Compile DSDT\SSDT's...   <<<<    \n"
+echo "================================================================================\n"
 
 compile_dsdt
 }
@@ -333,63 +335,89 @@ patch_dsdt()
 echo "\n================================================================================"
 echo "[--DSDT--]: Patching DSDT"
 echo "================================================================================\n"
+echo "================================================================================\n"
 echo "\n    >>>>   DSDT Patch Started   <<<<    \n"
-
+echo "================================================================================\n"
 echo "     ...    [syn] Fix _WAK Arg0 v2"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_WAK2.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [sys] HPET Fix"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_HPET.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [sys] IRQ Fix"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_IRQ.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [sys] RTC Fix"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_RTC.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [sys] Add IMEI"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_IMEI.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [sys] OS Check Fix"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_OSYS_win8.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [sys] SMBus Fix"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_SMBUS.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [sys] Fix Mutex with non-zero SyncLevel"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/system_Mutex.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [gfx] Rename VID to IGPU"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/graphics_Rename-PCI0_VID.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [gfx] Add Rename B0D3 to HDAU"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/graphics_Rename-B0D3.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [misc] Led Blink Fix"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/led_blink.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [misc] USB PRW Fix"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/usb_prw.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [misc] Fn Key Fix"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/Fn_Keys.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [misc] Battery Management"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/BatteryManagement.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
 
 echo "     ...    [audio] HDEF 1 Fix"
 /usr/bin/patchmatic ~/x250finished/DSDT.dsl ~/Desktop/x250/patches/HDEF-layout1.txt ~/x250finished/DSDT.dsl
+echo "================================================================================\n"
+
 patch_ssdt
 }
 
 decompile_dsdt()
 {
-echo "\n================================================================================"
 echo "[(D/S)SDT]: Decompiling DSDT..."
 echo "================================================================================\n"
 echo "\n    >>>>   Decompiling Started   <<<<    \n"
+echo "================================================================================\n"
+
 cd ~/x250original
+echo "     ...    Decompiling (D/S)SDT...."
+echo "================================================================================\n"
+
 /usr/bin/iasl -da -dl *.aml
+echo "================================================================================\n"
+
+echo "     ...    Moving (D/S)SDT...."
+echo "================================================================================\n"
+
 mv -v ~/x250original/DSDT.dsl ~/x250finished/DSDT.dsl
 mv -v ~/x250original/SSDT-1.dsl ~/x250finished/SSDT-1.dsl
 mv -v ~/x250original/SSDT-10.dsl ~/x250finished/SSDT-10.dsl
@@ -749,6 +777,8 @@ echo "\n========================================================================
 read -r -p "---> Have you already installed Clover Bootloader to the HHD/SSD? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    echo "\n (i) Skipped"
+    echo "\n================================================================================\n"
     continue
 else
     echo "\n================================================================================\n"
@@ -767,52 +797,64 @@ echo "\t Yes = The action will be skipped\n"
 read -r -p "---> Have you placed the working config.plist on the HHD/SSD's EFI/ESP partition? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    echo "\n (i) Skipped"
+    echo "\n================================================================================\n"
     continue
 else
-    echo "\n================================================================================\n"
-    read -r -p "---> Have you already rebooted with Clover Bootloader installed? <--- " response
-    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+    if [ -d /volumes/ESP/EFI ]
     then
+        echo "\n================================================================================\n"
+        cd ~/desktop/x250/Files
+        sudo cp -vR installconfig.plist /volumes/ESP/EFI/CLOVER/config.plist
+        echo "\n (i) Install config.plist renamed and moved to /volumes/ESP/EFI/CLOVER"
+    elif [ -d /volumes/EFI/EFI ]
+    then
+        echo "\n================================================================================\n"
+        cd ~/desktop/x250/Files
+        sudo cp -vR installconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
+        echo "\n (i) Install config.plist renamed and moved to /volumes/EFI/EFI/CLOVER"
+    else
         echo "\n================================================================================\n"
         echo " (i) Mounting the EFI partion."
         diskutil mount /dev/disk0s1
         cd ~/desktop/x250/Files
         sudo cp -vR installconfig.plist /volumes/EFI/EFI/CLOVER/config.plist
-        echo " (i) Install config.plist renamed and moved to /volumes/EFI/EFI/CLOVER"
-    else
-        cd ~/desktop/x250/Files
-        sudo cp -vR installconfig.plist /volumes/ESP/EFI/CLOVER/config.plist
-        echo " (i) Install config.plist renamed and moved to /volumes/ESP/EFI/CLOVER"
+        echo "\n (i) Install config.plist renamed and moved to /volumes/EFI/EFI/CLOVER"
     fi
 fi
 
 
-
 # Ensure HFSplus is in SSDs EFI partion before reboot.
 echo "\n================================================================================\n"
-echo "\t  No = Files will be moved to the EFI/ESP partition"
+echo "\t  No = File will be moved to the EFI/ESP partition"
 echo "\t Yes = The action will be skipped\n"
 
 read -r -p "---> Have you placed HFSplus.efi in the HHD/SSD's EFI/ESP partition? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    echo "\n (i) Skipped"
+    echo "\n================================================================================\n"
     continue
 else
-    echo "\n================================================================================\n"
-    read -r -p "---> Have you already rebooted with Clover Bootloader installed? <--- " response
-    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+    if [ -d /volumes/ESP/EFI ]
     then
+        echo "\n================================================================================\n"
+        cd ~/desktop/x250/Files
+        sudo cp -vR HFSPlus.efi /volumes/ESP/EFI/CLOVER/drivers64UEFI
+        echo "\n (i) HSFPlus.efi is now in /volumes/ESP/EFI/CLOVER/drivers64UEFI."
+    elif [ -d /volumes/EFI/EFI ]
+    then
+        echo "\n================================================================================\n"
+        cd ~/desktop/x250/Files
+        sudo cp -vR HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
+        echo "\n (i) HSFPlus.efi is now in /volumes/EFI/EFI/CLOVER/drivers64UEFI."
+    else
         echo "\n================================================================================\n"
         echo " (i) Mounting the EFI partion."
         diskutil mount /dev/disk0s1
         cd ~/desktop/x250/Files
         sudo cp -vR HFSPlus.efi /volumes/EFI/EFI/CLOVER/drivers64UEFI
         echo "\n (i) HSFPlus.efi is now in /volumes/EFI/EFI/CLOVER/drivers64UEFI."
-    else
-        cd ~/desktop/x250/Files
-        sudo cp -vR HFSPlus.efi /volumes/ESP/EFI/CLOVER/drivers64UEFI
-        echo "\n (i) HSFPlus.efi is now in /volumes/ESP/EFI/CLOVER/drivers64UEFI."
-
     fi
 fi
 
@@ -824,12 +866,27 @@ echo "\t Yes = The action will be skipped\n"
 read -r -p "---> Have you placed FakeSMC, IntelMausiEthernet, and VoodooPS2Controller kexts on the HHD/SSDs EFI/ESP partition? <--- " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    echo "\n (i) Skipped"
+    echo "\n================================================================================\n"
     continue
 else
-    echo "\n================================================================================\n"
-    read -r -p "---> Have you already rebooted with Clover Bootloader installed? <--- " response
-    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+    if [ -d /volumes/ESP/EFI ]
     then
+        echo "\n================================================================================\n"
+        cd ~/desktop/x250/kexts
+        sudo cp -vR VoodooPS2Controller.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
+        sudo cp -vR IntelMausiEthernet.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
+        sudo cp -vR FakeSMC.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
+        echo "\n (i) Kexts are now in /volumes/ESP/EFI/CLOVER/Kexts/Other."
+    elif [ -d /volumes/EFI/EFI ]
+    then
+        echo "\n================================================================================\n"
+        cd ~/desktop/x250/kexts
+        sudo cp -vR VoodooPS2Controller.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
+        sudo cp -vR IntelMausiEthernet.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
+        sudo cp -vR FakeSMC.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
+        echo "\n (i) Kexts are now in /volumes/EFI/EFI/CLOVER/Kexts/Other."
+    else
         echo "\n================================================================================\n"
         echo " (i) Mounting the EFI partion."
         diskutil mount /dev/disk0s1
@@ -838,13 +895,6 @@ else
         sudo cp -vR IntelMausiEthernet.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
         sudo cp -vR FakeSMC.kext /volumes/EFI/EFI/CLOVER/Kexts/Other
         echo "\n (i) Kexts are now in /volumes/EFI/EFI/CLOVER/Kexts/Other."
-
-    else
-        cd ~/desktop/x250/kexts
-        sudo cp -vR VoodooPS2Controller.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
-        sudo cp -vR IntelMausiEthernet.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
-        sudo cp -vR FakeSMC.kext /volumes/ESP/EFI/CLOVER/Kexts/Other
-        echo "\n (i) Kexts are now in /volumes/ESP/EFI/CLOVER/Kexts/Other."
     fi
 fi
 
@@ -889,17 +939,17 @@ echo "==========================================================================
 echo " (1) This script relies on the Downloads.command script. If you have not ran the"
 echo "     Downloads.command don't worry, it is included in this one. Select no on the"
 echo "     \"Have you already ran the Downloads.command?\" prompt and the downloads "
-echo "     script will run."
+echo "     script will download and run."
 echo " (2) Before Patching there are two mission critical reboots that need to happen."
-echo "     You will receive a number of prompts at the beginning of this script to "
-echo "     ensure the patching and implementation of fixes goes correctly."
+echo "     You will receive a number of prompts throughout this script to ensure that"
+echo "     the patching and implementation of fixes goes correctly."
 echo " (3) At various points in this script you will be asked to enter your password."
 echo "     The is to allow \"super user\" permissions for a few of the tasks needed. "
 echo "     If you do not do this, the script will fail."
 echo " (4) The (!) symbol indicates that there is vital information contained in the "
 echo "     text that follows it. Keep an eye out for this text and be sure to read it."
 echo " (5) If you ever make the wrong selection, or for some reason need to run this"
-echo "     script again you can. Enter ./Installer.command in terminal."
+echo "     script again, you can. Enter ./Installer.command in terminal."
 echo " (6) When prompted with a question, the script will except Y,N, or Yes,No. It is"
 echo "     not case sensitive."
 echo "\n================================================================================\n"
