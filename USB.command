@@ -16,6 +16,7 @@ curl --progress-bar -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/
 curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0414.zip
 curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0321.zip
 curl --progress-bar -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/HFSPlus.efi
+curl --progress-bar -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/installconfig.plist
 
 
 cd ~/downloads
