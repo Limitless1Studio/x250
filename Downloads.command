@@ -89,11 +89,22 @@ echo "\n========================================================================
 # curl -L -O must be used for BitBucket zips
 # curl -o must be used to rename the file correctly because the link does not
 # end in .zip
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0414.zip
+
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0414.zip
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0607.zip
+
+# IntelMausiEthernet is up-to-date as of 7/27; No action required
 curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0321.zip
+
+# Battery Kext is up-to-date as of 7/27; No action required
 curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/RehabMan-Battery-2017-0428.zip
+
+# BrcmPatchRAM kext is up-to-date as of 7/27; No action required
 curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/RehabMan-BrcmPatchRAM-2016-0705.zip
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-0112.zip
+
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-0112.zip
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-0724.zip
+
 # I moved these downloads to the dowloads directory to eliminate confusion on which
 # Kexts folder we are referring to
 cd ~/downloads
@@ -106,11 +117,22 @@ echo "----------------------Unzipping Kexts!----------------------"
 echo "\n================================================================================\n"
 
 # unzip is the command to unzip kexts
-unzip -q RehabMan-FakeSMC-2017-0414.zip
+
+# unzip -q RehabMan-FakeSMC-2017-0414.zip
+unzip -q RehabMan-FakeSMC-2017-0607.zip
+
+# No update required 7/27
 unzip -q RehabMan-IntelMausiEthernet-v2-2017-0321.zip
+
+# No update Required 7/27
 unzip -q RehabMan-Battery-2017-0428.zip
+
+# No update Required 7/27
 unzip -q RehabMan-BrcmPatchRAM-2016-0705.zip
-unzip -q RehabMan-USBInjectAll-2017-0112.zip
+
+# unzip -q RehabMan-USBInjectAll-2017-0112.zip
+unzip -q RehabMan-USBInjectAll-2017-0724.zip
+
 cd ~/downloads
 unzip -q Kexts.zip
 unzip -q OS-X-Voodoo-PS2-Controller-master.zip
@@ -130,11 +152,22 @@ sudo rm -v -r FakeSMC_GPUSensors.kext
 sudo rm -v -r FakeSMC_LPCSensors.kext
 sudo rm -v -r Debug
 sudo rm -v -r HWMonitor.app
+
+# No update required 7/27
 rm -v -f RehabMan-Battery-2017-0428.zip
-rm -v -f RehabMan-FakeSMC-2017-0414.zip
-rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0321.zip
+
+# rm -v -f RehabMan-FakeSMC-2017-0414.zip
+rm -v -f RehabMan-FakeSMC-2017-0607.zip
+
+# No adjustment neaded. Kext not updated 7/27
+rm -v -f rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0321.zip
+
+# No update required 7/27
 rm -v -f RehabMan-BrcmPatchRAM-2016-0705.zip
-rm -v -f RehabMan-USBInjectAll-2017-0112.zip
+
+# rm -v -f RehabMan-USBInjectAll-2017-0112.zip
+rm -v -f RehabMan-USBInjectAll-2017-0724.zip
+
 mv -v ~/desktop/x250/Kexts/Release/ACPIBatteryManager.kext ~/desktop/x250/Kexts/
 mv -v ~/desktop/x250/Kexts/Release/IntelMausiEthernet.kext ~/desktop/x250/Kexts/
 mv -v ~/desktop/x250/Kexts/Release/USBInjectAll.kext ~/desktop/x250/Kexts/
@@ -159,7 +192,9 @@ echo "----------------------Donwloading Programs!----------------------"
 echo "\n================================================================================\n"
 
 cd ~/Desktop/x250/Programs
-curl --progress-bar -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
+
+# curl --progress-bar -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
+curl --progress-bar -L -o Cloverv24kr4128.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4128.zip?r=&ts=1501198181&use_mirror=cytranet
 curl --progress-bar -L -O http://wizards.osxlatitude.com/kext/kw.zip
 sleep 5
 
@@ -167,17 +202,16 @@ echo "\n========================================================================
 echo "----------------------Unzipping Programs!----------------------"
 echo "\n================================================================================\n"
 
-unzip Cloverv24kr4061.zip
+unzip Cloverv24kr4128.zip
 unzip kw.zip
 
 echo "\n================================================================================\n"
 echo "----------------------Cleaning up Programs folder!----------------------"
 echo "\n================================================================================\n"
 
-rm -v -f Clover_v2.4k_r4061.pkg.md5
-rm -v -f Cloverv24kr4061.zip
+rm -v -f Clover_v2.4k_r4128.pkg.md5
+rm -v -f Cloverv24kr4128.zip
 rm -v -f kw.zip
-rm -v -f RehabMan-MaciASL-2017-0117.zip
 sudo rm -v -r __MACOSX
 
 echo "\n================================================================================\n"
@@ -211,32 +245,31 @@ echo "\n========================================================================
 
 # sudo rm -r must be used to remove kexts which are a directory
 # sudo rm -f is used to delete a single file which .zips are
-rm -v -f iasl.zip
-rm -v -f RehabMan-patchmatic-2016-0312.zip
+sudo rm -v -f iasl.zip
+sudo rm -v -f RehabMan-patchmatic-2016-0312.zip
 echo "\n================================================================================\n"
 echo "----------------------Downloading iMessage Tools!----------------------"
 echo "\n================================================================================\n"
 
 cd ~/Desktop/x250/iMessage
-curl --progress-bar -L -O https://gist.github.com/theracermaster/b6a9db46b14061d4c995/archive/6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
-curl --progress-bar -L -o imessagedebugv2-zip http://www.tonymacx86.com/attachments/imessagedebugv2-zip.114403/
+curl --progress-bar -L -o simplemlbsh.zip https://www.tonymacx86.com/attachments/simplemlb-sh-zip.263858/
+curl --progress-bar -L -o imessagedebugv2.zip http://www.tonymacx86.com/attachments/imessagedebugv2-zip.114403/
 sleep 5
 
 echo "\n================================================================================\n"
 echo "----------------------Unzipping iMessage Files!----------------------"
 echo "\n================================================================================\n"
 
-unzip imessagedebugv2-zip
-unzip 6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
+unzip imessagedebugv2.zip
+unzip simplemlbsh.zip
 
 echo "\n================================================================================\n"
 echo "----------------------Cleaning up iMessage folder!----------------------"
 echo "\n================================================================================\n"
 
-mv -v ~/Desktop/x250/iMessage/b6a9db46b14061d4c995-6f11dc5e8182bba0449e8f3bbe00152428f904ea/simpleMLB.sh ~/Desktop/x250/iMessage
-rm -v -f imessagedebugv2-zip
-rm -v -f 6f11dc5e8182bba0449e8f3bbe00152428f904ea.zip
-sudo rm -v -r b6a9db46b14061d4c995-6f11dc5e8182bba0449e8f3bbe00152428f904ea
+sudo rm -v -f simplemlbsh.zip
+sudo rm -v -f imessagedebugv2.zip
+sudo rm -v -r __MACOSX
 
 echo "\n================================================================================\n"
 echo "----------------------Donwloading Patches!----------------------"
