@@ -194,7 +194,8 @@ echo "\n========================================================================
 cd ~/Desktop/x250/Programs
 
 # curl --progress-bar -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
-curl --progress-bar -L -o Cloverv24kr4128.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4128.zip?r=&ts=1501198181&use_mirror=cytranet
+# curl --progress-bar -L -o Cloverv24kr4128.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4128.zip?r=&ts=1501198181&use_mirror=cytranet
+curl --progress-bar -L -o Clover24kr4359 https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4359.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1514337371&use_mirror=astuteinternet
 curl --progress-bar -L -O http://wizards.osxlatitude.com/kext/kw.zip
 sleep 5
 
@@ -202,15 +203,15 @@ echo "\n========================================================================
 echo "----------------------Unzipping Programs!----------------------"
 echo "\n================================================================================\n"
 
-unzip Cloverv24kr4128.zip
+unzip Cloverv24kr4359.zip
 unzip kw.zip
 
 echo "\n================================================================================\n"
 echo "----------------------Cleaning up Programs folder!----------------------"
 echo "\n================================================================================\n"
 
-rm -v -f Clover_v2.4k_r4128.pkg.md5
-rm -v -f Cloverv24kr4128.zip
+rm -v -f Clover_v2.4k_r4359.pkg.md5
+rm -v -f Cloverv24kr4359.zip
 rm -v -f kw.zip
 sudo rm -v -r __MACOSX
 
