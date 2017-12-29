@@ -225,7 +225,7 @@ cd ~/Desktop/x250/Programs
 
 # curl --progress-bar -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
 # curl --progress-bar -L -o Cloverv24kr4128.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4128.zip?r=&ts=1501198181&use_mirror=cytranet
-curl --progress-bar -L -o Clover24kr4359 https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4359.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1514337371&use_mirror=astuteinternet
+curl --progress-bar -L -o Cloverv24kr4359.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4359.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1514337371&use_mirror=astuteinternet
 curl --progress-bar -L -O http://wizards.osxlatitude.com/kext/kw.zip
 sleep 5
 
