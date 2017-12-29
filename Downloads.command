@@ -117,7 +117,8 @@ curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/dow
 # I moved these downloads to the dowloads directory to eliminate confusion on which
 # Kexts folder we are referring to
 cd ~/downloads
-curl --progress-bar -L -o OS-X-Voodoo-PS2-Controller-master.zip https://github.com/tluck/OS-X-Voodoo-PS2-Controller/archive/master.zip
+# curl --progress-bar -L -o OS-X-Voodoo-PS2-Controller-master.zip https://github.com/tluck/OS-X-Voodoo-PS2-Controller/archive/master.zip
+curl --progress-bar -L -o OS-X-Voodoo-PS2-Controller-master.zip https://github.com/tluck/OS-X-Voodoo-PS2-Controller/archive/3b5d68a4b6dc2afb478b0232aaa5849b12b49b82.zip
 curl --progress-bar -o Kexts.zip https://www.tonymacx86.com/attachments/kexts-zip.218178/
 cd ~/desktop/x250/Kexts
 
@@ -154,7 +155,8 @@ unzip -q RehabMan-USBInjectAll-2017-1214.zip
 cd ~/downloads
 unzip -q Kexts.zip
 unzip -q OS-X-Voodoo-PS2-Controller-master.zip
-cd ~/downloads/OS-X-Voodoo-PS2-Controller-master
+# cd ~/downloads/OS-X-Voodoo-PS2-Controller-master
+cd ~/downloads/OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82
 sudo make --silent
 cd ~/desktop/x250/Kexts
 
@@ -170,6 +172,7 @@ sudo rm -v -r FakeSMC_GPUSensors.kext
 sudo rm -v -r FakeSMC_LPCSensors.kext
 sudo rm -v -r Debug
 sudo rm -v -r HWMonitor.app
+sudo rm -v -r __MACOSX
 
 # No update required 7/27
 # rm -v -f RehabMan-Battery-2017-0428.zip
@@ -202,15 +205,15 @@ mv -v ~/desktop/x250/Kexts/Release/BrcmPatchRAM2.kext ~/desktop/x250/Kexts/
 mv -v ~/desktop/x250/Kexts/Release/BrcmFirmwareRepo.kext ~/desktop/x250/Kexts/
 mv -v ~/downloads/Kexts/USB_Injector_X250.kext ~/desktop/x250/Kexts/
 sudo rm -v -r Release
-chmod 755 ~/downloads/OS-X-Voodoo-PS2-Controller-master
-cd ~/downloads/OS-X-Voodoo-PS2-Controller-master/build/products/Release
-sudo mv -v ~/downloads/OS-X-Voodoo-PS2-Controller-master/build/products/Release/VoodooPS2Controller.kext ~/desktop/x250/Kexts/
-sudo mv -v ~/downloads/OS-X-Voodoo-PS2-Controller-master/build/products/Release/VoodooPS2Daemon ~/desktop/x250/Files
-mv -v ~/downloads/OS-X-Voodoo-PS2-Controller-master/VoodooPS2Daemon/org.rehabman.voodoo.driver.Daemon.plist ~/desktop/x250/Files
+chmod 755 ~/downloads/OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82
+cd ~/downloads/OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82/build/products/Release
+sudo mv -v ~/downloads/OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82/build/products/Release/VoodooPS2Controller.kext ~/desktop/x250/Kexts/
+sudo mv -v ~/downloads/OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82/build/products/Release/VoodooPS2Daemon ~/desktop/x250/Files
+mv -v ~/downloads/OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82/VoodooPS2Daemon/org.rehabman.voodoo.driver.Daemon.plist ~/desktop/x250/Files
 cd ~/downloads
 sudo rm -v -r Kexts
 sudo rm -v -r __MACOSX
-sudo rm -v -r OS-X-Voodoo-PS2-Controller-master
+sudo rm -v -r OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82
 sudo rm -v -f OS-X-Voodoo-PS2-Controller-master.zip
 sudo rm -v -f Kexts.zip
 
