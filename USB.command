@@ -113,7 +113,7 @@ cd ~/downloads
 
 unzip -q OS-X-Voodoo-PS2-Controller-master.zip
 
-cd ~/downloads/OS-X-Voodoo-PS2-Controller-master
+cd ~/downloads/OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82
 
 sudo make --silent
 
@@ -143,13 +143,13 @@ rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0914.zip
 
 sudo rm -v -r Release
 
-cd ~/downloads/OS-X-Voodoo-PS2-Controller-master/build/products/Release
+cd ~/downloads/OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82/build/products/Release
 
-sudo mv -v ~/downloads/OS-X-Voodoo-PS2-Controller-master/build/products/Release/VoodooPS2Controller.kext ~/desktop/USB
+sudo mv -v ~/downloads/OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82/build/products/Release/VoodooPS2Controller.kext ~/desktop/USB
 
 cd ~/downloads
 
-sudo rm -v -r OS-X-Voodoo-PS2-Controller-master
+sudo rm -v -r OS-X-Voodoo-PS2-Controller-3b5d68a4b6dc2afb478b0232aaa5849b12b49b82
 sudo rm -v -f OS-X-Voodoo-PS2-Controller-master.zip
 
 exit 0
