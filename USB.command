@@ -135,6 +135,7 @@ sudo rm -v -r FakeSMC_GPUSensors.kext
 sudo rm -v -r FakeSMC_LPCSensors.kext
 sudo rm -v -r Debug
 sudo rm -v -r HWMonitor.app
+sudo rm -v -r _MACOSX
 # rm -v -f RehabMan-FakeSMC-2017-0414.zip
 rm -v -f RehabMan-FakeSMC-2017-1017.zip
 
