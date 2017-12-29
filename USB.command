@@ -1,5 +1,71 @@
 #!/bin/sh
+# This script will automatically download the needed kexts and create a
+# directory in the process
+# Explain that Xcode must be installed
+clear
+echo "\n================================================================================\n"
+echo " (!) Xcode must be installed to continue. Answer the following questions"
+echo "     accordingly to ensure successful downloads and folder creation."
+echo "\n================================================================================\n"
 
+# Ask if user has Xcode installed
+read -r -p "---> Do you have Xcode installed? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+  echo "\n================================================================================\n"
+    continue
+else
+  echo "\n================================================================================\n"
+    echo " (!) Sign in with your apple ID. If you do not have a developer account, you"
+    echo "     will need to create one to download and install the latest Xcode."
+    echo "\n================================================================================\n"
+    sleep 5
+    echo " (!) Opening apple downloads page. Do not use the Mac App Store as iCloud"
+    echo "     has not been fixed yet. After downloading and installing, continue."
+    echo "           *** Must Unzip, and move to the applications folder ***"
+    echo "\n================================================================================\n"
+    sleep 5
+    open https://developer.apple.com/download/more/
+
+fi
+# Asking user if they have opened and accepted terms
+read -r -p "---> Has Xcode been opened and the terms accepted? <--- " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo "\n================================================================================\n"
+    continue
+else
+    echo "\n================================================================================\n"
+    echo " (!) You must open Xcode and accept the terms and conditions."
+    echo "\n================================================================================\n"
+    sleep 3
+    echo # Blank line
+    echo " (i) Opening Xcode, continue after accepting the terms."
+    echo "\n================================================================================\n"
+    open -a Xcode
+    sleep 3
+
+fi
+# Asking user if they have already installed the command line Tools
+read -r -p "---> Have you installed the Xcode comand line Tools? <--- " response
+echo    # Move to a new line
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo "\n================================================================================\n"
+    continue
+else
+    echo "\n================================================================================\n"
+    echo " (!) You must install Xcode command line tools."
+    echo "\n================================================================================\n"
+    sleep 3
+
+    echo " (i) Opening Installer for command line toos, continue after installation is"
+    echo "     complete."
+    echo "\n================================================================================\n"
+    sleep 3
+    echo # Blank line
+    xcode-select --install
+fi
 echo "\n================================================================================\n"
 echo "----------------------Making USB Folder!----------------------"
 echo "\n================================================================================\n"
