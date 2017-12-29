@@ -91,19 +91,28 @@ echo "\n========================================================================
 # end in .zip
 
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0414.zip
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0607.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0607.zip
+# Updated 12/28/17
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-1017.zip
 
 # IntelMausiEthernet is up-to-date as of 7/27; No action required
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0321.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0321.zip
+# Updated 12/28/17
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0914.zip
 
 # Battery Kext is up-to-date as of 7/27; No action required
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/RehabMan-Battery-2017-0428.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/RehabMan-Battery-2017-0428.zip
+# Updated 12/28/17
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/RehabMan-Battery-2017-1001.zip
 
 # BrcmPatchRAM kext is up-to-date as of 7/27; No action required
+# No Update Required 12/28/17
 curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/RehabMan-BrcmPatchRAM-2016-0705.zip
 
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-0112.zip
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-0724.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-0724.zip
+# Updated 12/28/17
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-1214.zip
 
 # I moved these downloads to the dowloads directory to eliminate confusion on which
 # Kexts folder we are referring to
@@ -119,19 +128,28 @@ echo "\n========================================================================
 # unzip is the command to unzip kexts
 
 # unzip -q RehabMan-FakeSMC-2017-0414.zip
-unzip -q RehabMan-FakeSMC-2017-0607.zip
+# unzip -q RehabMan-FakeSMC-2017-0607.zip
+# Updated 12/28/17
+unzip -q RehabMan-FakeSMC-2017-1017.zip
 
 # No update required 7/27
-unzip -q RehabMan-IntelMausiEthernet-v2-2017-0321.zip
+# unzip -q RehabMan-IntelMausiEthernet-v2-2017-0321.zip
+# Updated 12/28/17
+unzip -q RehabMan-IntelMausiEthernet-v2-2017-0914.zip
 
 # No update Required 7/27
-unzip -q RehabMan-Battery-2017-0428.zip
+# unzip -q RehabMan-Battery-2017-0428.zip
+# Updated 12/28/17
+unzip -q RehabMan-Battery-2017-1001.zip
 
 # No update Required 7/27
+# No update Required 12/28/17
 unzip -q RehabMan-BrcmPatchRAM-2016-0705.zip
 
 # unzip -q RehabMan-USBInjectAll-2017-0112.zip
-unzip -q RehabMan-USBInjectAll-2017-0724.zip
+# unzip -q RehabMan-USBInjectAll-2017-0724.zip
+# Updated 12/28/17
+unzip -q RehabMan-USBInjectAll-2017-1214.zip
 
 cd ~/downloads
 unzip -q Kexts.zip
@@ -154,19 +172,28 @@ sudo rm -v -r Debug
 sudo rm -v -r HWMonitor.app
 
 # No update required 7/27
-rm -v -f RehabMan-Battery-2017-0428.zip
+# rm -v -f RehabMan-Battery-2017-0428.zip
+# Updated 12/28/17
+rm -v -f RehabMan-Battery-2017-1001.zip
 
 # rm -v -f RehabMan-FakeSMC-2017-0414.zip
-rm -v -f RehabMan-FakeSMC-2017-0607.zip
+# rm -v -f RehabMan-FakeSMC-2017-0607.zip
+# Updated 12/28/17
+rm -v -f RehabMan-FakeSMC-2017-1017.zip
 
 # No adjustment neaded. Kext not updated 7/27
-rm -v -f rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0321.zip
+# rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0321.zip
+# Updated 12/28/17
+rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0914.zip 
 
 # No update required 7/27
+# No update required 12/28/17
 rm -v -f RehabMan-BrcmPatchRAM-2016-0705.zip
 
 # rm -v -f RehabMan-USBInjectAll-2017-0112.zip
-rm -v -f RehabMan-USBInjectAll-2017-0724.zip
+# rm -v -f RehabMan-USBInjectAll-2017-0724.zip
+# Updated 12/28/17
+rm -v -f RehabMan-USBInjectAll-2017-1214.zip
 
 mv -v ~/desktop/x250/Kexts/Release/ACPIBatteryManager.kext ~/desktop/x250/Kexts/
 mv -v ~/desktop/x250/Kexts/Release/IntelMausiEthernet.kext ~/desktop/x250/Kexts/
