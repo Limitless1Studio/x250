@@ -92,7 +92,8 @@ curl --progress-bar -O https://raw.githubusercontent.com/Limitless1Studio/x250/m
 
 
 cd ~/downloads
-curl --progress-bar -L -o OS-X-Voodoo-PS2-Controller-master.zip https://github.com/tluck/OS-X-Voodoo-PS2-Controller/archive/master.zip
+# curl --progress-bar -L -o OS-X-Voodoo-PS2-Controller-master.zip https://github.com/tluck/OS-X-Voodoo-PS2-Controller/archive/master.zip
+curl --progress-bar -L -o OS-X-Voodoo-PS2-Controller-master.zip https://github.com/tluck/OS-X-Voodoo-PS2-Controller/archive/3b5d68a4b6dc2afb478b0232aaa5849b12b49b82.zip
 sleep 5
 
 echo "\n================================================================================\n"
