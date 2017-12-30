@@ -133,6 +133,8 @@
 		</array>
 		<key>SSDT</key>
 		<dict>
+			<key>NoOemTableId</key>
+			<true/>
 			<key>DropOem</key>
 			<false/>
 			<key>Generate</key>
