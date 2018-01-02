@@ -131,7 +131,8 @@ echo "\n========================================================================
 
 cd ~/Desktop/USB
 # rm -v -f Clover_v2.4k_r4061.pkg.md5
-rm -v -f Clover_v2.4k_r4359.pkg.md5
+# rm -v -f Clover_v2.4k_r4359.pkg.md5
+rm -v -f Clover_v2.4k_r4359.RM-4506.7036cf0a.pkg.md5
 # rm -v -f Cloverv24kr4061.zip
 # rm -v -f Cloverv24kr4359.zip
 rm -v -f Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
