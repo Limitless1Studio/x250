@@ -93,7 +93,7 @@ curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/dow
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0321.zip
 # Updated 12/28/17
 curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0914.zip
-curl --progress-bar -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/HFSPlus.efi
+curl --progress-bar -L -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/HFSPlus.efi
 curl --progress-bar -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/installconfig.plist
 
 
@@ -149,7 +149,7 @@ sudo rm -v -r __MACOSX
 rm -v -f RehabMan-FakeSMC-2017-1017.zip
 
 # rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0321.zip
-rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0914.zip 
+rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0914.zip
 
 sudo rm -v -r Release
 
