@@ -19,9 +19,9 @@ final_tasks()
       mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-3.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
       mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-4.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
       mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-5.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-6.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
+      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-8.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
       mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-9.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-11.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
-      mv -v /volumes/EFI/EFI/CLOVER/ACPI/origin/SSDT-12.aml /volumes/EFI/EFI/CLOVER/ACPI/patched
       echo "All files in x250finished have been moved to EFI"
       echo "\n================================================================================\n"
       sleep 5
@@ -119,64 +119,80 @@ then
     echo "\n================================================================================\n"
 
     sudo cp -vR ACPIBatteryManager.kext /System/Library/Extensions
+    cd /System/Library/Extensions
     sudo chmod -vR 755 ACPIBatteryManager.kext
     sudo chown -vR root:wheel ACPIBatteryManager.kext
+    cd ~/Desktop/x250/Kexts
 
     echo "\n================================================================================\n"
     echo " (i) Moving BrcmFirmwareRepo.kext and repairing permissions."
     echo "\n================================================================================\n"
 
     sudo cp -vR BrcmFirmwareRepo.kext /System/Library/Extensions
+    cd /System/Library/Extensions
     sudo chmod -vR 755 BrcmFirmwareRepo.kext
     sudo chown -vR root:wheel BrcmFirmwareRepo.kext
+    cd ~/Desktop/x250/Kexts
 
     echo "\n================================================================================\n"
     echo " (i) Moving BrcmPatchRAM2.kext and repairing permissions."
     echo "\n================================================================================\n"
 
     sudo cp -vR BrcmPatchRAM2.kext /System/Library/Extensions
+    cd /System/Library/Extensions
     sudo chmod -vR 755 BrcmPatchRAM2.kext
     sudo chown -vR root:wheel BrcmPatchRAM2.kext
+    cd ~/Desktop/x250/Kexts
 
     echo "\n================================================================================\n"
     echo " (i) Moving FakeSMC.kext and repairing permissions."
     echo "\n================================================================================\n"
 
     sudo cp -vR FakeSMC.kext /System/Library/Extensions
+    cd /System/Library/Extensions
     sudo chmod -vR 755 FakeSMC.kext
     sudo chown -vR root:wheel FakeSMC.kext
+    cd ~/Desktop/x250/Kexts
 
     echo "\n================================================================================\n"
     echo " (i) Moving IntelMausiEthernet.kext and repairing permissions."
     echo "\n================================================================================\n"
 
     sudo cp -vR IntelMausiEthernet.kext /System/Library/Extensions
+    cd /System/Library/Extensions
     sudo chmod -vR 755 IntelMausiEthernet.kext
     sudo chown -vR root:wheel IntelMausiEthernet.kext
+    cd ~/Desktop/x250/Kexts
 
     echo "\n================================================================================\n"
     echo " (i) Moving USB_Injector_X250.kext and repairing permissions."
     echo "\n================================================================================\n"
 
     sudo cp -vR USB_Injector_X250.kext /System/Library/Extensions
+    cd /System/Library/Extensions
     sudo chmod -vR 755 USB_Injector_X250.kext
     sudo chown -vR root:wheel USB_Injector_X250.kext
+    cd ~/Desktop/x250/Kexts
 
     echo "\n================================================================================\n"
     echo " (i) Moving USBInjectAll.kext and repairing permissions."
     echo "\n================================================================================\n"
 
     sudo cp -vR USBInjectAll.kext /System/Library/Extensions
+    cd /System/Library/Extensions
     sudo chmod -vR 755 USBInjectAll.kext
     sudo chown -vR root:wheel USBInjectAll.kext
+    cd ~/Desktop/x250/Kexts
 
     echo "\n================================================================================\n"
     echo " (i) Moving VoodooPS2Controller.kext and repairing permissions."
     echo "\n================================================================================\n"
 
     sudo cp -vR VoodooPS2Controller.kext /System/Library/Extensions
+    cd /System/Library/Extensions
     sudo chmod -vR 755 VoodooPS2Controller.kext
     sudo chown -vR root:wheel VoodooPS2Controller.kext
+    cd ~/Desktop/x250/Kexts
 
     echo "\n================================================================================\n"
     echo " (i) Rebuilding Kext cache and repairing permissions."
@@ -283,8 +299,8 @@ echo "     ...    Compiling SSDT-1..."
 /usr/bin/iasl ~/x250finished/SSDT-1.dsl
 echo "================================================================================\n"
 
-echo "     ...    Compiling SSDT-10..."
-/usr/bin/iasl ~/x250finished/SSDT-10.dsl
+echo "     ...    Compiling SSDT-7..."
+/usr/bin/iasl ~/x250finished/SSDT-7.dsl
 echo "================================================================================\n"
 
 echo "\n[--Done--]: All done...\n"
@@ -311,17 +327,17 @@ echo "     ...    [gfx] Rename VID to IGPU"
 echo "================================================================================\n"
 
 ########################
-# SSDT-10 (dGPU) Patches
+# SSDT-7 (dGPU) Patches
 ########################
 
 echo "\n================================================================================"
-echo "[--SSDT--]: Patching SSDT-10"
+echo "[--SSDT--]: Patching SSDT-7"
 echo "================================================================================\n"
-echo "\n    >>>>   SSDT-10 (dGPU) Patch Started   <<<<    \n"
+echo "\n    >>>>   SSDT-7 (dGPU) Patch Started   <<<<    \n"
 echo "================================================================================\n"
 
 echo "     ...    [gfx] Rename VID to IGPU"
-/usr/bin/patchmatic ~/x250finished/SSDT-10.dsl ~/Desktop/x250/patches/graphics_Rename-PCI0_VID.txt ~/x250finished/SSDT-10.dsl
+/usr/bin/patchmatic ~/x250finished/SSDT-7.dsl ~/Desktop/x250/patches/graphics_Rename-PCI0_VID.txt ~/x250finished/SSDT-7.dsl
 echo "================================================================================\n"
 
 echo "\n    >>>>   Continuing to Compile DSDT\SSDT's...   <<<<    \n"
@@ -420,7 +436,7 @@ echo "==========================================================================
 
 mv -v ~/x250original/DSDT.dsl ~/x250finished/DSDT.dsl
 mv -v ~/x250original/SSDT-1.dsl ~/x250finished/SSDT-1.dsl
-mv -v ~/x250original/SSDT-10.dsl ~/x250finished/SSDT-10.dsl
+mv -v ~/x250original/SSDT-7.dsl ~/x250finished/SSDT-7.dsl
 patch_dsdt
 }
 
@@ -453,7 +469,6 @@ then
     chmod 755 ALC3232.command
     cd ~/desktop/x250/Files
     chmod 755 ssdtPRgensh.command
-    chmod 755 Downloads.command
     echo # Blank line
     echo " (i) Permissions assigned."
     echo "\n================================================================================\n"
@@ -509,7 +524,7 @@ then
     cd /volumes/EFI/EFI/CLOVER/ACPI/origin
     sudo cp -va DSDT.aml ~/x250original
     sudo cp -va SSDT-1.aml ~/x250original
-    sudo cp -va SSDT-10.aml ~/x250original
+    sudo cp -va SSDT-7.aml ~/x250original
     cd ~/desktop/x250/Files
     sudo cp -va SSDT-BATC.dsl ~/x250finished
     echo "\n (i) Files have been moved."
@@ -934,7 +949,7 @@ main()
 # Making space
 clear
 echo "\n================================================================================"
-echo "Lenevo ThinkPad x250 macOS installer script by Dave S. of Limitless1Studio."
+echo "Lenevo ThinkPad x250 macOS installer script v1.1 by Dave S. of Limitless1Studio."
 echo "================================================================================\n"
 echo " (1) This script relies on the Downloads.command script. If you have not ran the"
 echo "     Downloads.command don't worry, it is included in this one. Select no on the"

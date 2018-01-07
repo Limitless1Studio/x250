@@ -157,10 +157,10 @@
 			<string>SSDT-3.aml</string>
 			<string>SSDT-4.aml</string>
 			<string>SSDT-5.aml</string>
+			<string>SSDT-6.aml</string>
+			<string>SSDT-7.aml</string>
+			<string>SSDT-8.aml</string>
 			<string>SSDT-9.aml</string>
-			<string>SSDT-10.aml</string>
-			<string>SSDT-11.aml</string>
-			<string>SSDT-12.aml</string>
 			<string>SSDT-BATC.aml</string>
 			<string>SSDT-PNLF.aml</string>
 		</array>
