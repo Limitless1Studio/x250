@@ -187,7 +187,7 @@ rm -v -f RehabMan-FakeSMC-2017-1017.zip
 # No adjustment neaded. Kext not updated 7/27
 # rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0321.zip
 # Updated 12/28/17
-rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0914.zip 
+rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0914.zip
 
 # No update required 7/27
 # No update required 12/28/17
@@ -253,7 +253,7 @@ echo "\n========================================================================
 # curl -o must be used to rename the file correctly because the link does not
 # end in .zip
 cd ~/Desktop/x250/Files
-curl --progress-bar -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/HFSPlus.efi
+curl --progress-bar -L -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/HFSPlus.efi
 curl --progress-bar -L -O https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip
 curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/RehabMan-patchmatic-2016-0312.zip
 curl --progress-bar -O https://raw.githubusercontent.com/RehabMan/OS-X-ACPI-Battery-Driver/master/SSDT-BATC.dsl
