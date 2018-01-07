@@ -546,7 +546,7 @@ then
     ~/desktop/x250/files/ssdtPRgensh.command
     echo "\n================================================================================\n"
     echo " (i) ssdtPRgensh.command Finished."
-    echo " (i) Power Management SSDT created placed in x250orginal."
+    echo " (i) Power Management SSDT created and placed in x250finished."
     echo "\n================================================================================\n"
     sleep 3
 else
@@ -785,7 +785,7 @@ fi
 echo "\n================================================================================\n"
 echo " (!) You must have clover installed for the rest of the script to run correctly."
 echo "     If you have not installed Clover Bootloader to the EFI partition, open the"
-echo "     \"Clover_v2.4k_r4061.pkg\" from /x250/Programs and run the installer as"
+echo "     \"Clover_v2.4k_rXXXX.pkg\" from /x250/Programs and run the installer as"
 echo "     described after selecting no. Continue with this script when finished."
 echo "\n================================================================================"
 
