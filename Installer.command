@@ -704,7 +704,7 @@ echo "\n========================================================================
 echo " (!) In order to implement excellerated graphics you must change the ig-platform"
 echo "     -id in the config.plist. Do Not use Clover Configurator to do this as it "
 echo "     will corrupt a vital patch that is stored in the config.plist. The command"
-echo"      will do this for you."
+echo "      will do this for you."
 echo "\n================================================================================\n"
 echo "\t  No = The config.plist will automatically be replaced."
 echo "\t Yes = The action will be skipped.\n"
