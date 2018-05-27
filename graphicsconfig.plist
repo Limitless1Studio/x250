@@ -276,7 +276,7 @@
 				<key>Comment</key>
 				<string>Disable minStolenSize less or equal fStolenMemorySize assertion, 10.12.0 ( (based on Austere.J patch)</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>iUXIOcd2Tw==</data>
 				<key>MatchOS</key>
@@ -285,6 +285,20 @@
 				<string>com.apple.driver.AppleIntelBDWGraphicsFramebuffer</string>
 				<key>Replace</key>
 				<data>iUXIOcfrTw==</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Disable minStolenSize less or equal fStolenMemorySize assertion, 10.13.2/3/4 (credit RehabMan)</string>
+				<key>Disabled</key>
+				<true/>
+				<key>MatchOS</key>
+				<string>10.13.2,10.13.3,10.13.4</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleIntelBDWGraphicsFramebuffer</string>
+				<key>Find</key>
+				<data>TIlFwHZE</data>
+				<key>Replace</key>
+				<data>TIlFwOtE</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
