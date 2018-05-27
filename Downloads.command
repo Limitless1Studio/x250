@@ -93,26 +93,35 @@ echo "\n========================================================================
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0414.zip
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0607.zip
 # Updated 12/28/17
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-1017.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-1017.zip
+# Updated 5/27/18
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2018-0403.zip
 
 # IntelMausiEthernet is up-to-date as of 7/27; No action required
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0321.zip
 # Updated 12/28/17
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0914.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0914.zip
+# Updated 5/27/18
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2018-0424.zip
 
 # Battery Kext is up-to-date as of 7/27; No action required
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/RehabMan-Battery-2017-0428.zip
 # Updated 12/28/17
+# Checked 5/27/18
 curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/RehabMan-Battery-2017-1001.zip
 
 # BrcmPatchRAM kext is up-to-date as of 7/27; No action required
 # No Update Required 12/28/17
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/RehabMan-BrcmPatchRAM-2016-0705.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/RehabMan-BrcmPatchRAM-2016-0705.zip
+# Updated 5/27/18
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-brcmpatchram/downloads/RehabMan-BrcmPatchRAM-2018-0505.zip
 
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-0112.zip
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-0724.zip
 # Updated 12/28/17
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-1214.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2017-1214.zip
+# Updated 5/27/18
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/RehabMan-USBInjectAll-2018-0420.zip
 
 # I moved these downloads to the dowloads directory to eliminate confusion on which
 # Kexts folder we are referring to
@@ -131,26 +140,31 @@ echo "\n========================================================================
 # unzip -q RehabMan-FakeSMC-2017-0414.zip
 # unzip -q RehabMan-FakeSMC-2017-0607.zip
 # Updated 12/28/17
-unzip -q RehabMan-FakeSMC-2017-1017.zip
+# Updated 5/27/18
+unzip -q RehabMan-FakeSMC-2018-0403.zip
 
 # No update required 7/27
 # unzip -q RehabMan-IntelMausiEthernet-v2-2017-0321.zip
 # Updated 12/28/17
-unzip -q RehabMan-IntelMausiEthernet-v2-2017-0914.zip
+# Updated 5/27/18
+unzip -q RehabMan-IntelMausiEthernet-v2-2018-0424.zip
 
 # No update Required 7/27
 # unzip -q RehabMan-Battery-2017-0428.zip
 # Updated 12/28/17
+# Updated 5/27/18
 unzip -q RehabMan-Battery-2017-1001.zip
 
 # No update Required 7/27
 # No update Required 12/28/17
-unzip -q RehabMan-BrcmPatchRAM-2016-0705.zip
+# Updated 5/27/18
+unzip -q RehabMan-BrcmPatchRAM-2018-0505.zip
 
 # unzip -q RehabMan-USBInjectAll-2017-0112.zip
 # unzip -q RehabMan-USBInjectAll-2017-0724.zip
 # Updated 12/28/17
-unzip -q RehabMan-USBInjectAll-2017-1214.zip
+# Updated 5/27/18
+unzip -q RehabMan-USBInjectAll-2018-0420.zip
 
 cd ~/downloads
 unzip -q Kexts.zip
@@ -182,21 +196,25 @@ rm -v -f RehabMan-Battery-2017-1001.zip
 # rm -v -f RehabMan-FakeSMC-2017-0414.zip
 # rm -v -f RehabMan-FakeSMC-2017-0607.zip
 # Updated 12/28/17
-rm -v -f RehabMan-FakeSMC-2017-1017.zip
+# Updated 5/27/18
+rm -v -f RehabMan-FakeSMC-2018-0403.zip
 
 # No adjustment neaded. Kext not updated 7/27
 # rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0321.zip
 # Updated 12/28/17
-rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0914.zip
+# Updated 5/28/18
+rm -v -f RehabMan-IntelMausiEthernet-v2-2018-0424.zip
 
 # No update required 7/27
 # No update required 12/28/17
-rm -v -f RehabMan-BrcmPatchRAM-2016-0705.zip
+# Updated 5/27/18
+rm -v -f RehabMan-BrcmPatchRAM-2018-0505.zip
 
 # rm -v -f RehabMan-USBInjectAll-2017-0112.zip
 # rm -v -f RehabMan-USBInjectAll-2017-0724.zip
 # Updated 12/28/17
-rm -v -f RehabMan-USBInjectAll-2017-1214.zip
+# Updated 5/27/18
+rm -v -f RehabMan-USBInjectAll-2018-0420.zip
 
 mv -v ~/desktop/x250/Kexts/Release/ACPIBatteryManager.kext ~/desktop/x250/Kexts/
 mv -v ~/desktop/x250/Kexts/Release/IntelMausiEthernet.kext ~/desktop/x250/Kexts/
@@ -226,8 +244,12 @@ cd ~/Desktop/x250/Programs
 # curl --progress-bar -L -o Cloverv24kr4061.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4061.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1493489376&use_mirror=pilotfiber
 # curl --progress-bar -L -o Cloverv24kr4128.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4128.zip?r=&ts=1501198181&use_mirror=cytranet
 # curl --progress-bar -L -o Cloverv24kr4359.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4359.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1514337371&use_mirror=astuteinternet
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/clover/downloads/Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
-curl --progress-bar -L -O http://wizards.osxlatitude.com/kext/kw.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/clover/downloads/Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
+# Updated 5/27/18
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/clover/downloads/Clover_v2.4k_r4444.RM-4652.c1f8602f.zip
+# curl --progress-bar -L -O http://wizards.osxlatitude.com/kext/kw.zip
+# Updated 5/27/18
+curl --progress-bar -L -O https://us.softpedia-secure-download.com/dl/2794b5e648fc3a12018c12eef4ae56d0/5b0adb89/400110511/mac/Utilities/kw.zip
 sleep 5
 
 echo "\n================================================================================\n"
@@ -235,7 +257,9 @@ echo "----------------------Unzipping Programs!----------------------"
 echo "\n================================================================================\n"
 
 # unzip Cloverv24kr4359.zip
-unzip -q Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
+# unzip -q Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
+# Updated 5/27/18
+unzip -q Clover_v2.4k_r4444.RM-4652.c1f8602f.zip
 unzip kw.zip
 
 echo "\n================================================================================\n"
@@ -243,9 +267,11 @@ echo "----------------------Cleaning up Programs folder!----------------------"
 echo "\n================================================================================\n"
 
 # rm -v -f Clover_v2.4k_r4359.pkg.md5
-rm -v -f Clover_v2.4k_r4359.RM-4506.7036cf0a.pkg.md5
+# rm -v -f Clover_v2.4k_r4359.RM-4506.7036cf0a.pkg.md5
+rm -v -f Clover_v2.4k_r4444.RM-4652.c1f8602f.pkg.md5
 # rm -v -f Cloverv24kr4359.zip
-rm -v -f Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
+# rm -v -f Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
+rm -v -f Clover_v2.4k_r4444.RM-4652.c1f8602f.zip
 rm -v -f kw.zip
 sudo rm -v -r __MACOSX
 

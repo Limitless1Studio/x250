@@ -86,13 +86,19 @@ cd ~/Desktop/USB
 # Updated 12/28/17
 # curl --progress-bar -L -o Cloverv24kr4359.zip https://downloads.sourceforge.net/project/cloverefiboot/Installer/Clover_v2.4k_r4359.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcloverefiboot%2F&ts=1514337371&use_mirror=astuteinternet
 # Updated to RehabMans branch 1/1/2018
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/clover/downloads/Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/clover/downloads/Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
+# Updated to RehabMans branch 5/27/2018
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/clover/downloads/Clover_v2.4k_r4444.RM-4652.c1f8602f.zip
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-0414.zip
 # Updated 12/28/17
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-1017.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2017-1017.zip
+# Updated 5/27/2018
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/RehabMan-FakeSMC-2018-0403.zip
 # curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0321.zip
 # Updated 12/28/17
-curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0914.zip
+# curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2017-0914.zip
+# Updated 5/27/2018
+curl --progress-bar -L -O https://bitbucket.org/RehabMan/os-x-intel-network/downloads/RehabMan-IntelMausiEthernet-v2-2018-0424.zip
 curl --progress-bar -L -O https://github.com/JrCs/CloverGrowerPro/raw/master/Files/HFSPlus/X64/HFSPlus.efi
 curl --progress-bar -O https://raw.githubusercontent.com/Limitless1Studio/x250/master/installconfig.plist
 
@@ -109,12 +115,12 @@ echo "\n========================================================================
 cd ~/Desktop/USB
 # unzip Cloverv24kr4061.zip
 # unzip Cloverv24kr4359.zip
-unzip -q Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
+unzip -q Clover_v2.4k_r4444.RM-4652.c1f8602f.zip
 # unzip -q RehabMan-FakeSMC-2017-0414.zip
-unzip -q RehabMan-FakeSMC-2017-1017.zip
+unzip -q RehabMan-FakeSMC-2018-0403.zip
 
 #unzip -q RehabMan-IntelMausiEthernet-v2-2017-0321.zip
-unzip -q RehabMan-IntelMausiEthernet-v2-2017-0914.zip
+unzip -q RehabMan-IntelMausiEthernet-v2-2018-0424.zip
 
 cd ~/downloads
 
@@ -132,10 +138,10 @@ echo "\n========================================================================
 cd ~/Desktop/USB
 # rm -v -f Clover_v2.4k_r4061.pkg.md5
 # rm -v -f Clover_v2.4k_r4359.pkg.md5
-rm -v -f Clover_v2.4k_r4359.RM-4506.7036cf0a.pkg.md5
+rm -v -f Clover_v2.4k_r4444.RM-4652.c1f8602f.pkg.md5
 # rm -v -f Cloverv24kr4061.zip
 # rm -v -f Cloverv24kr4359.zip
-rm -v -f Clover_v2.4k_r4359.RM-4506.7036cf0a.zip
+rm -v -f Clover_v2.4k_r4444.RM-4652.c1f8602f.zip
 
 mv -v ~/desktop/USB/Release/IntelMausiEthernet.kext ~/desktop/USB
 sudo rm -v -r FakeSMC_ACPISensors.kext
@@ -146,10 +152,10 @@ sudo rm -v -r Debug
 sudo rm -v -r HWMonitor.app
 sudo rm -v -r __MACOSX
 # rm -v -f RehabMan-FakeSMC-2017-0414.zip
-rm -v -f RehabMan-FakeSMC-2017-1017.zip
+rm -v -f RehabMan-FakeSMC-2018-0403.zip
 
 # rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0321.zip
-rm -v -f RehabMan-IntelMausiEthernet-v2-2017-0914.zip
+rm -v -f RehabMan-IntelMausiEthernet-v2-2018-0424.zip
 
 sudo rm -v -r Release
 

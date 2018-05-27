@@ -396,7 +396,7 @@
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>MBP121.88Z.0167.B21.1612230252</string>
+		<string>MBP121.88Z.0171.B00.1708080033</string>
 		<key>Board-ID</key>
 		<string>Mac-E43C1C25D4880AD6</string>
 		<key>BoardManufacturer</key>
@@ -420,7 +420,7 @@
 		<key>ProductName</key>
 		<string>MacBookPro12,1</string>
 		<key>SerialNumber</key>
-		<string>C02Q6ON9H1DP</string>
+		<string>C02S415GH1DP</string>
 		<key>Trust</key>
 		<true/>
 		<key>Version</key>
